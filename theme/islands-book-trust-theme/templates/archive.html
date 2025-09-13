@@ -1,0 +1,32 @@
+<!-- wp:template-part {"slug":"header","theme":"islands-book-trust-theme","tagName":"header"} /-->
+
+<!-- wp:group {"tagName":"main","layout":{"type":"constrained"}} -->
+<main class="wp-block-group">
+
+  <!-- wp:query-title {"type":"archive","align":"wide"} /-->
+
+  <!-- wp:query {"queryId":1,"query":{"perPage":10,"postType":"post","order":"desc","orderBy":"date"},"align":"wide","layout":{"type":"default"}} -->
+  <div class="wp-block-query alignwide">
+
+    <!-- wp:post-template -->
+      <!-- wp:group {"align":"wide"} -->
+      <div class="wp-block-group alignwide">
+        <!-- wp:post-title {"isLink":true} /-->
+        <!-- wp:post-excerpt /-->
+      </div>
+      <!-- /wp:group -->
+    <!-- /wp:post-template -->
+
+    <!-- wp:query-pagination {"align":"wide"} -->
+      <!-- wp:query-pagination-previous /-->
+      <!-- wp:query-pagination-numbers /-->
+      <!-- wp:query-pagination-next /-->
+    <!-- /wp:query-pagination -->
+
+  </div>
+  <!-- /wp:query -->
+
+</main>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer","theme":"islands-book-trust-theme","tagName":"footer"} /-->
