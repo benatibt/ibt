@@ -105,6 +105,69 @@ a:has(.wc-block-customer-account__account-icon):focus svg {
     fill: #ffffff;
     stroke: #ffffff;
 }
+/* ==============================================================
+   WooCommerce Classic Buttons
+   Bring legacy buttons (not true blocks) in line with theme.json
+   variables and block-theme button styling.
+   Uses 0.5s ease transitions to match site buttons.
+   -------------------------------------------------------------- */
+
+/* ---------- Primary (solid) ----------
+   Add to Cart, View Cart, Checkout, etc.
+---------------------------------------- */
+.woocommerce a.button.add_to_cart_button,
+.woocommerce button.single_add_to_cart_button,
+.woocommerce a.checkout-button,
+.woocommerce button.button.checkout,
+.woocommerce a.added_to_cart {
+    background-color: var(--wp--preset--color--primary);
+    color: var(--wp--preset--color--white);
+    border-radius: 0.6rem;
+    padding: 1rem 2rem;
+    font-weight: 800;
+    text-decoration: none;
+    transition:
+        background-color 0.5s ease,
+        color 0.5s ease,
+        border-color 0.5s ease;
+}
+
+.woocommerce a.button.add_to_cart_button:hover,
+.woocommerce button.single_add_to_cart_button:hover,
+.woocommerce a.checkout-button:hover,
+.woocommerce button.button.checkout:hover,
+.woocommerce a.added_to_cart:hover {
+    background-color: var(--wp--preset--color--hover);
+    color: var(--wp--preset--color--white);
+}
+
+/* ---------- Secondary / Outline ----------
+   Update Cart, Continue Shopping, Return to Shop, etc.
+-------------------------------------------- */
+.woocommerce a.button.alt,
+.woocommerce a.button.wc-backward,
+.woocommerce button.button:not(.checkout):not(.single_add_to_cart_button) {
+    background-color: transparent;
+    color: var(--wp--preset--color--primary);
+    border: 2px solid var(--wp--preset--color--primary);
+    border-radius: 0.6rem;
+    padding: 1rem 2rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition:
+        background-color 0.5s ease,
+        color 0.5s ease,
+        border-color 0.5s ease;
+}
+
+.woocommerce a.button.alt:hover,
+.woocommerce a.button.wc-backward:hover,
+.woocommerce button.button:not(.checkout):not(.single_add_to_cart_button):hover {
+    background-color: var(--wp--preset--color--primary);
+    color: var(--wp--preset--color--white);
+    border-color: var(--wp--preset--color--primary);
+}
+
 
 /* --------------------------------------------
    Linked images – gentle scale & shadow

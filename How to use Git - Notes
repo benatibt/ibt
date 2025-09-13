@@ -1,0 +1,14 @@
+Use terminal from this folder
+
+# To deploy to sandbox
+git add .                            # Stage all changes
+git commit -m "Notes"                 # Commit to local Git
+./deploy-sandbox.sh                   # Deploy theme + plugin to Hostinger sandbox
+
+# To backup to GitHub (after committing for sandbox testing)
+git push github main                  # Push latest commits to GitHub
+
+# To create a project-wide revision tag (use real numbers, one version for whole project)
+git tag -a v0.1.55 -m "Theme 0.1.50 / Plugin 0.1.5"   # Single tag for the combined state
+git push github v0.1.55                               # Push the tag to GitHub
+
