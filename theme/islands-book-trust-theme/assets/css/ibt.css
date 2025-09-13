@@ -120,8 +120,8 @@ a:has(.wc-block-customer-account__account-icon):focus svg {
 .woocommerce a.checkout-button,
 .woocommerce button.button.checkout,
 .woocommerce a.added_to_cart {
-    background-color: #000080;
-    color: #ffffff;
+    background-color: var(--wp--preset--color--primary);
+    color: var(--wp--preset--color--white);
     border-radius: 0.6rem;
     padding: 1rem 2rem;
     font-weight: 800;
@@ -137,8 +137,8 @@ a:has(.wc-block-customer-account__account-icon):focus svg {
 .woocommerce a.checkout-button:hover,
 .woocommerce button.button.checkout:hover,
 .woocommerce a.added_to_cart:hover {
-    background-color: #000080;
-    color: #000080;
+    background-color: var(--wp--preset--color--hover);
+    color: var(--wp--preset--color--white);
 }
 
 /* ---------- Secondary / Outline ----------
@@ -148,8 +148,8 @@ a:has(.wc-block-customer-account__account-icon):focus svg {
 .woocommerce a.button.wc-backward,
 .woocommerce button.button:not(.checkout):not(.single_add_to_cart_button) {
     background-color: transparent;
-    color: #000080;
-    border: 2px #000080;
+    color: var(--wp--preset--color--primary);
+    border: 2px solid var(--wp--preset--color--primary);
     border-radius: 0.6rem;
     padding: 1rem 2rem;
     font-weight: 700;
@@ -163,11 +163,10 @@ a:has(.wc-block-customer-account__account-icon):focus svg {
 .woocommerce a.button.alt:hover,
 .woocommerce a.button.wc-backward:hover,
 .woocommerce button.button:not(.checkout):not(.single_add_to_cart_button):hover {
-    background-color: #000080;
-    color: #ffffff;
-    border-color: #000080;
+    background-color: var(--wp--preset--color--primary);
+    color: var(--wp--preset--color--white);
+    border-color: var(--wp--preset--color--primary);
 }
-
 
 /* --------------------------------------------
    Linked images – gentle scale & shadow
