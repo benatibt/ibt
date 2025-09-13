@@ -1,161 +1,74 @@
 /* =================================================
    Islands Book Trust – Front-end stylesheet
-   Minimal CSS for effects not handled by theme.json
+   Purpose: minimal structural helpers only.
+   Keep colours, typography and hover effects in theme.json.
    ================================================= */
 
 /* --------------------------------------------
    Base reset
    -------------------------------------------- */
+
+/* Ensure blocks align flush with viewport */
 body {
-    margin: 0; /* ensure blocks align flush with viewport */
-}
-/* --------------------------------------------
-   Linked text – modern underline hover
-   -------------------------------------------- */
-a:not(.wp-block-button__link):not(:has(.wc-block-customer-account__account-icon)) {
-    color: #000080; /* primary blue */
-    text-decoration: underline;
-    text-decoration-color: transparent; /* hide line by default */
-    text-decoration-thickness: 1px;
-    text-underline-offset: 2px;
-    transition: color 0.5s ease, text-decoration-color 0.5s ease;
+    margin: 0;
 }
 
-a:not(.wp-block-button__link):not(:has(.wc-block-customer-account__account-icon)):hover,
-a:not(.wp-block-button__link):not(:has(.wc-block-customer-account__account-icon)):focus {
-    color: #000000;              /* hover black */
-    text-decoration-color: #000000; /* fade underline in */
+/* Use border-box sizing everywhere to make
+   width/height calculations predictable */
+html {
+    box-sizing: border-box;
+}
+*, *::before, *::after {
+    box-sizing: inherit;
 }
 
 /* --------------------------------------------
-   Buttons – hover effects (solid & outline)
+   Media defaults
    -------------------------------------------- */
-.wp-block-button__link {
-    transition:
-        background-color 0.5s ease,
-        border-color 0.5s ease,
-        color 0.5s ease,
-        box-shadow 0.5s ease;
+
+/* Prevent images or video from overflowing
+   their container and keep aspect ratio */
+img,
+svg,
+video {
+    max-width: 100%;
+    height: auto;
 }
 
-/* Solid buttons */
-.wp-block-button__link:not(.is-style-outline):hover,
-.wp-block-button__link:not(.is-style-outline):focus {
-    background-color: #000000; /* fill to black */
-    border-color: #000000;
-    color: #ffffff;
-    box-shadow: 0 0 0 2px #000000; /* subtle halo to simulate growth */
-}
-
-/* Outline buttons */
-.wp-block-button__link.is-style-outline:hover,
-.wp-block-button__link.is-style-outline:focus {
-    background-color: #000080; /* fill to primary blue */
-    border-color: #000080;
-    color: #ffffff;
-    box-shadow: 0 0 0 2px #000080;
+/* Remove default figure margins so WordPress
+   block gap settings control spacing */
+figure {
+    margin: 0;
 }
 
 /* --------------------------------------------
-   WooCommerce – cart & account icons
+   Accessibility helpers
    -------------------------------------------- */
 
-/* Mini-cart quantity badge (red counter) */
-.wc-block-mini-cart__badge {
-    background-color: red;
-    color: #ffffff;
+/* Visually hidden but screen-reader accessible text */
+.screen-reader-text {
+    position: absolute !important;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+    white-space: nowrap;
+    border: 0;
 }
 
-/* Cart button (uses currentColor for icon) */
-.wc-block-mini-cart__button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.25rem;
-    border-radius: 0.4rem;
-    color: #000080; /* primary blue icon */
-    transition: background-color 0.5s ease, color 0.5s ease;
-}
-.wc-block-mini-cart__button:hover,
-.wc-block-mini-cart__button:focus {
-    background-color: #000080; /* blue background */
-    color: #ffffff;            /* icon turns white */
-}
-
-/* Customer account icon (SVG needs fill/stroke overrides) */
-a:has(.wc-block-customer-account__account-icon) {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.25rem;
-    border-radius: 0.4rem;
-    transition: background-color 0.5s ease;
-}
-a:has(.wc-block-customer-account__account-icon) svg {
-    fill: #000080;
-    stroke: #000080;
-    transition: fill 0.5s ease, stroke 0.5s ease;
-}
-a:has(.wc-block-customer-account__account-icon):hover,
-a:has(.wc-block-customer-account__account-icon):focus {
-    background-color: #000080;
-}
-a:has(.wc-block-customer-account__account-icon):hover svg,
-a:has(.wc-block-customer-account__account-icon):focus svg {
-    fill: #ffffff;
-    stroke: #ffffff;
-}
-
-/* ==============================================================
-   WooCommerce Buttons – Classic bridge + Block tweaks
-   -------------------------------------------------------------- */
-
-/* --- Classic Add-to-Cart & View-Cart (shop/archive only) --- */
-.woocommerce a.button.add_to_cart_button,
-.woocommerce a.added_to_cart {
-    background-color: var(--wp--preset--color--primary);
-    color: var(--wp--preset--color--white);
-    border-radius: 0.6rem;
-    padding: 1rem 2rem;
-    font-weight: 800;
-    text-decoration: none;
-    transition:
-        background-color 0.5s ease,
-        color 0.5s ease,
-        border-color 0.5s ease;
-}
-
-.woocommerce a.button.add_to_cart_button:hover,
-.woocommerce a.added_to_cart:hover {
-    background-color: var(--wp--preset--color--hover);
-    color: var(--wp--preset--color--white);
-}
-
-/* --- Block-based buttons (cart, checkout, mini-cart) ---
-   Only adding a matching transition; colours remain
-   controlled by theme.json. */
-.wc-block-components-button:not(.is-link),
-.wp-element-button {
-    transition:
-        background-color 0.5s ease,
-        color 0.5s ease,
-        border-color 0.5s ease;
-}
-
-
-/* --------------------------------------------
-   Linked images – gentle scale & shadow
-   -------------------------------------------- */
-a img {
-    transition: transform 0.5s ease, box-shadow 0.5s ease;
-}
-a:hover img,
-a:focus img {
-    transform: scale(1.03);                       /* slight zoom */
-    box-shadow: 0 4px 12px rgba(0,0,0,0.25);      /* soft drop shadow */
+/* When focused (e.g. skip link), reveal the text */
+.screen-reader-text:focus {
+    clip: auto;
+    width: auto;
+    height: auto;
+    margin: 0;
+    padding: 0.5rem 1rem;
+    position: static;
+    background: #fff; /* purely for readability */
 }
 
 /* =================================================
-   End of Islands Book Trust stylesheet
+   End of minimal stylesheet
    ================================================= */
-
