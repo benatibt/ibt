@@ -79,7 +79,7 @@ figure {
    -------------------------------------------- */
 .wp-block-navigation a:hover,
 .wp-block-navigation a:focus-visible {
-    color: var(--wp--preset--color--primary);
+    color: var(#000080);
 }
 
 /* =================================================
