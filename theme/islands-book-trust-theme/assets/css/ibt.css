@@ -73,42 +73,48 @@ figure {
 */h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {padding-bottom: 0;}
 
 /* =================================================
-   WooCommerce – unify all buttons with theme style
+   WooCommerce – Mini-cart inside panel
    ================================================= */
-.woocommerce button.button,
-.woocommerce a.button,
-.wc-block-cart__submit-button,
-.wc-block-checkout__button,
-.wc-block-mini-cart__button,
-.wc-block-mini-cart__footer-actions .components-button,
-.wc-block-checkout__actions .wc-block-components-checkout-place-order-button {
+
+/* Primary: solid navy (Checkout) */
+.wc-block-mini-cart__checkout-button {
+    background-color: var(--wp--preset--color--primary);
+    color: #fff;
+    border-radius: 12px;
     font-family: var(--wp--preset--font-family--title-font);
     font-size: var(--wp--preset--font-size--m);
     font-weight: 700;
-    border-radius: 12px;
-    background-color: var(--wp--preset--color--primary);
-    color: #fff;
     padding: 0.75rem 1.5rem;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
-
-.woocommerce button.button:hover,
-.woocommerce a.button:hover,
-.wc-block-cart__submit-button:hover,
-.wc-block-checkout__button:hover,
-.wc-block-mini-cart__button:hover,
-.wc-block-mini-cart__footer-actions .components-button:hover,
-.wc-block-checkout__actions .wc-block-components-checkout-place-order-button:hover,
-.woocommerce button.button:focus-visible,
-.woocommerce a.button:focus-visible,
-.wc-block-cart__submit-button:focus-visible,
-.wc-block-checkout__button:focus-visible,
-.wc-block-mini-cart__button:focus-visible,
-.wc-block-mini-cart__footer-actions .components-button:focus-visible,
-.wc-block-checkout__actions .wc-block-components-checkout-place-order-button:focus-visible {
+.wc-block-mini-cart__checkout-button:hover,
+.wc-block-mini-cart__checkout-button:focus-visible {
     background-color: var(--wp--preset--color--primary-hover);
     box-shadow: 0 0 0 2px var(--wp--preset--color--primary-hover);
 }
+
+/* Secondary: outline (View Cart) */
+.wc-block-mini-cart__view-cart,
+.wc-block-mini-cart__footer-actions .components-button.is-secondary {
+    background: #fff;
+    color: var(--wp--preset--color--primary);
+    border: 2px solid var(--wp--preset--color--primary);
+    border-radius: 12px;
+    font-family: var(--wp--preset--font-family--title-font);
+    font-size: var(--wp--preset--font-size--m);
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    transition: color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.wc-block-mini-cart__view-cart:hover,
+.wc-block-mini-cart__view-cart:focus-visible,
+.wc-block-mini-cart__footer-actions .components-button.is-secondary:hover,
+.wc-block-mini-cart__footer-actions .components-button.is-secondary:focus-visible {
+    color: var(--wp--preset--color--primary-hover);
+    border-color: var(--wp--preset--color--primary-hover);
+    box-shadow: 0 0 0 2px var(--wp--preset--color--primary-hover);
+}
+
 
 
 
