@@ -111,7 +111,7 @@
                             "radius": "12px"
                         },
                         "color": {
-                            "background": "#0000ff",
+                            "background": "#ffffff",
                             "text": "var(--wp--preset--color--accent)"
                         },
                         ":hover": {
