@@ -87,11 +87,11 @@ figure {
 }
 
 /* Global WordPress buttons – OUTLINE on hover/focus */
-.wp-block-button__link.is-style-outline:hover,
-.wp-block-button__link.is-style-outline:focus-visible {
-    background-color: var(--wp--preset--color--border);       /* light grey divider */
-    border-color: var(--wp--preset--color--primary-hover);    /* dark navy */
-    color: var(--wp--preset--color--primary-hover);           /* dark navy text */
+.wp-block-button__link.is-style-outline:not(.has-background):hover,
+.wp-block-button__link.is-style-outline:not(.has-background):focus-visible {
+    background-color: var(--wp--preset--color--border);      /* light grey */
+    border-color: var(--wp--preset--color--primary-hover);   /* dark navy */
+    color: var(--wp--preset--color--primary-hover);          /* dark navy text */
     box-shadow: 0 0 0 2px var(--wp--preset--color--primary-hover);
 }
 
@@ -147,7 +147,7 @@ figure {
     .wc-block-components-button.outlined:focus-visible {
     color: var(--wp--preset--color--primary-hover);
     border-color: var(--wp--preset--color--primary-hover);
-    background-color: var(--wp--preset--color--border); /* stop woo default dark fill
+    background-color: var(--wp--preset--color--border); /* stop woo default dark fill */
     box-shadow: 0 0 0 2px var(--wp--preset--color--primary-hover);
 }
 
