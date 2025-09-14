@@ -6,7 +6,7 @@
   "settings": {
     "color": {
       "link":true,
-      "defaultPalette": true,
+      "defaultPalette": false,
       "palette": [
         { "slug": "background", "name": "Background", "color": "#ffffff" },
         { "slug": "text", "name": "Text", "color": "#000000" },
