@@ -33,7 +33,7 @@
         {
           "name": "Body Font",
           "slug": "body-font",
-          "fontFamily": "\"Source Serif 4\", Georgia, Cambria, \"Times New Roman\", Times, serif",
+          "fontFamily": "\"Source Serif 4\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Ubuntu, \"Helvetica Neue\", Arial, sans-serif",
           "fontFace": [
             { "fontFamily": "Source Serif 4", "fontWeight": "200 900", "fontStyle": "normal", "src": ["file:./assets/fonts/source-serif-4/SourceSerif4Variable-Roman.ttf.woff2"] },
             { "fontFamily": "Source Serif 4", "fontWeight": "200 900", "fontStyle": "italic", "src": ["file:./assets/fonts/source-serif-4/SourceSerif4Variable-Italic.ttf.woff2"] }
@@ -42,7 +42,7 @@
         {
           "name": "Title Font",
           "slug": "title-font",
-          "fontFamily": "\"Source Sans 3\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Ubuntu, \"Helvetica Neue\", Arial, sans-serif",
+          "fontFamily": "\"Source Sans 3\", Georgia, Cambria, \"Times New Roman\", Times, serif",
           "fontFace": [
             { "fontFamily": "Source Sans 3", "fontWeight": "200 900", "fontStyle": "normal", "src": ["file:./assets/fonts/source-sans-3/SourceSans3VF-Upright.ttf.woff2"] }
           ]
