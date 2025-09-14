@@ -105,7 +105,7 @@
                 "elements": {
                     "link": {
                         "color": { "text": "#000000" },
-                        "typography": { "textDecoration": "none" },
+                        "typography": { "textDecoration": "none", "fontWeight": "700" },
                         ":hover": { "border": { "bottom": { "color": "var(--wp--preset--color--primary)",
                             "width": "3px", "style": "solid" } } },
                         ":focus-visible": { "border": { "bottom": { "color": "var(--wp--preset--color--primary)",
