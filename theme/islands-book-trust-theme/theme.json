@@ -106,7 +106,7 @@
                         },
                         "border": {
                             "color": "var(--wp--preset--color--primary)",
-                            "width": "2px",
+                            "width": "3px",
                             "style": "solid",
                             "radius": "12px"
                         },
