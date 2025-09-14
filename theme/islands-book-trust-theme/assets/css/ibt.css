@@ -123,7 +123,7 @@ figure {
     .wc-block-components-button.outlined:focus-visible {
     color: var(--wp--preset--color--primary-hover);
     border-color: var(--wp--preset--color--primary-hover);
-    background-color: #ffffff; /* stop woo default dark fill
+    background-color: var(--wp--preset--color--border); /* stop woo default dark fill
     box-shadow: 0 0 0 2px var(--wp--preset--color--primary-hover);
 }
 
