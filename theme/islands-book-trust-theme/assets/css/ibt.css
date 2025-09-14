@@ -74,7 +74,6 @@ figure {
 
 /* =================================================
    WooCommerce button harmoniser
-   Matches theme button style without overriding layout
    ================================================= */
 .woocommerce button.button,
 .woocommerce a.button,
@@ -84,7 +83,7 @@ figure {
     font-size: var(--wp--preset--font-size--m);
     font-weight: 700;
     border-radius: 12px;
-    background-color: var(--wp--preset--color--accent);
+    background-color: var(--wp--preset--color--primary);      /* Navy base */
     color: #fff;
     padding: 0.75rem 1.5rem;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
@@ -94,10 +93,13 @@ figure {
 .wc-block-cart__submit-button:hover,
 .wc-block-checkout__button:hover,
 .woocommerce button.button:focus-visible,
-.woocommerce a.button:focus-visible {
-    background-color: var(--wp--preset--color--primary);
-    box-shadow: 0 0 0 2px var(--wp--preset--color--primary);
+.woocommerce a.button:focus-visible,
+.wc-block-cart__submit-button:focus-visible,
+.wc-block-checkout__button:focus-visible {
+    background-color: var(--wp--preset--color--primary-hover); /* Darker navy on hover/focus */
+    box-shadow: 0 0 0 2px var(--wp--preset--color--primary-hover);
 }
+
 
 
 /* =================================================
