@@ -4,23 +4,51 @@
   "title": "Islands Book Trust Default",
   "settings": {
     "color": {
-      "link":true,
-      "defaultPalette": false,
+      "link": true,
+      "defaultPalette": false
     },
-    "layout": { "contentSize": "50rem", "wideSize": "80rem" },
-    "spacing": { "blockGap": true, "margin": true, "padding": true, "units": ["px","em","rem","%"] },
-    "border": { "color": true, "radius": true, "style": true, "width": true },
+    "layout": {
+      "contentSize": "50rem",
+      "wideSize": "80rem"
+    },
+    "spacing": {
+      "blockGap": true,
+      "margin": true,
+      "padding": true,
+      "units": ["px", "em", "rem", "%"]
+    },
+    "border": {
+      "color": true,
+      "radius": true,
+      "style": true,
+      "width": true
+    },
     "typography": {
-      "customFontSize": true, "defaultFontSizes": false, "dropCap": true,
-      "letterSpacing": true, "lineHeight": true, "textDecoration": true, "textTransform": true,
+      "customFontSize": true,
+      "defaultFontSizes": false,
+      "dropCap": true,
+      "letterSpacing": true,
+      "lineHeight": true,
+      "textDecoration": true,
+      "textTransform": true,
       "fontFamilies": [
         {
           "name": "Body Font",
           "slug": "body-font",
           "fontFamily": "\"Source Serif 4\", Georgia, Cambria, \"Times New Roman\", Times, serif",
           "fontFace": [
-            { "fontFamily": "Source Serif 4", "fontWeight": "200 900", "fontStyle": "normal", "src": ["file:./assets/fonts/source-serif-4/SourceSerif4Variable-Roman.ttf.woff2"] },
-            { "fontFamily": "Source Serif 4", "fontWeight": "200 900", "fontStyle": "italic", "src": ["file:./assets/fonts/source-serif-4/SourceSerif4Variable-Italic.ttf.woff2"] }
+            {
+              "fontFamily": "Source Serif 4",
+              "fontWeight": "200 900",
+              "fontStyle": "normal",
+              "src": ["file:./assets/fonts/source-serif-4/SourceSerif4Variable-Roman.ttf.woff2"]
+            },
+            {
+              "fontFamily": "Source Serif 4",
+              "fontWeight": "200 900",
+              "fontStyle": "italic",
+              "src": ["file:./assets/fonts/source-serif-4/SourceSerif4Variable-Italic.ttf.woff2"]
+            }
           ]
         },
         {
@@ -28,7 +56,12 @@
           "slug": "title-font",
           "fontFamily": "\"Source Sans 3\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Ubuntu, \"Helvetica Neue\", Arial, sans-serif",
           "fontFace": [
-            { "fontFamily": "Source Sans 3", "fontWeight": "200 900", "fontStyle": "normal", "src": ["file:./assets/fonts/source-sans-3/SourceSans3VF-Upright.ttf.woff2"] }
+            {
+              "fontFamily": "Source Sans 3",
+              "fontWeight": "200 900",
+              "fontStyle": "normal",
+              "src": ["file:./assets/fonts/source-sans-3/SourceSans3VF-Upright.ttf.woff2"]
+            }
           ]
         }
       ],
@@ -43,8 +76,15 @@
   },
   "styles": {
     "spacing": { "blockGap": "1.75rem" },
-    "typography": { "fontFamily": "var(--wp--preset--font-family--body-font)", "fontSize": "var(--wp--preset--font-size--m)", "lineHeight": "1.6" },
-    "color": { "background": "var(--wp--preset--color--background)", "text": "var(--wp--preset--color--text)" },
+    "typography": {
+      "fontFamily": "var(--wp--preset--font-family--body-font)",
+      "fontSize": "var(--wp--preset--font-size--m)",
+      "lineHeight": "1.6"
+    },
+    "color": {
+      "background": "var(--wp--preset--color--background)",
+      "text": "var(--wp--preset--color--text)"
+    },
     "elements": {
       "link": {
         "color": { "text": "#000000" },
@@ -53,7 +93,10 @@
         ":focus-visible": { "color": { "text": "var(--wp--preset--color--primary)" } }
       },
       "heading": {
-        "typography": { "fontFamily": "var(--wp--preset--font-family--title-font)", "fontWeight": "700" },
+        "typography": {
+          "fontFamily": "var(--wp--preset--font-family--title-font)",
+          "fontWeight": "700"
+        },
         "color": { "text": "#000000" },
         "spacing": { "margin": { "top": "2rem", "bottom": "0.25rem" } }
       }
@@ -87,7 +130,10 @@
         }
       },
       "core/site-title": {
-        "typography": { "fontFamily": "var(--wp--preset--font-family--title-font)", "fontWeight": "700" },
+        "typography": {
+          "fontFamily": "var(--wp--preset--font-family--title-font)",
+          "fontWeight": "700"
+        },
         "elements": {
           "link": {
             "color": { "text": "#000000" },
@@ -98,16 +144,22 @@
         }
       },
       "core/navigation": {
-        "color": {"text": "#000000" },
-        "typography": { "fontFamily": "var(--wp--preset--font-family--title-font)", "fontWeight": "700" },
+        "color": { "text": "#000000" },
+        "typography": {
+          "fontFamily": "var(--wp--preset--font-family--title-font)",
+          "fontWeight": "700"
+        },
         "spacing": { "blockGap": "1rem" },
         "elements": {
           "link": {
             "typography": { "textDecoration": "none", "fontWeight": "700" },
-            ":hover": { "color": { "text": "var(--wp--preset--color--primary)" },
-            "border": {"color": "var(--wp--preset--color--primary)", "width": "3px", "style": "solid"}
-             },
-            ":focus-visible": { "color": { "text": "var(--wp--preset--color--primary)" } }
+            ":hover": {
+              "color": { "text": "var(--wp--preset--color--primary)" },
+              "border": { "color": "var(--wp--preset--color--primary)", "width": "3px", "style": "solid" }
+            },
+            ":focus-visible": {
+              "color": { "text": "var(--wp--preset--color--primary)" }
+            }
           }
         }
       }
