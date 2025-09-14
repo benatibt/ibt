@@ -72,6 +72,30 @@ figure {
 /* Tighten faux underline for header links to avoid text floating above line
 */h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {padding-bottom: 0;}
 
+/* Global WordPress buttons (solid style) */
+
+
+/* =====================================================
+      Global WordPress buttons (solid style)
+   ===================================================== */
+.wp-block-button__link:not(.is-style-outline):hover,
+.wp-block-button__link:not(.is-style-outline):focus-visible {
+    background-color: var(--wp--preset--color--primary-hover);
+    border-color: var(--wp--preset--color--primary-hover);
+    color: #ffffff;
+    box-shadow: 0 0 0 2px var(--wp--preset--color--primary-hover);
+}
+
+/* Global WordPress buttons (outline style) */
+.wp-block-button__link.is-style-outline:hover,
+.wp-block-button__link.is-style-outline:focus-visible {
+    color: var(--wp--preset--color--primary-hover);
+    border-color: var(--wp--preset--color--primary-hover);
+    background-color: var(--wp--preset--color--border); /* light grey divider colour */
+    box-shadow: 0 0 0 2px var(--wp--preset--color--primary-hover);
+}
+
+
 /* =====================================================
    WooCommerce – Mini-cart footer + checkout + single product
    ===================================================== */
