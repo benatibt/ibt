@@ -72,14 +72,15 @@ figure {
 /* Tighten faux underline for header links to avoid text floating above line
 */h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {padding-bottom: 0;}
 
-/* ===============================================
-   WooCommerce – Mini-cart footer + single product
-   =============================================== */
+/* =====================================================
+   WooCommerce – Mini-cart footer + checkout + single product
+   ===================================================== */
 
-/* Primary (solid) buttons – checkout, add to basket */
+/* Primary (solid) buttons – checkout, add to basket, place order */
 .wc-block-mini-cart__footer-actions
     .wc-block-components-button:not(.outlined),
-.single_add_to_cart_button.button.alt {
+.single_add_to_cart_button.button.alt,
+.wc-block-components-checkout-place-order-button.contained {
     background-color: var(--wp--preset--color--primary);
     color: #fff;
     border: 2px solid var(--wp--preset--color--primary);
@@ -95,7 +96,9 @@ figure {
 .wc-block-mini-cart__footer-actions
     .wc-block-components-button:not(.outlined):focus-visible,
 .single_add_to_cart_button.button.alt:hover,
-.single_add_to_cart_button.button.alt:focus-visible {
+.single_add_to_cart_button.button.alt:focus-visible,
+.wc-block-components-checkout-place-order-button.contained:hover,
+.wc-block-components-checkout-place-order-button.contained:focus-visible {
     background-color: var(--wp--preset--color--primary-hover);
     border-color: var(--wp--preset--color--primary-hover);
     box-shadow: 0 0 0 2px var(--wp--preset--color--primary-hover);
@@ -105,8 +108,8 @@ figure {
 .wc-block-mini-cart__footer-actions
     .wc-block-components-button.outlined {
     background-color: transparent;
-    color: var(--wp--preset--color--accent);
-    border: 2px solid var(--wp--preset--color--accent);
+    color: var(--wp--preset--color--primary);
+    border: 2px solid var(--wp--preset--color--primary);
     font-family: var(--wp--preset--font-family--title-font);
     font-weight: 600;
     border-radius: 12px;
