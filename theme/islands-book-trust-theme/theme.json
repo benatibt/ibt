@@ -6,7 +6,7 @@
   "settings": {
     "color": {
       "link":true,
-      "defaultPalette": false,
+      "defaultPalette": false
     },
     "layout": { "contentSize": "50rem", "wideSize": "80rem" },
     "spacing": { "blockGap": true, "margin": true, "padding": true, "units": ["px","em","rem","%"] },
