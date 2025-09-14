@@ -18,22 +18,9 @@
         { "slug": "border", "name": "Border/Divider", "color": "#e5e5e5" }
       ]
     },
-    "layout": {
-      "contentSize": "50rem",
-      "wideSize": "80rem"
-    },
-    "spacing": {
-      "blockGap": "1.75rem",
-      "margin": true,
-      "padding": true,
-      "units": [ "px", "em", "rem", "%" ]
-    },
-    "border": {
-      "color": true,
-      "radius": true,
-      "style": true,
-      "width": true
-    },
+    "layout": { "contentSize": "50rem", "wideSize": "80rem" },
+    "spacing": { "blockGap": true, "margin": true, "padding": true, "units": ["px","em","rem","%"] },
+    "border": { "color": true, "radius": true, "style": true, "width": true },
     "typography": {
       "customFontSize": true,
       "defaultFontSizes": false,
@@ -48,18 +35,8 @@
           "slug": "body-font",
           "fontFamily": "\"Source Serif 4\", Georgia, Cambria, \"Times New Roman\", Times, serif",
           "fontFace": [
-            {
-              "fontFamily": "Source Serif 4",
-              "fontWeight": "200 900",
-              "fontStyle": "normal",
-              "src": [ "file:./assets/fonts/source-serif-4/SourceSerif4Variable-Roman.ttf.woff2" ]
-            },
-            {
-              "fontFamily": "Source Serif 4",
-              "fontWeight": "200 900",
-              "fontStyle": "italic",
-              "src": [ "file:./assets/fonts/source-serif-4/SourceSerif4Variable-Italic.ttf.woff2" ]
-            }
+            { "fontFamily": "Source Serif 4", "fontWeight": "200 900", "fontStyle": "normal", "src": ["file:./assets/fonts/source-serif-4/SourceSerif4Variable-Roman.ttf.woff2"] },
+            { "fontFamily": "Source Serif 4", "fontWeight": "200 900", "fontStyle": "italic", "src": ["file:./assets/fonts/source-serif-4/SourceSerif4Variable-Italic.ttf.woff2"] }
           ]
         },
         {
@@ -67,12 +44,7 @@
           "slug": "title-font",
           "fontFamily": "\"Source Sans 3\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Ubuntu, \"Helvetica Neue\", Arial, sans-serif",
           "fontFace": [
-            {
-              "fontFamily": "Source Sans 3",
-              "fontWeight": "200 900",
-              "fontStyle": "normal",
-              "src": [ "file:./assets/fonts/source-sans-3/SourceSans3VF-Upright.ttf.woff2" ]
-            }
+            { "fontFamily": "Source Sans 3", "fontWeight": "200 900", "fontStyle": "normal", "src": ["file:./assets/fonts/source-sans-3/SourceSans3VF-Upright.ttf.woff2"] }
           ]
         }
       ],
@@ -86,85 +58,89 @@
     }
   },
   "styles": {
-    "typography": {
-      "fontFamily": "var(--wp--preset--font-family--body-font)",
-      "fontSize": "var(--wp--preset--font-size--m)",
-      "lineHeight": "1.6"
-    },
-    "color": {
-      "background": "var(--wp--preset--color--background)",
-      "text": "var(--wp--preset--color--text)"
-    },
+    "spacing": { "blockGap": "1.75rem" },
+    "typography": { "fontFamily": "var(--wp--preset--font-family--body-font)", "fontSize": "var(--wp--preset--font-size--m)", "lineHeight": "1.6" },
+    "color": { "background": "var(--wp--preset--color--background)", "text": "var(--wp--preset--color--text)" },
     "elements": {
-      "heading": {
-        "typography": {
-          "fontFamily": "var(--wp--preset--font-family--title-font)",
-          "fontWeight": "700"
-        },
-        "color": { "text": "var(--wp--preset--color--text)" },
-        "spacing": {
-          "margin": { "top": "2rem", "bottom": "0.75rem" }
-        }
-      },
       "link": {
-        "color": {
-          "text": "#000000",
-          "hover": "var(--wp--preset--color--primary)"
-        },
-        "typography": { "textDecoration": "none" }
-      },
-      "button": {
-        "typography": {
-          "fontFamily": "var(--wp--preset--font-family--title-font)",
-          "fontWeight": "800"
-        },
-        "color": {
-          "background": "var(--wp--preset--color--primary)",
-          "text": "#ffffff"
-        },
-        "border": {
-          "color": "var(--wp--preset--color--primary)",
-          "width": "3px",
-          "style": "solid",
-          "radius": "0.6rem"
-        },
-        "spacing": {
-          "padding": {
-            "top": "1rem",
-            "bottom": "1rem",
-            "left": "2rem",
-            "right": "2rem"
-          }
+        "color": { "text": "#000000" },
+        "typography": { "textDecoration": "underline", "fontWeight": "550" },
+        "states": {
+          "hover": { "color": { "text": "var(--wp--preset--color--primary)" } },
+          "focus-visible": { "color": { "text": "var(--wp--preset--color--primary)" } }
         }
+      },
+      "heading": {
+        "typography": { "fontFamily": "var(--wp--preset--font-family--title-font)", "fontWeight": "700" },
+        "color": { "text": "#000000" },
+        "spacing": { "margin": { "top": "2rem", "bottom": "0.75rem" } }
       }
     },
     "blocks": {
       "core/paragraph": {
         "elements": {
           "link": {
-            "color": { "text": "#000000", "hover": "var(--wp--preset--color--primary)" },
-            "typography": { "fontWeight": "550", "textDecoration": "underline" }
+            "color": { "text": "#000000" },
+            "typography": { "fontWeight": "550", "textDecoration": "underline" },
+            "states": {
+              "hover": { "color": { "text": "var(--wp--preset--color--primary)" } },
+              "focus-visible": { "color": { "text": "var(--wp--preset--color--primary)" } }
+            }
           }
         }
       },
       "core/heading": {
         "elements": {
           "link": {
-            "color": { "text": "#000000", "hover": "var(--wp--preset--color--primary)" },
-            "typography": { "textDecoration": "none" }
+            "color": { "text": "#000000" },
+            "typography": { "textDecoration": "none" },
+            "border": { "bottom": { "color": "#000000", "width": "1px", "style": "solid" } }
+          }
+        },
+        "states": {
+          "hover": {
+            "elements": {
+              "link": {
+                "color": { "text": "var(--wp--preset--color--primary)" },
+                "border": { "bottom": { "color": "var(--wp--preset--color--primary)", "width": "3px", "style": "solid" } }
+              }
+            }
+          },
+          "focus-visible": {
+            "elements": {
+              "link": {
+                "color": { "text": "var(--wp--preset--color--primary)" },
+                "border": { "bottom": { "color": "var(--wp--preset--color--primary)", "width": "3px", "style": "solid" } }
+              }
+            }
           }
         }
       },
       "core/site-title": {
-        "typography": {
-            "fontFamily": "var(--wp--preset--font-family--title-font)",
-            "fontWeight": "700"
+        "typography": { "fontFamily": "var(--wp--preset--font-family--title-font)", "fontWeight": "700" },
+        "elements": {
+          "link": {
+            "color": { "text": "#000000" },
+            "typography": { "textDecoration": "none" },
+            "states": {
+              "hover": { "color": { "text": "var(--wp--preset--color--primary)" } },
+              "focus-visible": { "color": { "text": "var(--wp--preset--color--primary)" } }
+            }
+          }
         }
       },
-        "core/navigation": {
-        "typography": {
-            "fontFamily": "var(--wp--preset--font-family--title-font)",
-            "fontWeight": "700"
+      "core/navigation": {
+        "typography": { "fontFamily": "var(--wp--preset--font-family--title-font)", "fontWeight": "700" },
+        "spacing": { "blockGap": "1rem" },
+        "elements": {
+          "link": {
+            "color": { "text": "#000000" },
+            "typography": { "textDecoration": "none", "fontWeight": "700" },
+            "states": {
+              "hover": { "color": { "text": "var(--wp--preset--color--primary)" }, "typography": { "fontWeight": "900" } },
+              "focus-visible": { "color": { "text": "var(--wp--preset--color--primary)" }, "typography": { "fontWeight": "900" } }
+            }
+          }
         }
       }
     }
