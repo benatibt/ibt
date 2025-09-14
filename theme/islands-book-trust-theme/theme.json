@@ -22,18 +22,13 @@
     "spacing": { "blockGap": true, "margin": true, "padding": true, "units": ["px","em","rem","%"] },
     "border": { "color": true, "radius": true, "style": true, "width": true },
     "typography": {
-      "customFontSize": true,
-      "defaultFontSizes": false,
-      "dropCap": true,
-      "letterSpacing": true,
-      "lineHeight": true,
-      "textDecoration": true,
-      "textTransform": true,
+      "customFontSize": true, "defaultFontSizes": false, "dropCap": true,
+      "letterSpacing": true, "lineHeight": true, "textDecoration": true, "textTransform": true,
       "fontFamilies": [
         {
           "name": "Body Font",
           "slug": "body-font",
-          "fontFamily": "\"Source Serif 4\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Ubuntu, \"Helvetica Neue\", Arial, sans-serif",
+          "fontFamily": "\"Source Serif 4\", Georgia, Cambria, \"Times New Roman\", Times, serif",
           "fontFace": [
             { "fontFamily": "Source Serif 4", "fontWeight": "200 900", "fontStyle": "normal", "src": ["file:./assets/fonts/source-serif-4/SourceSerif4Variable-Roman.ttf.woff2"] },
             { "fontFamily": "Source Serif 4", "fontWeight": "200 900", "fontStyle": "italic", "src": ["file:./assets/fonts/source-serif-4/SourceSerif4Variable-Italic.ttf.woff2"] }
@@ -42,7 +37,7 @@
         {
           "name": "Title Font",
           "slug": "title-font",
-          "fontFamily": "\"Source Sans 3\", Georgia, Cambria, \"Times New Roman\", Times, serif",
+          "fontFamily": "\"Source Sans 3\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Ubuntu, \"Helvetica Neue\", Arial, sans-serif",
           "fontFace": [
             { "fontFamily": "Source Sans 3", "fontWeight": "200 900", "fontStyle": "normal", "src": ["file:./assets/fonts/source-sans-3/SourceSans3VF-Upright.ttf.woff2"] }
           ]
@@ -90,20 +85,12 @@
           "link": {
             "color": { "text": "#000000" },
             "typography": { "textDecoration": "none" },
-            "border": { "bottom": { "color": "#000000", "width": "1px", "style": "solid" } }
-          }
-        },
-        ":hover": {
-          "elements": {
-            "link": {
+            "border": { "bottom": { "color": "#000000", "width": "1px", "style": "solid" } },
+            ":hover": {
               "color": { "text": "var(--wp--preset--color--primary)" },
               "border": { "bottom": { "color": "var(--wp--preset--color--primary)", "width": "3px", "style": "solid" } }
-            }
-          }
-        },
-        ":focus-visible": {
-          "elements": {
-            "link": {
+            },
+            ":focus-visible": {
               "color": { "text": "var(--wp--preset--color--primary)" },
               "border": { "bottom": { "color": "var(--wp--preset--color--primary)", "width": "3px", "style": "solid" } }
             }
@@ -128,8 +115,8 @@
           "link": {
             "color": { "text": "#000000" },
             "typography": { "textDecoration": "none", "fontWeight": "700" },
-            ":hover": { "color": { "text": "var(--wp--preset--color--primary)" }, "typography": { "fontWeight": "900" } },
-            ":focus-visible": { "color": { "text": "var(--wp--preset--color--primary)" }, "typography": { "fontWeight": "900" } }
+            ":hover": { "color": { "text": "var(--wp--preset--color--primary)" } },
+            ":focus-visible": { "color": { "text": "var(--wp--preset--color--primary)" } }
           }
         }
       }
