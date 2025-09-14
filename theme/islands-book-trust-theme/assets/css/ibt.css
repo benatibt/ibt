@@ -73,30 +73,40 @@ figure {
 */h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {padding-bottom: 0;}
 
 /* =================================================
-   WooCommerce button harmoniser
+   WooCommerce – unify all buttons with theme style
    ================================================= */
 .woocommerce button.button,
 .woocommerce a.button,
 .wc-block-cart__submit-button,
-.wc-block-checkout__button {
+.wc-block-checkout__button,
+.wc-block-mini-cart__button,
+.wc-block-mini-cart__footer-actions .components-button,
+.wc-block-checkout__actions .wc-block-components-checkout-place-order-button {
     font-family: var(--wp--preset--font-family--title-font);
     font-size: var(--wp--preset--font-size--m);
     font-weight: 700;
     border-radius: 12px;
-    background-color: var(--wp--preset--color--primary);      /* Navy base */
+    background-color: var(--wp--preset--color--primary);
     color: #fff;
     padding: 0.75rem 1.5rem;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
+
 .woocommerce button.button:hover,
 .woocommerce a.button:hover,
 .wc-block-cart__submit-button:hover,
 .wc-block-checkout__button:hover,
+.wc-block-mini-cart__button:hover,
+.wc-block-mini-cart__footer-actions .components-button:hover,
+.wc-block-checkout__actions .wc-block-components-checkout-place-order-button:hover,
 .woocommerce button.button:focus-visible,
 .woocommerce a.button:focus-visible,
 .wc-block-cart__submit-button:focus-visible,
-.wc-block-checkout__button:focus-visible {
-    background-color: var(--wp--preset--color--primary-hover); /* Darker navy on hover/focus */
+.wc-block-checkout__button:focus-visible,
+.wc-block-mini-cart__button:focus-visible,
+.wc-block-mini-cart__footer-actions .components-button:focus-visible,
+.wc-block-checkout__actions .wc-block-components-checkout-place-order-button:focus-visible {
+    background-color: var(--wp--preset--color--primary-hover);
     box-shadow: 0 0 0 2px var(--wp--preset--color--primary-hover);
 }
 
