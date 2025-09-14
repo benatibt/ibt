@@ -73,5 +73,33 @@ figure {
 */h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {padding-bottom: 0;}
 
 /* =================================================
+   WooCommerce button harmoniser
+   Matches theme button style without overriding layout
+   ================================================= */
+.woocommerce button.button,
+.woocommerce a.button,
+.wc-block-cart__submit-button,
+.wc-block-checkout__button {
+    font-family: var(--wp--preset--font-family--title-font);
+    font-size: var(--wp--preset--font-size--m);
+    font-weight: 700;
+    border-radius: 12px;
+    background-color: var(--wp--preset--color--accent);
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+.woocommerce button.button:hover,
+.woocommerce a.button:hover,
+.wc-block-cart__submit-button:hover,
+.wc-block-checkout__button:hover,
+.woocommerce button.button:focus-visible,
+.woocommerce a.button:focus-visible {
+    background-color: var(--wp--preset--color--primary);
+    box-shadow: 0 0 0 2px var(--wp--preset--color--primary);
+}
+
+
+/* =================================================
    End of minimal stylesheet
    ================================================= */
