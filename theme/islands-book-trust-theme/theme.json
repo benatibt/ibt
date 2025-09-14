@@ -75,6 +75,58 @@
             }
         },
         "blocks": {
+            "core/button": {
+                "typography": {
+                    "fontFamily": "var(--wp--preset--font-family--title-font)",
+                    "fontWeight": "700",
+                    "fontSize": "var(--wp--preset--font-size--m)"
+                },
+                "border": { "radius": "12px" },
+                "color": {
+                    "background": "var(--wp--preset--color--accent)",
+                    "text": "#ffffff"
+                },
+                "spacing": {
+                    "padding": { "top": "1rem", "bottom": "1rem", "left": "2rem", "right": "2rem" }
+                },
+                ":hover": {
+                    "color": { "background": "var(--wp--preset--color--primary-hover)" },
+                    "shadow": "0 0 0 3px rgba(0,0,0,0.2)"
+                },
+                ":focus-visible": {
+                    "color": { "background": "var(--wp--preset--color--primary-hover)" },
+                    "shadow": "0 0 0 3px rgba(0,0,0,0.2)"
+                },
+                "variations": {
+                    "outline": {
+                        "typography": {
+                            "fontFamily": "var(--wp--preset--font-family--title-font)",
+                            "fontWeight": "600",
+                            "fontSize": "var(--wp--preset--font-size--m)"
+                        },
+                        "border": {
+                            "color": "var(--wp--preset--color--accent)",
+                            "width": "2px",
+                            "style": "solid",
+                            "radius": "12px"
+                        },
+                        "color": {
+                            "background": "#ffffff",
+                            "text": "var(--wp--preset--color--accent)"
+                        },
+                        ":hover": {
+                            "color": { "text": "var(--wp--preset--color--primary-hover)" },
+                            "border": { "color": "var(--wp--preset--color--primary-hover)" },
+                            "shadow": "0 0 0 3px rgba(0,0,0,0.2)"
+                        },
+                        ":focus-visible": {
+                            "color": { "text": "var(--wp--preset--color--primary-hover)" },
+                            "border": { "color": "var(--wp--preset--color--primary-hover)" },
+                            "shadow": "0 0 0 3px rgba(0,0,0,0.2)"
+                        }
+                    }
+                }
+            },
             "core/paragraph": {
                 "elements": {
                     "link": {
