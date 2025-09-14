@@ -111,6 +111,7 @@
         }
       },
       "core/navigation": {
+        "color": {"text": "#000000" },
         "typography": { "fontFamily": "var(--wp--preset--font-family--title-font)", "fontWeight": "700" },
         "spacing": { "blockGap": "1rem" },
         "elements": {
