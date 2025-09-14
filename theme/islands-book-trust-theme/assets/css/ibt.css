@@ -72,16 +72,6 @@ figure {
 /* Tighten faux underline for header links to avoid text floating above line
 */h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {padding-bottom: 0;}
 
-
-/* --------------------------------------------
-   json doesn't work for nav hover/focus
-   visible so this is a workaround
-   -------------------------------------------- */
-.wp-block-navigation a:hover,
-.wp-block-navigation a:focus-visible {
-    color: #000080;
-}
-
 /* =================================================
    End of minimal stylesheet
    ================================================= */
