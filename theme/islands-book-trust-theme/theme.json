@@ -171,9 +171,13 @@
                 },
                 "elements": {
                     "link": {
-                    "typography": { "textDecoration": "none" },
-                    ":hover": { "color": { "text": "var(--wp--preset--color--primary)" } },
-                    ":focus-visible": { "color": { "text": "var(--wp--preset--color--primary)" } }
+                        "typography": { 
+                            "fontFamily": "var(--wp--preset--font-family--title-font)",
+                            "fontWeight": "700",  
+                            "textDecoration": "none" 
+                        },
+                        ":hover": { "color": { "text": "var(--wp--preset--color--primary)" } },
+                        ":focus-visible": { "color": { "text": "var(--wp--preset--color--primary)" } }
                     }
                 }
                 }
