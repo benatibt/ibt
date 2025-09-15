@@ -95,7 +95,14 @@ figure {
     box-shadow: 0 0 0 2px var(--wp--preset--color--primary-hover);
 }
 
-
+/* Nav links — hover + focus-visible → brand navy
+   We use CSS (not theme.json) + !important to beat
+   core’s higher-specificity “color: inherit” rule
+   on .wp-block-navigation-item__content. */
+.wp-block-navigation .wp-block-navigation-item__content:hover,
+.wp-block-navigation .wp-block-navigation-item__content:focus-visible {
+    color: var(--wp--preset--color--primary) !important;
+}
 
 /* =====================================================
    WooCommerce – Mini-cart footer + checkout + single product
