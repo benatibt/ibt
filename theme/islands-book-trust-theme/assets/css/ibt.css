@@ -72,8 +72,6 @@ figure {
 /* Tighten faux underline for header links to avoid text floating above line
 */h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {padding-bottom: 0;}
 
-/* Global WordPress buttons (solid style) */
-
 
 /* =====================================================
          Global WordPress buttons hover/focus visible
@@ -95,10 +93,12 @@ figure {
     box-shadow: 0 0 0 2px var(--wp--preset--color--primary-hover);
 }
 
-/* Nav links — hover + focus-visible → brand navy
+/* =====================================================
+   Nav links — hover + focus-visible → brand navy
    We use CSS (not theme.json) + !important to beat
    core’s higher-specificity “color: inherit” rule
-   on .wp-block-navigation-item__content. */
+   on .wp-block-navigation-item__content.
+   ===================================================== */   
 .wp-block-navigation .wp-block-navigation-item__content:hover,
 .wp-block-navigation .wp-block-navigation-item__content:focus-visible {
     color: var(--wp--preset--color--primary) !important;
@@ -159,6 +159,7 @@ figure {
     background-color: var(--wp--preset--color--border); /* stop woo default dark fill */
     box-shadow: 0 0 0 2px var(--wp--preset--color--primary-hover);
 }
+/* End of WooCommerce styling */
 
 /* =================================================
    End of minimal stylesheet
