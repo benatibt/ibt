@@ -96,6 +96,50 @@ END OF TURN OFF */
     box-shadow: 0 0 0 2px var(--wp--preset--color--primary-hover);
 END OF TURN OFF */
 
+/* ---------- Core Button states (solid + outline with soft hover fill) ---------- */
+/* One line to tweak the soft fill */
+:root { --ibt-outline-soft-fill: #FFF7E6; }
+
+/* Map each button to brand tokens */
+.wp-block-button > .wp-block-button__link {
+  --btn-bg: var(--wp--preset--color--primary);
+  --btn-hover: var(--wp--preset--color--primary-hover);
+}
+/* Accent variants override the tokens */
+.wp-block-button.is-style-solid-accent > .wp-block-button__link,
+.wp-block-button.is-style-outline-accent > .wp-block-button__link {
+  --btn-bg: var(--wp--preset--color--accent);
+  --btn-hover: var(--wp--preset--color--accent-hover);
+}
+
+/* SOLID (Default + Solid Accent): darken to brand hover token */
+.wp-block-button:not(.is-style-outline) > .wp-block-button__link:hover,
+.wp-block-button:not(.is-style-outline) > .wp-block-button__link:focus-visible {
+  background-color: var(--btn-hover);
+  border-color: var(--btn-hover);
+  color: #fff;
+  box-shadow: 0 0 0 2px var(--btn-hover);
+}
+
+/* OUTLINE base: always transparent */
+.wp-block-button.is-style-outline > .wp-block-button__link,
+.wp-block-button.is-style-outline-accent > .wp-block-button__link {
+  background-color: transparent;
+  color: var(--btn-bg);
+  border-color: var(--btn-bg);
+}
+
+/* OUTLINE hover/focus: soft cream fill + darker brand for border/text */
+.wp-block-button.is-style-outline > .wp-block-button__link:hover,
+.wp-block-button.is-style-outline > .wp-block-button__link:focus-visible,
+.wp-block-button.is-style-outline-accent > .wp-block-button__link:hover,
+.wp-block-button.is-style-outline-accent > .wp-block-button__link:focus-visible {
+  background-color: var(--ibt-outline-soft-fill);
+  color: var(--btn-hover);
+  border-color: var(--btn-hover);
+  box-shadow: 0 0 0 2px var(--btn-hover);
+}
+
 /* =====================================================
    Nav links — hover + focus-visible → brand navy
    We use CSS (not theme.json) + !important to beat
