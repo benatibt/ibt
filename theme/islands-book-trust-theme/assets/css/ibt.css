@@ -98,7 +98,7 @@ END OF TURN OFF */
 
 /* ---------- Core Button states (solid + outline with soft hover fill) ---------- */
 /* One line to tweak the soft fill */
-:root { --ibt-outline-soft-fill: #FFF7E6; }
+:root { --ibt-outline-soft-fill: #fffdf5; }
 
 /* Map each button to brand tokens */
 .wp-block-button > .wp-block-button__link {
