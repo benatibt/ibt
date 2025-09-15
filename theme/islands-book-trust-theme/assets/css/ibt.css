@@ -153,6 +153,10 @@ figure {
     box-shadow: 0 0 0 2px var(--wp--preset--color--primary-hover);
 }
 
+/* Test – force nav links to bright pink */
+.wp-block-navigation a {
+    color: hotpink !important;
+}
 
 
 /* =================================================
