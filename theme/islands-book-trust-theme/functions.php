@@ -50,3 +50,15 @@ add_filter( 'render_block', function( $block_content, $block ) {
     }
     return $block_content;
 }, 10, 2 );
+
+// Add Accent button styles 
+add_action('init', function () {
+    register_block_style('core/button', [
+        'name'  => 'solid-accent',
+        'label' => __('Solid Accent', 'ibt'),
+    ]);
+    register_block_style('core/button', [
+        'name'  => 'outline-accent',
+        'label' => __('Outline Accent', 'ibt'),
+    ]);
+});

@@ -103,6 +103,11 @@ figure {
 .wp-block-navigation .wp-block-navigation-item__content:focus-visible {
     color: var(--wp--preset--color--primary) !important;
 }
+/* Submenu items — match top-level hover/focus */
+.wp-block-navigation .wp-block-navigation__submenu-container a:hover,
+.wp-block-navigation .wp-block-navigation__submenu-container a:focus-visible {
+    color: var(--wp--preset--color--primary) !important;
+}
 
 /* =====================================================
    WooCommerce – Mini-cart footer + checkout + single product
