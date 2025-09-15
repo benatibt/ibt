@@ -153,12 +153,15 @@ figure {
     box-shadow: 0 0 0 2px var(--wp--preset--color--primary-hover);
 }
 
-/* Test – force nav links to bright pink */
-.wp-block-navigation a {
-    color: hotpink;
+/* Nav links — hover + keyboard focus-visible -> brand navy */
+.wp-block-navigation .wp-block-navigation-item__content:hover,
+.wp-block-navigation .wp-block-navigation-item__content:focus-visible,
+.wp-block-navigation .wp-block-navigation__submenu-container a:hover,
+.wp-block-navigation .wp-block-navigation__submenu-container a:focus-visible {
+    /* Flip the link variable (helps nested spans) and set color explicitly */
+    --wp--style--color--link: var(--wp--preset--color--primary);
+    color: var(--wp--preset--color--primary) !important;
 }
-
-
 /* =================================================
    End of minimal stylesheet
    ================================================= */
