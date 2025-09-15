@@ -112,6 +112,13 @@ END OF TURN OFF */
   --btn-hover: var(--wp--preset--color--accent-hover);
 }
 
+/* Solid Accent — ensure green base (JSON sets primary for default) */
+.wp-block-button.is-style-solid-accent > .wp-block-button__link {
+  background-color: var(--btn-bg); /* = accent via your mapping */
+  border-color: var(--btn-bg);
+  color: #fff;
+}
+
 /* SOLID (Default + Solid Accent): darken to brand hover token */
 .wp-block-button:not(.is-style-outline) > .wp-block-button__link:hover,
 .wp-block-button:not(.is-style-outline) > .wp-block-button__link:focus-visible {
