@@ -155,7 +155,7 @@ figure {
 
 /* Test – force nav links to bright pink */
 .wp-block-navigation a {
-    color: hotpink !important;
+    color: hotpink;
 }
 
 
