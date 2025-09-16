@@ -25,22 +25,31 @@ add_action( 'after_setup_theme', function() {
     add_theme_support( 'wc-product-gallery-lightbox' );
     add_theme_support( 'wc-product-gallery-slider' );
 
-    // Load editor.css inside the editor iframe (cache-busted)
-    $editor_rel  = 'assets/css/editor.css';
-    $editor_path = get_stylesheet_directory() . '/' . $editor_rel;
-    $editor_ver  = file_exists( $editor_path ) ? filemtime( $editor_path ) : wp_get_theme()->get( 'Version' );
-    add_editor_style( $editor_rel . '?v=' . $editor_ver );
+    // NOTE: We intentionally do NOT call add_editor_style() here,
+    // to avoid "added to iframe incorrectly" console warnings.
 } );
 
-// Safety: remove any leftover editor enqueue using the old handle.
+// Inject editor.css into the editor iframe the modern way (no warnings).
+add_filter( 'block_editor_settings_all', function( $settings ) {
+    $rel  = 'assets/css/editor.css';
+    $path = get_stylesheet_directory() . '/' . $rel;
+    $href = get_stylesheet_directory_uri() . '/' . $rel . '?v=' . ( file_exists( $path ) ? filemtime( $path ) : IBT_VERSION );
+
+    // Append as a proper iframe style entry.
+    $settings['styles'][] = array( 'href' => $href );
+    return $settings;
+}, 10 );
+
+// Safety: remove any leftover editor enqueues that might mirror into the iframe.
 add_action( 'enqueue_block_editor_assets', function() {
-    wp_dequeue_style( 'ibt-editor' );
-    wp_deregister_style( 'ibt-editor' );
+    foreach ( array( 'ibt-editor', 'ibt-editor-css' ) as $handle ) {
+        wp_dequeue_style( $handle );
+        wp_deregister_style( $handle );
+    }
 }, 100 );
 
 // ******* REMOVE AFTER DEV *******
 // Cache-buster for ibt.css during development.
-// filemtime() updates the version whenever the file changes.
 add_action( 'wp_enqueue_scripts', function() {
     $css_rel  = 'assets/css/ibt.css';
     $css_path = get_stylesheet_directory() . '/' . $css_rel;
