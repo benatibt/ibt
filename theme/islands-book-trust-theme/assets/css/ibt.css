@@ -276,6 +276,28 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { padding-bottom: 0; }
     transition: none;
 }
 
+/* Outline/secondary targets */
+.wc-block-mini-cart__footer-actions .wc-block-components-button.outlined[disabled],
+.wc-block-mini-cart__footer-actions .wc-block-components-button.outlined[aria-disabled="true"],
+.wc-block-mini-cart__footer-actions .wc-block-components-button.outlined.is-busy,
+.wc-block-cart__coupon .wc-block-components-button[disabled],
+.wc-block-cart__coupon .wc-block-components-button[aria-disabled="true"],
+/* Apply coupon (Checkout Totals) */
+.wc-block-components-totals-coupon__button[disabled],
+.wc-block-components-totals-coupon__button[aria-disabled="true"],
+.woocommerce .woocommerce-message .button.disabled,
+.woocommerce .woocommerce-info .button.disabled,
+.woocommerce .woocommerce-error .button.disabled,
+.woocommerce a.button.wc-backward.disabled {
+    color: var(--wp--preset--color--primary);
+    border-color: var(--wp--preset--color--primary);
+    background-color: transparent;
+    box-shadow: none;
+    cursor: not-allowed;
+    pointer-events: none;
+    transition: none;
+}
+
 /* Secondary (outline) button – “View my basket”, “Apply coupon”, notice actions, return-to-shop */
 .wc-block-mini-cart__footer-actions
     .wc-block-components-button.outlined,
