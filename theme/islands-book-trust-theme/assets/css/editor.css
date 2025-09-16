@@ -1,3 +1,6 @@
+/* TEMP: sanity check — remove after test */
+.editor-styles-wrapper { outline: 1px dashed rgba(0,0,0,.25); }
+
 /* Editor-only: mimic front-end inner gutters for constrained content */
 .editor-styles-wrapper .is-layout-constrained {
   padding-left: var(--wp--preset--spacing--s);
