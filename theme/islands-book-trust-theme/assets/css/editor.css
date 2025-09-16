@@ -1,69 +1,40 @@
-/* Islands Book Trust — Editor parity helpers (minimal, conventional) */
+/* Islands Book Trust — MINIMAL editor parity
+   Goal: make editor canvases (post/page + Site Editor) reflect theme.json widths/gutters.
+   Uses only WP CSS vars (no hard-coded styling).
+*/
 
-/* Center the content column and apply the same root gutters inside editors */
-.editor-styles-wrapper .is-root-container {
-  max-width: var(--wp--style--global--content-size);
-  margin-left: auto;
-  margin-right: auto;
-  padding-left:  var(--wp--style--root--padding-left);
-  padding-right: var(--wp--style--root--padding-right);
-  box-sizing: border-box;
-}
-
-/* Wide/full mirrors (same rules core expects) */
-.editor-styles-wrapper .is-root-container > .alignwide {
-  max-width: var(--wp--style--global--wide-size);
-}
-.editor-styles-wrapper .is-root-container > .alignfull {
-  max-width: none;
-  width: auto;
-  margin-left:  calc(-1 * var(--wp--style--root--padding-left));
-  margin-right: calc(-1 * var(--wp--style--root--padding-right));
-}
-
-/* Contain floats so they don't appear to "snap" to the viewport edge */
-.editor-styles-wrapper .is-root-container::after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-/* Left/right image floats with a tidy text-wrap gap; no thumbnail upscaling */
-.editor-styles-wrapper .wp-block-image.alignleft  { float: left;  margin: 0 1rem 1rem 0; }
-.editor-styles-wrapper .wp-block-image.alignright { float: right; margin: 0 0 1rem 1rem; }
-.editor-styles-wrapper .wp-block-image img {
-  height: auto;
-  max-width: 100%;
-  width: auto; /* keep intrinsic size (no forced stretch) */
-}
-
-/* Site Editor parity: the same centering for template canvas */
-.editor-styles-wrapper .wp-site-blocks,
-.editor-styles-wrapper .wp-block-post-content {
-  max-width: var(--wp--style--global--content-size);
-  margin-left: auto;
-  margin-right: auto;
-  padding-left:  var(--wp--style--root--padding-left);
-  padding-right: var(--wp--style--root--padding-right);
-  box-sizing: border-box;
-}
-.editor-styles-wrapper .wp-site-blocks > .alignwide,
-.editor-styles-wrapper .wp-block-post-content > .alignwide {
-  max-width: var(--wp--style--global--wide-size);
-}
-.editor-styles-wrapper .wp-site-blocks > .alignfull,
-.editor-styles-wrapper .wp-block-post-content > .alignfull {
-  max-width: none;
-  width: auto;
-  margin-left:  calc(-1 * var(--wp--style--root--padding-left));
-  margin-right: calc(-1 * var(--wp--style--root--padding-right));
-}
-
-/* Editor-only: center the actual block list container and contain floats */
+/* Post/Page editor: center the real block list container and contain floats */
 .editor-styles-wrapper .block-editor-block-list__layout {
   max-width: var(--wp--style--global--content-size);
   margin-left: auto;
   margin-right: auto;
   box-sizing: border-box;
-  display: flow-root; /* contains left/right floats without affecting gaps */
+  display: flow-root; /* keeps left/right-aligned blocks inside the column */
+}
+
+/* Site Editor: center the template canvas and contained post content */
+.editor-styles-wrapper .wp-site-blocks,
+.editor-styles-wrapper .wp-block-post-content {
+  max-width: var(--wp--style--global--content-size);
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+  display: flow-root;
+}
+
+/* Wide/Full behavior inside centered canvases (all variable-driven) */
+.editor-styles-wrapper .block-editor-block-list__layout > .alignwide,
+.editor-styles-wrapper .wp-site-blocks > .alignwide,
+.editor-styles-wrapper .wp-block-post-content > .alignwide {
+  max-width: var(--wp--style--global--wide-size);
+}
+
+.editor-styles-wrapper .block-editor-block-list__layout > .alignfull,
+.editor-styles-wrapper .wp-site-blocks > .alignfull,
+.editor-styles-wrapper .wp-block-post-content > .alignfull {
+  max-width: none;
+  width: auto;
+  /* account for root gutters defined in theme.json */
+  margin-left:  calc(-1 * var(--wp--style--root--padding-left));
+  margin-right: calc(-1 * var(--wp--style--root--padding-right));
 }

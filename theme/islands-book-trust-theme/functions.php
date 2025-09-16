@@ -9,18 +9,18 @@ if ( ! defined( 'IBT_VERSION' ) ) {
 }
 
 /**
- * [IBT-A] Theme setup: core supports + TT5 editor stylesheet reference
+ * [IBT-A] Theme setup: core supports
  */
 add_action( 'after_setup_theme', function() {
 	// Core supports
 	add_theme_support( 'wp-block-styles' );
 	add_theme_support( 'responsive-embeds' );
-	add_theme_support( 'editor-styles' );
+	add_theme_support( 'editor-styles' ); // keep wrapper/class in editor
 
 	// Allow wide & full alignment in the block editor
 	add_theme_support( 'align-wide' );
 
-	// Add support for comments
+	// Add support for comments (kept from your file)
 	add_theme_support( 'comments' );
 
 	// WooCommerce compatibility
@@ -28,13 +28,10 @@ add_action( 'after_setup_theme', function() {
 	add_theme_support( 'wc-product-gallery-zoom' );
 	add_theme_support( 'wc-product-gallery-lightbox' );
 	add_theme_support( 'wc-product-gallery-slider' );
-
-	// Load editor.css inside the block editor (TT5 approach)
-	add_editor_style( 'assets/css/editor.css' );
 } );
 
 /**
- * [IBT-B] Editor assets: explicitly enqueue editor.css in the block editor
+ * [IBT-B] Editor assets: load editor.css in the block editor (single source of truth)
  */
 add_action( 'enqueue_block_editor_assets', function () {
 	$rel  = 'assets/css/editor.css';
