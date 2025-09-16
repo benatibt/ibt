@@ -78,12 +78,12 @@ figure {
     background: #fff; /* purely for readability */
 }
 
-/* Headings: real underline, thin + tight (overrides theme.json) */
+/* Headings: real underline, thin + tight (JSON sets underline + colors) */
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a,
 .wp-block-heading a {
-  border-bottom: 0 !important;
-  text-decoration: underline !important;          /* shorthand is !important… */
-  text-decoration-thickness: 1px !important;      /* …so thickness must be too */
+  border-bottom: 0 !important;              /* keep killing any legacy borders */
+  text-decoration: underline;                /* JSON now agrees, no !important needed */
+  text-decoration-thickness: 1px !important; /* thickness/offset not in JSON; keep !important so it wins */
   text-underline-offset: 0.12em !important;
 }
 
@@ -94,7 +94,7 @@ h4 a:is(:hover, :focus-visible),
 h5 a:is(:hover, :focus-visible),
 h6 a:is(:hover, :focus-visible),
 .wp-block-heading a:is(:hover, :focus-visible) {
-  text-decoration-thickness: 3px !important;      /* variable thickness now applies */
+  text-decoration-thickness: 3px !important; /* smooth thickness change retained */
 }
 
 
