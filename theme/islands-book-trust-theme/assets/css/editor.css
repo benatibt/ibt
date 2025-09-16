@@ -1,56 +1,85 @@
 /* ==========================================================================
    Islands Book Trust — Block Editor helpers (editor-only)
-   Goal: Match front-end feel (gutters + content/wide width caps),
-         especially for Image blocks (incl. left/right align).
-   Scope: .editor-styles-wrapper only (never affects front end).
+   Goal: Match front-end feel for widths + gutters in Post/Page Editor
+         and Site Editor, especially for Image blocks.
+   Scope: .editor-styles-wrapper only (never affects front end)
    ========================================================================== */
 
-/* 1) Shared gutters so content doesn’t hug the canvas edge */
+/* --- 0) Robust size vars (fallbacks cover different WP versions) --- */
+.editor-styles-wrapper{
+  --ibt-content-size: var(--wp--style--global--content-size,
+                       var(--wp--style--root--content-size,
+                       var(--wp--custom--content-size, 50rem)));
+  --ibt-wide-size:    var(--wp--style--global--wide-size,
+                       var(--wp--style--root--wide-size,
+                       var(--wp--custom--wide-size, 80rem)));
+}
+
+/* --- 1) Gutters so canvas doesn’t hug the edge (both editors) --- */
 .editor-styles-wrapper .is-root-container,
 .editor-styles-wrapper .block-editor-block-list__layout.is-root-container,
 .editor-styles-wrapper .is-layout-constrained,
 .editor-styles-wrapper .wp-site-blocks,
-.editor-styles-wrapper .wp-block-post-content {
+.editor-styles-wrapper .wp-block-post-content{
   padding-left:  var(--wp--style--root--padding-left,  var(--wp--preset--spacing--s, 1rem));
   padding-right: var(--wp--style--root--padding-right, var(--wp--preset--spacing--s, 1rem));
   box-sizing: border-box;
 }
 
-/* 2) Image aligns: keep off the edge and wrap text nicely */
-.editor-styles-wrapper :where(.wp-block-image[data-align="left"])  { float: left;  margin: 0 1rem 1rem 0; }
-.editor-styles-wrapper :where(.wp-block-image[data-align="right"]) { float: right; margin: 0 0 1rem 1rem; }
-
-/* 3) WIDTH PARITY — cap Image block width to content/wide sizes in editors
-      Works in both post/page editor (.is-root-container…) and Site Editor (.wp-site-blocks/.wp-block-post-content)
-*/
-.editor-styles-wrapper :where(.is-root-container, .wp-site-blocks, .wp-block-post-content) :where(.wp-block-image):not([data-align="full"]):not([data-align="wide"]) {
-  /* Unaligned/left/right/center -> content width cap */
-  max-width: var(--wp--style--global--content-size);
+/* --- 2) WIDTH PARITY for Image blocks --------------------------------
+   Unaligned/center/left/right  -> cap to content size
+   Align wide                   -> cap to wide size
+   Align full                   -> no cap (full width)
+   These caps apply both in Post/Page Editor and Site Editor.
+----------------------------------------------------------------------- */
+.editor-styles-wrapper :where(.is-root-container, .wp-site-blocks, .wp-block-post-content)
+  :where(.wp-block-image):not([data-align="full"]):not([data-align="wide"]){
+  max-width: min(100%, var(--ibt-content-size));
 }
 
-.editor-styles-wrapper :where(.is-root-container, .wp-site-blocks, .wp-block-post-content) :where(.wp-block-image)[data-align="wide"] {
-  /* Wide -> wide width cap */
-  max-width: var(--wp--style--global--wide-size);
+.editor-styles-wrapper :where(.is-root-container, .wp-site-blocks, .wp-block-post-content)
+  :where(.wp-block-image)[data-align="wide"]{
+  max-width: min(100%, var(--ibt-wide-size));
 }
 
-/* Make the <img> fit its figure; prevents overshoot in editor */
-.editor-styles-wrapper .wp-block-image img {
+.editor-styles-wrapper :where(.is-root-container, .wp-site-blocks, .wp-block-post-content)
+  :where(.wp-block-image)[data-align="full"]{
+  max-width: none;
   width: 100%;
-  height: auto;
-  max-width: 100%;
 }
 
-/* 4) Neutralize any align utility that collapses edge gaps inside editor */
-.editor-styles-wrapper :where(.alignleft)  { margin-left: 0; }
-.editor-styles-wrapper :where(.alignright) { margin-right: 0; }
+/* Make the <img> respect the figure box and never overflow */
+.editor-styles-wrapper .wp-block-image img{
+  display: block;
+  height: auto;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
 
-/* 5) (Nice-to-have) Mirror heading-link underline feel from front end */
-.editor-styles-wrapper :where(h1, h2, h3) a {
+/* --- 3) Left/Right aligns: keep off the edge, constrain width -------- */
+.editor-styles-wrapper .wp-block-image[data-align="left"]{
+  float: left;
+  margin: 0 1rem 1rem 0;
+  width: auto; /* allow shrink; capped by max-width above */
+}
+.editor-styles-wrapper .wp-block-image[data-align="right"]{
+  float: right;
+  margin: 0 0 1rem 1rem;
+  width: auto;
+}
+
+/* Neutralize any align utility that collapses edge gaps in editor */
+.editor-styles-wrapper :where(.alignleft){  margin-left: 0; }
+.editor-styles-wrapper :where(.alignright){ margin-right: 0; }
+
+/* --- 4) Nice-to-have parity: heading link underline feel ------------- */
+.editor-styles-wrapper :where(h1, h2, h3) a{
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 0.2em;
 }
 .editor-styles-wrapper :where(h1, h2, h3) a:hover,
-.editor-styles-wrapper :where(h1, h2, h3) a:focus-visible {
+.editor-styles-wrapper :where(h1, h2, h3) a:focus-visible{
   text-decoration-thickness: 3px;
 }
