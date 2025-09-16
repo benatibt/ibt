@@ -173,17 +173,34 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { padding-bottom: 0; }
   stroke: currentColor !important;
 }
 
-/* Woo Account & Cart — color + underline */
-.wc-block-customer-account :is(a, button, .wc-block-customer-account__account-icon):is(:hover, :focus-visible),
-.wc-block-mini-cart :is(a, button, .wc-block-mini-cart__button):is(:hover, :focus-visible) {
+/* Account & Cart (Woo) — brand color + underline on hover/focus
+   Covers both cases:
+   1) The icon element itself is the link/button
+   2) The icon sits inside a link/button                                */
+.wc-block-customer-account .wc-block-customer-account__account-icon:is(:hover, :focus-visible),
+.wc-block-customer-account a:is(:hover, :focus-visible),
+.wc-block-customer-account button:is(:hover, :focus-visible),
+.wc-block-mini-cart .wc-block-mini-cart__button:is(:hover, :focus-visible),
+.wc-block-mini-cart a:is(:hover, :focus-visible),
+.wc-block-mini-cart button:is(:hover, :focus-visible) {
   color: var(--wp--preset--color--primary) !important;
   box-shadow: inset 0 calc(var(--ibt-underline-thickness) * -1) currentColor !important;
 }
-/* Tint Woo SVGs only while hovered/focused */
-.wc-block-customer-account :is(a, button, .wc-block-customer-account__account-icon):is(:hover, :focus-visible) svg,
-.wc-block-customer-account :is(a, button, .wc-block-customer-account__account-icon):is(:hover, :focus-visible) svg *,
-.wc-block-mini-cart :is(a, button, .wc-block-mini-cart__button):is(:hover, :focus-visible) svg,
-.wc-block-mini-cart :is(a, button, .wc-block-mini-cart__button):is(:hover, :focus-visible) svg * {
+
+/* Ensure SVG icons inherit currentColor while hovered/focused
+   (icon element itself OR SVG inside a link/button)                      */
+.wc-block-customer-account .wc-block-customer-account__account-icon:is(:hover, :focus-visible) svg,
+.wc-block-customer-account .wc-block-customer-account__account-icon:is(:hover, :focus-visible) svg *,
+.wc-block-customer-account a:is(:hover, :focus-visible) svg,
+.wc-block-customer-account a:is(:hover, :focus-visible) svg *,
+.wc-block-customer-account button:is(:hover, :focus-visible) svg,
+.wc-block-customer-account button:is(:hover, :focus-visible) svg *,
+.wc-block-mini-cart .wc-block-mini-cart__button:is(:hover, :focus-visible) svg,
+.wc-block-mini-cart .wc-block-mini-cart__button:is(:hover, :focus-visible) svg *,
+.wc-block-mini-cart a:is(:hover, :focus-visible) svg,
+.wc-block-mini-cart a:is(:hover, :focus-visible) svg *,
+.wc-block-mini-cart button:is(:hover, :focus-visible) svg,
+.wc-block-mini-cart button:is(:hover, :focus-visible) svg * {
   fill: currentColor !important;
   stroke: currentColor !important;
 }
