@@ -162,12 +162,46 @@ figure {
   box-shadow: inset 0 -3px currentColor;
 }
 
-/* Account & Cart icons */
+/* =====================================================
+   Header icon buttons — non-color cue + ensure SVG tints
+   ===================================================== */
+
+/* Mobile menu open/close buttons (hamburger / close) */
+.wp-block-navigation__responsive-container-open:hover,
+.wp-block-navigation__responsive-container-open:focus-visible,
+.wp-block-navigation__responsive-container-close:hover,
+.wp-block-navigation__responsive-container-close:focus-visible {
+  box-shadow: inset 0 -3px currentColor;
+}
+
+/* Make sure the nav toggle SVGs inherit the element color */
+.wp-block-navigation__responsive-container-open svg *,
+.wp-block-navigation__responsive-container-close svg * {
+  fill: currentColor;
+  stroke: currentColor;
+}
+
+/* Account & Cart triggers (Woo) */
+.wc-block-customer-account__account-icon:hover,
+.wc-block-customer-account__account-icon:focus-visible,
 .wc-block-customer-account a:hover,
 .wc-block-customer-account a:focus-visible,
+.wc-block-customer-account button:hover,
+.wc-block-customer-account button:focus-visible,
+.wc-block-mini-cart__button:hover,
+.wc-block-mini-cart__button:focus-visible,
 .wc-block-mini-cart a:hover,
-.wc-block-mini-cart a:focus-visible {
+.wc-block-mini-cart a:focus-visible,
+.wc-block-mini-cart button:hover,
+.wc-block-mini-cart button:focus-visible {
   box-shadow: inset 0 -3px currentColor;
+}
+
+/* Ensure Woo icon SVGs also follow currentColor */
+.wc-block-customer-account svg *,
+.wc-block-mini-cart svg * {
+  fill: currentColor;
+  stroke: currentColor;
 }
 
 
