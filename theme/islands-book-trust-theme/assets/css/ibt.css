@@ -194,18 +194,10 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { padding-bottom: 0; }
    WooCommerce – Mini-cart footer + checkout + single product
    ===================================================== */
 
-/* Ensure inner text inherits correctly (e.g., “Start shopping”) */
-.wc-block-mini-cart__empty .wc-block-components-button__text { color: inherit; }
-
-/* Remove underline on Woo/button anchors */
-.wc-block-components-button,
-.wp-element-button { text-decoration: none; }
-
-/* Primary (solid) buttons – checkout, add to basket, place order, cart submit, empty mini-cart CTA */
+/* Primary (solid) buttons – checkout, add to basket, place order, cart submit */
 .wc-block-mini-cart__footer-actions
     .wc-block-components-button:not(.outlined),
-.wc-block-mini-cart__empty
-    .wc-block-components-button,
+.wc-block-mini-cart__shopping-button,
 .single_add_to_cart_button.button.alt,
 .wc-block-components-checkout-place-order-button.contained,
 .wc-block-cart__submit-button.contained {
@@ -216,17 +208,15 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { padding-bottom: 0; }
     font-weight: 700;
     border-radius: 12px;
     padding: 0.75rem 1.5rem;
-    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .wc-block-mini-cart__footer-actions
     .wc-block-components-button:not(.outlined):hover,
 .wc-block-mini-cart__footer-actions
     .wc-block-components-button:not(.outlined):focus-visible,
-.wc-block-mini-cart__empty
-    .wc-block-components-button:hover,
-.wc-block-mini-cart__empty
-    .wc-block-components-button:focus-visible,
+.wc-block-mini-cart__shopping-button:hover,
+.wc-block-mini-cart__shopping-button:focus-visible,
 .single_add_to_cart_button.button.alt:hover,
 .single_add_to_cart_button.button.alt:focus-visible,
 .wc-block-components-checkout-place-order-button.contained:hover,
