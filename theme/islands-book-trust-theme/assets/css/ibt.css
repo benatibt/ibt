@@ -220,7 +220,6 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { padding-bottom: 0; }
     transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-
 .wc-block-mini-cart__footer-actions
     .wc-block-components-button:not(.outlined):hover,
 .wc-block-mini-cart__footer-actions
@@ -285,6 +284,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { padding-bottom: 0; }
 /* Apply coupon (Checkout Totals) */
 .wc-block-components-totals-coupon__button[disabled],
 .wc-block-components-totals-coupon__button[aria-disabled="true"],
+.woocommerce .woocommerce-message .button.disabled,
 .woocommerce .woocommerce-info .button.disabled,
 .woocommerce .woocommerce-error .button.disabled,
 .woocommerce a.button.wc-backward.disabled {
@@ -306,6 +306,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { padding-bottom: 0; }
 .wc-block-cart__submit-coupon,
 /* Apply coupon (Checkout Totals) */
 .wc-block-components-totals-coupon__button,
+.woocommerce .woocommerce-message .button,
 .woocommerce .woocommerce-info .button,
 .woocommerce .woocommerce-error .button,
 .woocommerce a.button.wc-backward {
@@ -333,6 +334,8 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { padding-bottom: 0; }
 /* Apply coupon (Checkout Totals) */
 .wc-block-components-totals-coupon__button:hover,
 .wc-block-components-totals-coupon__button:focus-visible,
+.woocommerce .woocommerce-message .button:hover,
+.woocommerce .woocommerce-message .button:focus-visible,
 .woocommerce .woocommerce-info .button:hover,
 .woocommerce .woocommerce-info .button:focus-visible,
 .woocommerce .woocommerce-error .button:hover,
@@ -343,20 +346,6 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { padding-bottom: 0; }
     border-color: var(--wp--preset--color--primary-hover);
     background-color: var(--ibt-outline-soft-fill); /* soft “sunlight” fill */
     box-shadow: 0 0 0 2px var(--wp--preset--color--primary-hover);
-}
-
-/* Success notice action (“View basket”) — revert to link look */
-.woocommerce .woocommerce-message .button,
-.woocommerce .woocommerce-message .button:where(:hover, :focus-visible) {
-  background: none;
-  border: 0;
-  padding: 0;
-  box-shadow: none;
-  border-radius: 0;
-  color: inherit;
-  font: inherit;
-  line-height: inherit;
-  transition: none;
 }
 
 /* Payment provider buttons — quarantine theme button styles
