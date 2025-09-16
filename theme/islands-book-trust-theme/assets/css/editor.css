@@ -1,84 +1,60 @@
-/* ==========================================================================
-   Islands Book Trust — Block Editor helpers (editor-only)
-   Goal: Match front end for widths + gutters and stop left/right floats escaping.
-   Scope: .editor-styles-wrapper only (no front-end effect)
-   ========================================================================== */
+/* Islands Book Trust — Editor parity helpers (minimal, conventional) */
 
-/* 0) Robust width variables + side gutter fallback */
-.editor-styles-wrapper {
-  --ibt-content-size: var(--wp--style--global--content-size,
-                       var(--wp--style--root--content-size,
-                       var(--wp--custom--content-size, 50rem)));
-  --ibt-wide-size:    var(--wp--style--global--wide-size,
-                       var(--wp--style--root--wide-size,
-                       var(--wp--custom--wide-size, 80rem)));
-  --ibt-side-gutter:  var(--wp--style--root--padding-left,
-                       var(--wp--preset--spacing--s, 1rem));
+/* Center the content column and apply the same root gutters inside editors */
+.editor-styles-wrapper .is-root-container {
+  max-width: var(--wp--style--global--content-size);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left:  var(--wp--style--root--padding-left);
+  padding-right: var(--wp--style--root--padding-right);
+  box-sizing: border-box;
 }
 
-/* 1) Gutters + create a new BFC so floats are contained (key fix = flow-root) */
-.editor-styles-wrapper .is-root-container,
-.editor-styles-wrapper .block-editor-block-list__layout.is-root-container,
-.editor-styles-wrapper .is-layout-constrained,
+/* Wide/full mirrors (same rules core expects) */
+.editor-styles-wrapper .is-root-container > .alignwide {
+  max-width: var(--wp--style--global--wide-size);
+}
+.editor-styles-wrapper .is-root-container > .alignfull {
+  max-width: none;
+  width: auto;
+  margin-left:  calc(-1 * var(--wp--style--root--padding-left));
+  margin-right: calc(-1 * var(--wp--style--root--padding-right));
+}
+
+/* Contain floats so they don't appear to "snap" to the viewport edge */
+.editor-styles-wrapper .is-root-container::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Left/right image floats with a tidy text-wrap gap; no thumbnail upscaling */
+.editor-styles-wrapper .wp-block-image.alignleft  { float: left;  margin: 0 1rem 1rem 0; }
+.editor-styles-wrapper .wp-block-image.alignright { float: right; margin: 0 0 1rem 1rem; }
+.editor-styles-wrapper .wp-block-image img {
+  height: auto;
+  max-width: 100%;
+  width: auto; /* keep intrinsic size (no forced stretch) */
+}
+
+/* Site Editor parity: the same centering for template canvas */
 .editor-styles-wrapper .wp-site-blocks,
 .editor-styles-wrapper .wp-block-post-content {
-  padding-left:  var(--ibt-side-gutter);
-  padding-right: var(--ibt-side-gutter);
+  max-width: var(--wp--style--global--content-size);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left:  var(--wp--style--root--padding-left);
+  padding-right: var(--wp--style--root--padding-right);
   box-sizing: border-box;
-  display: flow-root; /* <-- prevents floated images from “escaping” the column */
 }
-
-/* 2) Image block width parity (both editors)
-   - Default/center/left/right -> capped to content
-   - Wide  -> capped to wide
-   - Full  -> spans canvas
-*/
-.editor-styles-wrapper :where(.is-root-container, .wp-site-blocks, .wp-block-post-content)
-  :where(figure.wp-block-image):not([data-align="wide"]):not([data-align="full"]) {
-  max-width: min(100%, var(--ibt-content-size));
-  margin-left: auto;
-  margin-right: auto;
+.editor-styles-wrapper .wp-site-blocks > .alignwide,
+.editor-styles-wrapper .wp-block-post-content > .alignwide {
+  max-width: var(--wp--style--global--wide-size);
 }
-.editor-styles-wrapper :where(.is-root-container, .wp-site-blocks, .wp-block-post-content)
-  :where(figure.wp-block-image)[data-align="wide"] {
-  max-width: min(100%, var(--ibt-wide-size));
-  margin-left: auto;
-  margin-right: auto;
-}
-.editor-styles-wrapper :where(.is-root-container, .wp-site-blocks, .wp-block-post-content)
-  :where(figure.wp-block-image)[data-align="full"] {
+.editor-styles-wrapper .wp-site-blocks > .alignfull,
+.editor-styles-wrapper .wp-block-post-content > .alignfull {
   max-width: none;
-  width: 100%;
-}
-
-/* 3) Left/Right floats: keep a readable gap; still respect content cap */
-.editor-styles-wrapper figure.wp-block-image.alignleft,
-.editor-styles-wrapper figure.wp-block-image[data-align="left"]  {
-  float: left;
-  margin: 0 1rem 1rem 0;
-}
-.editor-styles-wrapper figure.wp-block-image.alignright,
-.editor-styles-wrapper figure.wp-block-image[data-align="right"] {
-  float: right;
-  margin: 0 0 1rem 1rem;
-}
-
-/* 4) Image element: never overflow, never upscale tiny images */
-.editor-styles-wrapper .wp-block-image img {
-  display: block;
-  height: auto;
-  max-width: 100%;  /* prevent overflow of the figure */
-  width: auto;      /* don't stretch small images */
-  box-sizing: border-box;
-}
-
-/* 5) Optional parity: heading link underline feel from front end */
-.editor-styles-wrapper :where(h1, h2, h3) a {
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.2em;
-}
-.editor-styles-wrapper :where(h1, h2, h3) a:hover,
-.editor-styles-wrapper :where(h1, h2, h3) a:focus-visible {
-  text-decoration-thickness: 3px;
+  width: auto;
+  margin-left:  calc(-1 * var(--wp--style--root--padding-left));
+  margin-right: calc(-1 * var(--wp--style--root--padding-right));
 }
