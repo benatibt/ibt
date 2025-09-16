@@ -25,18 +25,23 @@ add_action( 'after_setup_theme', function() {
     add_theme_support( 'wc-product-gallery-lightbox' );
     add_theme_support( 'wc-product-gallery-slider' );
 
-    // ******* REMOVE AFTER DEV *******
-    // Apply editor css WITH CACHE BUSTER - REMOVE ONCE STABLE
-    add_theme_support('editor-styles');
-    add_action('enqueue_block_editor_assets', function () {
-    $rel = 'assets/css/editor.css';
+    // Also register editor stylesheet (works for classic + block editor)
+    add_editor_style( 'assets/css/editor.css' );
+} );
+
+// Force-load our editor stylesheet in the block editor (with cache-busting)
+add_action( 'enqueue_block_editor_assets', function () {
+    $rel  = 'assets/css/editor.css';
+    $path = get_stylesheet_directory() . '/' . $rel;
+
     wp_enqueue_style(
         'ibt-editor',
-    get_stylesheet_directory_uri() . '/' . $rel,
+        get_stylesheet_directory_uri() . '/' . $rel . '?v=' . ( file_exists( $path ) ? filemtime( $path ) : time() ),
         [],
-    filemtime(get_stylesheet_directory() . '/' . $rel)
+        null
     );
-});
+} );
+
 
 } );
 
