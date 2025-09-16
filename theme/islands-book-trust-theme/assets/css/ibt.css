@@ -4,6 +4,15 @@
    Keep colours, typography and hover effects in theme.json.
    ================================================= */
 
+/* =================================================
+   Design tokens (custom)
+   Edit once to change for this css file
+   ================================================= */
+:root {
+  --ibt-outline-soft-fill: #fffdf5;   /* outline button hover/focus fill */
+  --ibt-underline-thickness: 3px;     /* header link/icon underline thickness */
+}
+
 /* --------------------------------------------
    Base reset
    -------------------------------------------- */
@@ -72,10 +81,6 @@ figure {
 /* Tighten faux underline for header links to avoid text floating above line
 */h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {padding-bottom: 0;}
 
-/* ---------- Core Button states (solid + outline with soft hover fill) ---------- */
-/* One line to tweak the soft fill */
-:root { --ibt-outline-soft-fill: #fffdf5; }
-
 /* Map each button to brand tokens */
 .wp-block-button > .wp-block-button__link {
   --btn-bg: var(--wp--preset--color--primary);
@@ -124,89 +129,54 @@ figure {
 }
 
 /* =====================================================
-   Nav links — hover + focus-visible → brand navy
-   We use CSS (not theme.json) + !important to beat
-   core’s higher-specificity “color: inherit” rule
-   on .wp-block-navigation-item__content.
-   ===================================================== */   
-.wp-block-navigation .wp-block-navigation-item__content:hover,
-.wp-block-navigation .wp-block-navigation-item__content:focus-visible {
-    color: var(--wp--preset--color--primary) !important;
-}
-/* Submenu items — match top-level hover/focus */
-.wp-block-navigation .wp-block-navigation__submenu-container a:hover,
-.wp-block-navigation .wp-block-navigation__submenu-container a:focus-visible {
-    color: var(--wp--preset--color--primary) !important;
-}
-
-/* =====================================================
-   Non-color cues for header links (hover/focus-visible)
-   Uses inset box-shadow to avoid layout shift
+   Header & navigation interactions
+   - Color change on nav links uses !important to beat core "color: inherit"
+   - Non-color cue (inset underline) for hover/focus-visible to avoid layout shift
+   - Mobile menu + Woo icons inherit currentColor and get the same underline cue
    ===================================================== */
 
-/* Top-level nav links */
-.wp-block-navigation .wp-block-navigation-item__content:hover,
-.wp-block-navigation .wp-block-navigation-item__content:focus-visible {
-  box-shadow: inset 0 -3px currentColor;
+/* Nav links — color on hover/focus-visible (top-level + submenu) */
+.wp-block-navigation
+  :is(.wp-block-navigation-item__content, .wp-block-navigation__submenu-container a)
+  :is(:hover, :focus-visible) {
+  color: var(--wp--preset--color--primary) !important;
 }
 
-/* Submenu items */
-.wp-block-navigation .wp-block-navigation__submenu-container a:hover,
-.wp-block-navigation .wp-block-navigation__submenu-container a:focus-visible {
-  box-shadow: inset 0 -3px currentColor;
+/* Non-color cue — underline on site title + all nav links */
+.wp-block-site-title a:is(:hover, :focus-visible),
+.wp-block-navigation :is(.wp-block-navigation-item__content, .wp-block-navigation__submenu-container a)
+  :is(:hover, :focus-visible) {
+  box-shadow: inset 0 calc(var(--ibt-underline-thickness) * -1) currentColor;
 }
 
-/* Site title */
-.wp-block-site-title a:hover,
-.wp-block-site-title a:focus-visible {
-  box-shadow: inset 0 -3px currentColor;
+/* Mobile menu toggles — underline on hover/focus-visible */
+:is(.wp-block-navigation__responsive-container-open, .wp-block-navigation__responsive-container-close)
+  :is(:hover, :focus-visible) {
+  box-shadow: inset 0 calc(var(--ibt-underline-thickness) * -1) currentColor;
 }
 
-/* =====================================================
-   Header icon buttons — hover/focus cues
-   + primary color on Woo icons
-   ===================================================== */
-
-/* Mobile menu open/close buttons (hamburger / close) */
-.wp-block-navigation__responsive-container-open:hover,
-.wp-block-navigation__responsive-container-open:focus-visible,
-.wp-block-navigation__responsive-container-close:hover,
-.wp-block-navigation__responsive-container-close:focus-visible {
-  box-shadow: inset 0 -3px currentColor;
-}
-
-/* Ensure nav toggle SVGs inherit element color */
-.wp-block-navigation__responsive-container-open svg *,
-.wp-block-navigation__responsive-container-close svg * {
+/* Mobile menu toggles — ensure SVGs follow currentColor */
+:is(.wp-block-navigation__responsive-container-open, .wp-block-navigation__responsive-container-close) svg,
+:is(.wp-block-navigation__responsive-container-open, .wp-block-navigation__responsive-container-close) svg * {
   fill: currentColor;
   stroke: currentColor;
 }
 
-/* Account & Cart triggers (Woo) — match primary on hover/focus */
-.wc-block-customer-account__account-icon:hover,
-.wc-block-customer-account__account-icon:focus-visible,
-.wc-block-customer-account a:hover,
-.wc-block-customer-account a:focus-visible,
-.wc-block-customer-account button:hover,
-.wc-block-customer-account button:focus-visible,
-.wc-block-mini-cart__button:hover,
-.wc-block-mini-cart__button:focus-visible,
-.wc-block-mini-cart a:hover,
-.wc-block-mini-cart a:focus-visible,
-.wc-block-mini-cart button:hover,
-.wc-block-mini-cart button:focus-visible {
+/* Woo account & cart — primary color + underline on hover/focus-visible */
+.wc-block-customer-account :is(a, button, .wc-block-customer-account__account-icon):is(:hover, :focus-visible),
+.wc-block-mini-cart :is(a, button, .wc-block-mini-cart__button):is(:hover, :focus-visible) {
   color: var(--wp--preset--color--primary);
-  box-shadow: inset 0 -3px currentColor;
+  box-shadow: inset 0 calc(var(--ibt-underline-thickness) * -1) currentColor;
 }
 
-/* Ensure Woo icon SVGs follow currentColor */
+/* Woo account & cart — ensure SVGs follow currentColor */
+.wc-block-customer-account svg,
 .wc-block-customer-account svg *,
+.wc-block-mini-cart svg,
 .wc-block-mini-cart svg * {
   fill: currentColor;
   stroke: currentColor;
 }
-
-
 
 /* =====================================================
    WooCommerce – Mini-cart footer + checkout + single product
