@@ -1,85 +1,102 @@
 /* ==========================================================================
    Islands Book Trust — Block Editor helpers (editor-only)
-   Goal: Match front-end feel for widths + gutters in Post/Page Editor
-         and Site Editor, especially for Image blocks.
-   Scope: .editor-styles-wrapper only (never affects front end)
+   Goal: Make editor previews (post/page + Site Editor) match front-end feel:
+         - Gutters
+         - Image blocks capped to content/wide
+         - Left/right floats keep a comfy gap and NEVER bleed past content width
+   Scope: .editor-styles-wrapper only (no front-end effect)
    ========================================================================== */
 
-/* --- 0) Robust size vars (fallbacks cover different WP versions) --- */
-.editor-styles-wrapper{
+/* 0) Robust width variables + side gutter fallback */
+.editor-styles-wrapper {
   --ibt-content-size: var(--wp--style--global--content-size,
                        var(--wp--style--root--content-size,
                        var(--wp--custom--content-size, 50rem)));
   --ibt-wide-size:    var(--wp--style--global--wide-size,
                        var(--wp--style--root--wide-size,
                        var(--wp--custom--wide-size, 80rem)));
+  --ibt-side-gutter:  var(--wp--style--root--padding-left,
+                       var(--wp--preset--spacing--s, 1rem));
 }
 
-/* --- 1) Gutters so canvas doesn’t hug the edge (both editors) --- */
+/* 1) Gutters (both editors) */
 .editor-styles-wrapper .is-root-container,
 .editor-styles-wrapper .block-editor-block-list__layout.is-root-container,
 .editor-styles-wrapper .is-layout-constrained,
 .editor-styles-wrapper .wp-site-blocks,
-.editor-styles-wrapper .wp-block-post-content{
-  padding-left:  var(--wp--style--root--padding-left,  var(--wp--preset--spacing--s, 1rem));
-  padding-right: var(--wp--style--root--padding-right, var(--wp--preset--spacing--s, 1rem));
+.editor-styles-wrapper .wp-block-post-content {
+  padding-left:  var(--ibt-side-gutter);
+  padding-right: var(--ibt-side-gutter);
   box-sizing: border-box;
 }
 
-/* --- 2) WIDTH PARITY for Image blocks --------------------------------
+/* 2) IMAGE BLOCK WIDTH PARITY (caps apply in both editors)
    Unaligned/center/left/right  -> cap to content size
    Align wide                   -> cap to wide size
-   Align full                   -> no cap (full width)
-   These caps apply both in Post/Page Editor and Site Editor.
------------------------------------------------------------------------ */
+   Align full                   -> no cap (editor still shows full)
+*/
 .editor-styles-wrapper :where(.is-root-container, .wp-site-blocks, .wp-block-post-content)
-  :where(.wp-block-image):not([data-align="full"]):not([data-align="wide"]){
+  :where(figure.wp-block-image):not([data-align="full"]):not([data-align="wide"]) {
   max-width: min(100%, var(--ibt-content-size));
 }
 
 .editor-styles-wrapper :where(.is-root-container, .wp-site-blocks, .wp-block-post-content)
-  :where(.wp-block-image)[data-align="wide"]{
+  :where(figure.wp-block-image)[data-align="wide"] {
   max-width: min(100%, var(--ibt-wide-size));
 }
 
 .editor-styles-wrapper :where(.is-root-container, .wp-site-blocks, .wp-block-post-content)
-  :where(.wp-block-image)[data-align="full"]{
+  :where(figure.wp-block-image)[data-align="full"] {
   max-width: none;
   width: 100%;
 }
 
-/* Make the <img> respect the figure box and never overflow */
-.editor-styles-wrapper .wp-block-image img{
+/* Center default/explicit center-align images in the content column */
+.editor-styles-wrapper figure.wp-block-image:not([data-align]),
+.editor-styles-wrapper figure.wp-block-image[data-align="center"] {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* 3) LEFT/RIGHT FLOATS:
+   - keep a readable gap
+   - NEVER exceed content width
+*/
+.editor-styles-wrapper figure.wp-block-image[data-align="left"] {
+  float: left;
+  margin: 0 1rem 1rem 0;
+  max-width: min(100%, calc(var(--ibt-content-size)));
+}
+.editor-styles-wrapper figure.wp-block-image[data-align="right"] {
+  float: right;
+  margin: 0 0 1rem 1rem;
+  max-width: min(100%, calc(var(--ibt-content-size)));
+}
+
+/* Some editors use align classes in addition to data-align — normalize */
+.editor-styles-wrapper figure.wp-block-image.alignleft  { float: left;  margin: 0 1rem 1rem 0;  max-width: min(100%, var(--ibt-content-size)); }
+.editor-styles-wrapper figure.wp-block-image.alignright { float: right; margin: 0 0 1rem 1rem; max-width: min(100%, var(--ibt-content-size)); }
+
+/* 4) IMG sizing: do NOT upscale small images; just prevent overflow */
+.editor-styles-wrapper .wp-block-image img {
   display: block;
   height: auto;
-  width: 100%;
-  max-width: 100%;
+  max-width: 100%;   /* prevent overflow */
+  width: auto;       /* keep intrinsic width (no stretching) */
   box-sizing: border-box;
 }
 
-/* --- 3) Left/Right aligns: keep off the edge, constrain width -------- */
-.editor-styles-wrapper .wp-block-image[data-align="left"]{
-  float: left;
-  margin: 0 1rem 1rem 0;
-  width: auto; /* allow shrink; capped by max-width above */
-}
-.editor-styles-wrapper .wp-block-image[data-align="right"]{
-  float: right;
-  margin: 0 0 1rem 1rem;
-  width: auto;
-}
+/* 5) Safety: neutralize any align utility that tries to collapse edge gaps */
+.editor-styles-wrapper :where(.alignleft)  { margin-left: 0; }
+.editor-styles-wrapper :where(.alignright) { margin-right: 0; }
 
-/* Neutralize any align utility that collapses edge gaps in editor */
-.editor-styles-wrapper :where(.alignleft){  margin-left: 0; }
-.editor-styles-wrapper :where(.alignright){ margin-right: 0; }
-
-/* --- 4) Nice-to-have parity: heading link underline feel ------------- */
-.editor-styles-wrapper :where(h1, h2, h3) a{
+/* 6) Nice-to-have: front-end-like heading link underline feel */
+.editor-styles-wrapper :where(h1, h2, h3) a {
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 0.2em;
 }
 .editor-styles-wrapper :where(h1, h2, h3) a:hover,
-.editor-styles-wrapper :where(h1, h2, h3) a:focus-visible{
+.editor-styles-wrapper :where(h1, h2, h3) a:focus-visible {
   text-decoration-thickness: 3px;
 }
