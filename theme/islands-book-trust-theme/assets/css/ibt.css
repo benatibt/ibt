@@ -81,6 +81,11 @@ figure {
 /* Tighten faux underline for header links to avoid text floating above line */
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { padding-bottom: 0; }
 
+/* Smooth transitions for textual links (exclude real buttons) */
+a:not(.wp-element-button):not(.button):not(.wc-block-components-button):not(.wc-block-mini-cart__button) {
+  transition: color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, text-decoration-color 0.3s ease;
+}
+
 /* --------------------------------------------
    Core Button states (solid + outline with soft hover fill)
    -------------------------------------------- */
@@ -141,6 +146,20 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { padding-bottom: 0; }
    - Mobile toggles (hamburger/close): brand navy + underline cue
    - Woo account/cart: brand navy + underline cue; tint SVGs
    ===================================================== */
+
+/* Ease on mobile menu toggles (they are buttons, not anchors) */
+.wp-block-navigation.is-responsive
+  .wp-block-navigation__responsive-container-open,
+.wp-block-navigation.is-responsive
+  .wp-block-navigation__responsive-container-close {
+  transition: color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Ease on Woo account/cart header actions (links & mini-cart button) */
+:where(.wp-block-woocommerce-customer-account, .wc-block-customer-account, .wp-block-woocommerce-mini-cart, .wc-block-mini-cart)
+  :is(a, button, .wc-block-mini-cart__button) {
+  transition: color 0.3s ease, box-shadow 0.3s ease;
+}
 
 /* Nav + submenu — color + underline */
 .wp-block-navigation .wp-block-navigation-item__content:is(:hover, :focus-visible),
