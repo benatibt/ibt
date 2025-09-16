@@ -27,6 +27,14 @@ add_action( 'after_setup_theme', function() {
 
     // Load editor.css inside the block editor iframe (TT5 approach)
     add_editor_style( 'assets/css/editor.css' );
+    /** [IBT-PROBE] TEMP: draw lime outline in the block editor (remove after test). */
+    add_filter( 'block_editor_settings_all', function ( $settings ) {
+	$settings['styles'][] = array(
+		'css' => '.editor-styles-wrapper{outline:3px solid lime !important;}'
+	);
+	return $settings;
+} );
+
 } );
 
 // ******* REMOVE AFTER DEV *******
