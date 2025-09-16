@@ -89,7 +89,9 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { padding-bottom: 0; }
 .wp-block-button > .wp-block-button__link {
   --btn-bg: var(--wp--preset--color--primary);
   --btn-hover: var(--wp--preset--color--primary-hover);
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
+
 /* Accent variants override the tokens */
 .wp-block-button.is-style-solid-accent > .wp-block-button__link,
 .wp-block-button.is-style-outline-accent > .wp-block-button__link {
@@ -194,7 +196,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { padding-bottom: 0; }
    WooCommerce – Mini-cart footer + checkout + single product
    ===================================================== */
 
-/* Primary (solid) buttons – checkout, add to basket, place order, cart submit, classic Woo, product review submit */
+/* Primary (solid) buttons – checkout, add to basket, place order, cart submit, classic Woo */
 .wc-block-mini-cart__footer-actions
     .wc-block-components-button:not(.outlined),
 .wc-block-mini-cart__shopping-button,
@@ -203,10 +205,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { padding-bottom: 0; }
 .wc-block-cart__submit-button.contained,
 .woocommerce a.button,
 .woocommerce button.button,
-.woocommerce input.button,
-.woocommerce #review_form #respond .form-submit input[type="submit"],
-.woocommerce #review_form #respond .form-submit input.submit,
-.woocommerce #review_form #respond .form-submit .submit {
+.woocommerce input.button {
     background-color: var(--wp--preset--color--primary);
     color: #fff;
     border: 2px solid var(--wp--preset--color--primary);
@@ -214,8 +213,9 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { padding-bottom: 0; }
     font-weight: 700;
     border-radius: 12px;
     padding: 0.75rem 1.5rem;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
+
 
 .wc-block-mini-cart__footer-actions
     .wc-block-components-button:not(.outlined):hover,
