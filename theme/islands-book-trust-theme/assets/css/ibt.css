@@ -78,13 +78,13 @@ figure {
     background: #fff; /* purely for readability */
 }
 
-/* Headings: real underline, thin + tight (overrides theme.json border/none) */
+/* Headings: real underline, thin + tight (overrides theme.json) */
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a,
 .wp-block-heading a {
   border-bottom: 0 !important;
-  text-decoration: underline !important;      /* beats theme.json’s textDecoration:none */
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.12em;
+  text-decoration: underline !important;          /* shorthand is !important… */
+  text-decoration-thickness: 1px !important;      /* …so thickness must be too */
+  text-underline-offset: 0.12em !important;
 }
 
 h1 a:is(:hover, :focus-visible),
@@ -94,9 +94,8 @@ h4 a:is(:hover, :focus-visible),
 h5 a:is(:hover, :focus-visible),
 h6 a:is(:hover, :focus-visible),
 .wp-block-heading a:is(:hover, :focus-visible) {
-  text-decoration-thickness: 3px;
+  text-decoration-thickness: 3px !important;      /* variable thickness now applies */
 }
-
 
 
 /* Smooth transitions for textual links (exclude real buttons) */
