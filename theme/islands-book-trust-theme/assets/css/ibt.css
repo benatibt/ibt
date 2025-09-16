@@ -307,7 +307,6 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { padding-bottom: 0; }
 .wc-block-cart__submit-coupon,
 /* Apply coupon (Checkout Totals) */
 .wc-block-components-totals-coupon__button,
-.woocommerce .woocommerce-message .button,
 .woocommerce .woocommerce-info .button,
 .woocommerce .woocommerce-error .button,
 .woocommerce a.button.wc-backward {
@@ -335,8 +334,6 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { padding-bottom: 0; }
 /* Apply coupon (Checkout Totals) */
 .wc-block-components-totals-coupon__button:hover,
 .wc-block-components-totals-coupon__button:focus-visible,
-.woocommerce .woocommerce-message .button:hover,
-.woocommerce .woocommerce-message .button:focus-visible,
 .woocommerce .woocommerce-info .button:hover,
 .woocommerce .woocommerce-info .button:focus-visible,
 .woocommerce .woocommerce-error .button:hover,
