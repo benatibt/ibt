@@ -194,7 +194,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { padding-bottom: 0; }
    WooCommerce – Mini-cart footer + checkout + single product
    ===================================================== */
 
-/* Primary (solid) buttons – checkout, add to basket, place order, cart submit, classic Woo */
+/* Primary (solid) buttons – checkout, add to basket, place order, cart submit, classic Woo, product review submit */
 .wc-block-mini-cart__footer-actions
     .wc-block-components-button:not(.outlined),
 .wc-block-mini-cart__shopping-button,
@@ -203,7 +203,10 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { padding-bottom: 0; }
 .wc-block-cart__submit-button.contained,
 .woocommerce a.button,
 .woocommerce button.button,
-.woocommerce input.button {
+.woocommerce input.button,
+.woocommerce #review_form #respond .form-submit input[type="submit"],
+.woocommerce #review_form #respond .form-submit input.submit,
+.woocommerce #review_form #respond .form-submit .submit {
     background-color: var(--wp--preset--color--primary);
     color: #fff;
     border: 2px solid var(--wp--preset--color--primary);
@@ -213,7 +216,6 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { padding-bottom: 0; }
     padding: 0.75rem 1.5rem;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
-
 
 .wc-block-mini-cart__footer-actions
     .wc-block-components-button:not(.outlined):hover,
@@ -232,12 +234,17 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { padding-bottom: 0; }
 .woocommerce button.button:hover,
 .woocommerce button.button:focus-visible,
 .woocommerce input.button:hover,
-.woocommerce input.button:focus-visible {
+.woocommerce input.button:focus-visible,
+.woocommerce #review_form #respond .form-submit input[type="submit"]:hover,
+.woocommerce #review_form #respond .form-submit input[type="submit"]:focus-visible,
+.woocommerce #review_form #respond .form-submit input.submit:hover,
+.woocommerce #review_form #respond .form-submit input.submit:focus-visible,
+.woocommerce #review_form #respond .form-submit .submit:hover,
+.woocommerce #review_form #respond .form-submit .submit:focus-visible {
     background-color: var(--wp--preset--color--primary-hover);
     border-color: var(--wp--preset--color--primary-hover);
     box-shadow: 0 0 0 2px var(--wp--preset--color--primary-hover);
 }
-
 
 /* Secondary (outline) button – “View my basket”, “Apply coupon” */
 .wc-block-mini-cart__footer-actions
