@@ -82,7 +82,7 @@ figure {
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { padding-bottom: 0; }
 
 /* Smooth transitions for textual links (exclude real buttons) */
-a:not(.wp-element-button):not(.button):not(.wc-block-components-button):not(.wc-block-mini-cart__button) {
+a:not(.wp-element-button):not(.wp-block-button__link):not(.button):not(.wc-block-components-button):not(.wc-block-mini-cart__button) {
   transition: color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, text-decoration-color 0.3s ease;
 }
 
@@ -155,10 +155,30 @@ a:not(.wp-element-button):not(.button):not(.wc-block-components-button):not(.wc-
   transition: color 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Smooth SVG tint on mobile toggles */
+.wp-block-navigation.is-responsive
+  .wp-block-navigation__responsive-container-open svg,
+.wp-block-navigation.is-responsive
+  .wp-block-navigation__responsive-container-open svg *,
+.wp-block-navigation.is-responsive
+  .wp-block-navigation__responsive-container-close svg,
+.wp-block-navigation.is-responsive
+  .wp-block-navigation__responsive-container-close svg * {
+  transition: fill 0.3s ease, stroke 0.3s ease;
+}
+
 /* Ease on Woo account/cart header actions (links & mini-cart button) */
 :where(.wp-block-woocommerce-customer-account, .wc-block-customer-account, .wp-block-woocommerce-mini-cart, .wc-block-mini-cart)
   :is(a, button, .wc-block-mini-cart__button) {
   transition: color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Smooth SVG tint on Woo account/cart icons */
+:where(.wp-block-woocommerce-customer-account, .wc-block-customer-account, .wp-block-woocommerce-mini-cart, .wc-block-mini-cart)
+  :is(a, button, .wc-block-mini-cart__button) svg,
+:where(.wp-block-woocommerce-customer-account, .wc-block-customer-account, .wp-block-woocommerce-mini-cart, .wc-block-mini-cart)
+  :is(a, button, .wc-block-mini-cart__button) svg * {
+  transition: fill 0.3s ease, stroke 0.3s ease;
 }
 
 /* Nav + submenu — color + underline */
@@ -395,9 +415,15 @@ a:not(.wp-element-button):not(.button):not(.wc-block-components-button):not(.wc-
   padding: revert !important;
   transition: revert !important;
 }
-
 /* End of WooCommerce styling */
 
+/* Respect users who prefer minimal motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition-duration: 0s !important;
+    animation-duration: 0s !important;
+  }
+}
 
 /* =================================================
    End of minimal stylesheet
