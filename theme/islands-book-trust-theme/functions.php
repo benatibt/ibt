@@ -25,41 +25,23 @@ add_action( 'after_setup_theme', function() {
     add_theme_support( 'wc-product-gallery-lightbox' );
     add_theme_support( 'wc-product-gallery-slider' );
 
-    // NOTE: We intentionally do NOT call add_editor_style() here,
-    // to avoid "added to iframe incorrectly" console warnings.
+    // Load editor.css inside the block editor iframe (TT5 approach)
+    add_editor_style( 'assets/css/editor.css' );
 } );
-
-// Inject editor.css into the editor iframe the modern way (no warnings).
-add_filter( 'block_editor_settings_all', function( $settings ) {
-    $rel  = 'assets/css/editor.css';
-    $path = get_stylesheet_directory() . '/' . $rel;
-    $href = get_stylesheet_directory_uri() . '/' . $rel . '?v=' . ( file_exists( $path ) ? filemtime( $path ) : IBT_VERSION );
-
-    // Append as a proper iframe style entry.
-    $settings['styles'][] = array( 'href' => $href );
-    return $settings;
-}, 10 );
-
-// Safety: remove any leftover editor enqueues that might mirror into the iframe.
-add_action( 'enqueue_block_editor_assets', function() {
-    foreach ( array( 'ibt-editor', 'ibt-editor-css' ) as $handle ) {
-        wp_dequeue_style( $handle );
-        wp_deregister_style( $handle );
-    }
-}, 100 );
 
 // ******* REMOVE AFTER DEV *******
 // Cache-buster for ibt.css during development.
+// filemtime() updates the version whenever the file changes.
 add_action( 'wp_enqueue_scripts', function() {
-    $css_rel  = 'assets/css/ibt.css';
-    $css_path = get_stylesheet_directory() . '/' . $css_rel;
-    $css_ver  = file_exists( $css_path ) ? filemtime( $css_path ) : IBT_VERSION;
+    $rel  = 'assets/css/ibt.css';
+    $path = get_stylesheet_directory() . '/' . $rel;
+    $ver  = file_exists( $path ) ? filemtime( $path ) : IBT_VERSION;
 
     wp_enqueue_style(
         'islands-book-trust',
-        get_stylesheet_directory_uri() . '/' . $css_rel,
+        get_stylesheet_directory_uri() . '/' . $rel,
         array(),
-        $css_ver
+        $ver
     );
 }, 20 );
 
@@ -79,7 +61,7 @@ add_filter( 'render_block', function( $block_content, $block ) {
     return $block_content;
 }, 10, 2 );
 
-// Add Accent button styles (visible in block editor "Styles" for Button)
+// Add Accent button styles (available in the Button block "Styles" panel).
 add_action( 'init', function () {
     register_block_style( 'core/button', array(
         'name'  => 'solid-accent',

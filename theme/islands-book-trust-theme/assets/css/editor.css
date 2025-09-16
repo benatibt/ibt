@@ -1,12 +1,10 @@
-/* TEMP: big red outline so we can see it's loaded */
-.editor-styles-wrapper { outline: 2px solid rgba(255,0,0,.5); }
-
-/* Editor-only: mimic front-end inner gutters for constrained content */
+/* Editor-only: constrain content and add side gutters in the iframe */
+.editor-styles-wrapper .block-editor-block-list__layout.is-root-container,
 .editor-styles-wrapper .is-layout-constrained {
-  padding-left: var(--wp--preset--spacing--s);
-  padding-right: var(--wp--preset--spacing--s);
+  padding-left:  var(--wp--preset--spacing--s, 1rem);
+  padding-right: var(--wp--preset--spacing--s, 1rem);
 }
 
-/* Editor-only: give floated images breathing room while editing */
-.editor-styles-wrapper .alignleft  { margin-right: 1rem; }
-.editor-styles-wrapper .alignright { margin-left: 1rem; }
+/* Editor-only: floats for images when aligned left/right */
+.editor-styles-wrapper .wp-block-image.alignleft  { float: left;  margin: 0 1rem 1rem 0; }
+.editor-styles-wrapper .wp-block-image.alignright { float: right; margin: 0 0 1rem 1rem; }
