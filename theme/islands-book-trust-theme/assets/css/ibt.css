@@ -190,7 +190,7 @@ END OF TURN OFF */
 .single_add_to_cart_button.button.alt:hover,
 .single_add_to_cart_button.button.alt:focus-visible,
 .wc-block-components-checkout-place-order-button.contained:hover,
-.wc-block-components-checkout-place-order-button.contained:focus-visible
+.wc-block-components-checkout-place-order-button.contained:focus-visible,
 .wc-block-cart__submit-button.contained:hover,
 .wc-block-cart__submit-button.contained:focus-visible {
     background-color: var(--wp--preset--color--primary-hover);
