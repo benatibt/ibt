@@ -13,7 +13,7 @@
                 { "slug": "alt-text", "name": "Alt Text", "color": "#505050" },
                 { "slug": "primary", "name": "Primary (Brand Navy)", "color": "#000099" },
                 { "slug": "primary-hover", "name": "Primary Hover", "color": "#000066" },
-                { "slug": "accent", "name": "Accent (Sea-green)", "color": "#1F6F5B" },
+                { "slug": "accent", "name": "Accent (Sea-green)", "color": "#1F635B" },
                 { "slug": "accent-hover", "name": "Accent Hover/Dark", "color": "#174E44" },
                 { "slug": "secondary", "name": "Secondary Neutral", "color": "#444444" },
                 { "slug": "border", "name": "Border/Divider", "color": "#e5e5e5" }
