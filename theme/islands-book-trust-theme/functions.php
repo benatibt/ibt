@@ -25,12 +25,18 @@ add_action( 'after_setup_theme', function() {
     add_theme_support( 'wc-product-gallery-lightbox' );
     add_theme_support( 'wc-product-gallery-slider' );
 
-    // Load editor.css inside the editor iframe (with cache-busting)
+    // Load editor.css inside the editor iframe (cache-busted)
     $editor_rel  = 'assets/css/editor.css';
     $editor_path = get_stylesheet_directory() . '/' . $editor_rel;
-    $editor_ver  = file_exists( $editor_path ) ? filemtime( $editor_path ) : IBT_VERSION;
+    $editor_ver  = file_exists( $editor_path ) ? filemtime( $editor_path ) : wp_get_theme()->get( 'Version' );
     add_editor_style( $editor_rel . '?v=' . $editor_ver );
 } );
+
+// Safety: remove any leftover editor enqueue using the old handle.
+add_action( 'enqueue_block_editor_assets', function() {
+    wp_dequeue_style( 'ibt-editor' );
+    wp_deregister_style( 'ibt-editor' );
+}, 100 );
 
 // ******* REMOVE AFTER DEV *******
 // Cache-buster for ibt.css during development.
