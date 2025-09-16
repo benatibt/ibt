@@ -58,3 +58,12 @@
   margin-left:  calc(-1 * var(--wp--style--root--padding-left));
   margin-right: calc(-1 * var(--wp--style--root--padding-right));
 }
+
+/* Editor-only: center the actual block list container and contain floats */
+.editor-styles-wrapper .block-editor-block-list__layout {
+  max-width: var(--wp--style--global--content-size);
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+  display: flow-root; /* contains left/right floats without affecting gaps */
+}
