@@ -248,7 +248,10 @@ a:not(.wp-element-button):not(.wp-block-button__link):not(.button):not(.wc-block
 /* product reviews submit (classic comments form) */
 .woocommerce #review_form #respond .form-submit input[type="submit"],
 .woocommerce #review_form #respond .form-submit input.submit,
-.woocommerce #review_form #respond .form-submit .submit {
+.woocommerce #review_form #respond .form-submit .submit,
+/* ADDED: core-style add-to-cart links that aren't inside .wp-block-button */
+a.add_to_cart_button.wp-element_button,
+a.wp-block-button__link.add_to_cart_button {
     background-color: var(--wp--preset--color--primary);
     color: #fff;
     border: 2px solid var(--wp--preset--color--primary);
@@ -258,6 +261,7 @@ a:not(.wp-element-button):not(.wp-block-button__link):not(.button):not(.wc-block
     padding: 0.75rem 1.5rem;
     transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
+
 
 .wc-block-mini-cart__footer-actions
     .wc-block-components-button:not(.outlined):hover,
@@ -282,11 +286,17 @@ a:not(.wp-element-button):not(.wp-block-button__link):not(.button):not(.wc-block
 .woocommerce #review_form #respond .form-submit input.submit:hover,
 .woocommerce #review_form #respond .form-submit input.submit:focus-visible,
 .woocommerce #review_form #respond .form-submit .submit:hover,
-.woocommerce #review_form #respond .form-submit .submit:focus-visible {
+.woocommerce #review_form #respond .form-submit .submit:focus-visible,
+/* ADDED */
+a.add_to_cart_button.wp-element-button:hover,
+a.add_to_cart_button.wp-element-button:focus-visible,
+a.wp-block-button__link.add_to_cart_button:hover,
+a.wp-block-button__link.add_to_cart_button:focus-visible {
     background-color: var(--wp--preset--color--primary-hover);
     border-color: var(--wp--preset--color--primary-hover);
     box-shadow: 0 0 0 2px var(--wp--preset--color--primary-hover);
 }
+
 
 /* Disabled / busy states — keep contrast, suppress interactivity */
 /* Solid/primary targets */
