@@ -1,0 +1,9 @@
+/* Editor-only: mimic front-end inner gutters for constrained content */
+.editor-styles-wrapper .is-layout-constrained {
+  padding-left: var(--wp--preset--spacing--s);
+  padding-right: var(--wp--preset--spacing--s);
+}
+
+/* Editor-only: give floated images breathing room while editing */
+.editor-styles-wrapper .alignleft  { margin-right: 1rem; }
+.editor-styles-wrapper .alignright { margin-left: 1rem; }
