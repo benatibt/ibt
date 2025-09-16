@@ -163,7 +163,8 @@ figure {
 }
 
 /* =====================================================
-   Header icon buttons — non-color cue + ensure SVG tints
+   Header icon buttons — hover/focus cues
+   + primary color on Woo icons
    ===================================================== */
 
 /* Mobile menu open/close buttons (hamburger / close) */
@@ -174,14 +175,14 @@ figure {
   box-shadow: inset 0 -3px currentColor;
 }
 
-/* Make sure the nav toggle SVGs inherit the element color */
+/* Ensure nav toggle SVGs inherit element color */
 .wp-block-navigation__responsive-container-open svg *,
 .wp-block-navigation__responsive-container-close svg * {
   fill: currentColor;
   stroke: currentColor;
 }
 
-/* Account & Cart triggers (Woo) */
+/* Account & Cart triggers (Woo) — match primary on hover/focus */
 .wc-block-customer-account__account-icon:hover,
 .wc-block-customer-account__account-icon:focus-visible,
 .wc-block-customer-account a:hover,
@@ -194,15 +195,17 @@ figure {
 .wc-block-mini-cart a:focus-visible,
 .wc-block-mini-cart button:hover,
 .wc-block-mini-cart button:focus-visible {
+  color: var(--wp--preset--color--primary);
   box-shadow: inset 0 -3px currentColor;
 }
 
-/* Ensure Woo icon SVGs also follow currentColor */
+/* Ensure Woo icon SVGs follow currentColor */
 .wc-block-customer-account svg *,
 .wc-block-mini-cart svg * {
   fill: currentColor;
   stroke: currentColor;
 }
+
 
 
 /* =====================================================
