@@ -246,6 +246,49 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { padding-bottom: 0; }
     box-shadow: 0 0 0 2px var(--wp--preset--color--primary-hover);
 }
 
+/* Disabled / busy states — keep contrast, suppress interactivity */
+/* Solid/primary targets */
+.wc-block-mini-cart__footer-actions .wc-block-components-button:not(.outlined)[disabled],
+.wc-block-mini-cart__footer-actions .wc-block-components-button:not(.outlined)[aria-disabled="true"],
+.wc-block-mini-cart__shopping-button[disabled],
+.wc-block-mini-cart__shopping-button[aria-disabled="true"],
+.single_add_to_cart_button.button.alt[disabled],
+.single_add_to_cart_button.button.alt.disabled,
+.single_add_to_cart_button.button.alt.loading,
+.wc-block-components-checkout-place-order-button.contained[disabled],
+.wc-block-components-checkout-place-order-button.contained.is-busy,
+.wc-block-cart__submit-button.contained[disabled],
+.wc-block-cart__submit-button.contained.is-busy,
+.woocommerce a.button.disabled,
+.woocommerce button.button:disabled,
+.woocommerce input.button:disabled,
+.woocommerce #review_form #respond .form-submit .wp-element-button:disabled {
+    background-color: var(--wp--preset--color--primary);
+    border-color: var(--wp--preset--color--primary);
+    color: #fff;
+    box-shadow: none;
+    cursor: not-allowed;
+    pointer-events: none;
+    transition: none;
+}
+/* Outline/secondary targets */
+.wc-block-mini-cart__footer-actions .wc-block-components-button.outlined[disabled],
+.wc-block-mini-cart__footer-actions .wc-block-components-button.outlined[aria-disabled="true"],
+.wc-block-cart__coupon .wc-block-components-button[disabled],
+.wc-block-cart__coupon .wc-block-components-button[aria-disabled="true"],
+.woocommerce .woocommerce-message .button.disabled,
+.woocommerce .woocommerce-info .button.disabled,
+.woocommerce .woocommerce-error .button.disabled,
+.woocommerce a.button.wc-backward.disabled {
+    color: var(--wp--preset--color--primary);
+    border-color: var(--wp--preset--color--primary);
+    background-color: transparent;
+    box-shadow: none;
+    cursor: not-allowed;
+    pointer-events: none;
+    transition: none;
+}
+
 /* Secondary (outline) button – “View my basket”, “Apply coupon”, notice actions, return-to-shop */
 .wc-block-mini-cart__footer-actions
     .wc-block-components-button.outlined,
