@@ -1,24 +1,14 @@
 /* ==========================================================================
    Islands Book Trust — Block Editor helpers (editor-only)
-   File: assets/css/editor.css
-   Goal: Make editor previews (post/page + Site Editor) feel like front end
-         without lots of custom rules.
+   Goal: Match front-end feel (gutters + content/wide width caps),
+         especially for Image blocks (incl. left/right align).
    Scope: .editor-styles-wrapper only (never affects front end).
    ========================================================================== */
 
-/* 1) SHARED: root gutters so content doesn’t hug the canvas edge */
+/* 1) Shared gutters so content doesn’t hug the canvas edge */
 .editor-styles-wrapper .is-root-container,
 .editor-styles-wrapper .block-editor-block-list__layout.is-root-container,
-.editor-styles-wrapper .is-layout-constrained {
-  padding-left:  var(--wp--style--root--padding-left,  var(--wp--preset--spacing--s, 1rem));
-  padding-right: var(--wp--style--root--padding-right, var(--wp--preset--spacing--s, 1rem));
-  box-sizing: border-box;
-}
-
-/* 2) SITE EDITOR (Appearance → Editor) specifics
-   - Templates usually render inside .wp-site-blocks
-   - Post content inside templates lives in .wp-block-post-content
-*/
+.editor-styles-wrapper .is-layout-constrained,
 .editor-styles-wrapper .wp-site-blocks,
 .editor-styles-wrapper .wp-block-post-content {
   padding-left:  var(--wp--style--root--padding-left,  var(--wp--preset--spacing--s, 1rem));
@@ -26,15 +16,35 @@
   box-sizing: border-box;
 }
 
-/* 3) Image aligns: keep left/right-aligned images off the edge and wrap text nicely */
-.editor-styles-wrapper :where(.wp-block-image.alignleft)  { float: left;  margin: 0 1rem 1rem 0; }
-.editor-styles-wrapper :where(.wp-block-image.alignright) { float: right; margin: 0 0 1rem 1rem; }
+/* 2) Image aligns: keep off the edge and wrap text nicely */
+.editor-styles-wrapper :where(.wp-block-image[data-align="left"])  { float: left;  margin: 0 1rem 1rem 0; }
+.editor-styles-wrapper :where(.wp-block-image[data-align="right"]) { float: right; margin: 0 0 1rem 1rem; }
 
-/* Belt-and-braces: if align utilities try to collapse edge gaps, neutralize it */
+/* 3) WIDTH PARITY — cap Image block width to content/wide sizes in editors
+      Works in both post/page editor (.is-root-container…) and Site Editor (.wp-site-blocks/.wp-block-post-content)
+*/
+.editor-styles-wrapper :where(.is-root-container, .wp-site-blocks, .wp-block-post-content) :where(.wp-block-image):not([data-align="full"]):not([data-align="wide"]) {
+  /* Unaligned/left/right/center -> content width cap */
+  max-width: var(--wp--style--global--content-size);
+}
+
+.editor-styles-wrapper :where(.is-root-container, .wp-site-blocks, .wp-block-post-content) :where(.wp-block-image)[data-align="wide"] {
+  /* Wide -> wide width cap */
+  max-width: var(--wp--style--global--wide-size);
+}
+
+/* Make the <img> fit its figure; prevents overshoot in editor */
+.editor-styles-wrapper .wp-block-image img {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+}
+
+/* 4) Neutralize any align utility that collapses edge gaps inside editor */
 .editor-styles-wrapper :where(.alignleft)  { margin-left: 0; }
 .editor-styles-wrapper :where(.alignright) { margin-right: 0; }
 
-/* 4) (Nice-to-have) Mirror heading-link underline feel from front end */
+/* 5) (Nice-to-have) Mirror heading-link underline feel from front end */
 .editor-styles-wrapper :where(h1, h2, h3) a {
   text-decoration: underline;
   text-decoration-thickness: 1px;
@@ -44,19 +54,3 @@
 .editor-styles-wrapper :where(h1, h2, h3) a:focus-visible {
   text-decoration-thickness: 3px;
 }
-
-/* 5) Safety: sane image sizing inside the editor */
-.editor-styles-wrapper .wp-block-image img {
-  height: auto;
-  max-width: 100%;
-}
-
-/* 6) Optional (commented): if alignfull looks odd in editor previews, un-comment
-   This keeps full-width blocks from “overshooting” the padded canvas while editing.
-*/
-/*
-.editor-styles-wrapper .alignfull {
-  margin-left: 0;
-  margin-right: 0;
-}
-*/
