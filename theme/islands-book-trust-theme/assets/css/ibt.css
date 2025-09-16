@@ -140,6 +140,38 @@ figure {
 }
 
 /* =====================================================
+   Non-color cues for header links (hover/focus-visible)
+   Uses inset box-shadow to avoid layout shift
+   ===================================================== */
+
+/* Top-level nav links */
+.wp-block-navigation .wp-block-navigation-item__content:hover,
+.wp-block-navigation .wp-block-navigation-item__content:focus-visible {
+  box-shadow: inset 0 -3px currentColor;
+}
+
+/* Submenu items */
+.wp-block-navigation .wp-block-navigation__submenu-container a:hover,
+.wp-block-navigation .wp-block-navigation__submenu-container a:focus-visible {
+  box-shadow: inset 0 -3px currentColor;
+}
+
+/* Site title */
+.wp-block-site-title a:hover,
+.wp-block-site-title a:focus-visible {
+  box-shadow: inset 0 -3px currentColor;
+}
+
+/* Account & Cart icons */
+.wc-block-customer-account a:hover,
+.wc-block-customer-account a:focus-visible,
+.wc-block-mini-cart a:hover,
+.wc-block-mini-cart a:focus-visible {
+  box-shadow: inset 0 -3px currentColor;
+}
+
+
+/* =====================================================
    WooCommerce – Mini-cart footer + checkout + single product
    ===================================================== */
 
