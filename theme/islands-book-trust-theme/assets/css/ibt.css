@@ -78,8 +78,12 @@ figure {
     background: #fff; /* purely for readability */
 }
 
-/* Tighten faux underline for header links to avoid text floating above line
-*/h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {padding-bottom: 0;}
+/* Tighten faux underline for header links to avoid text floating above line */
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { padding-bottom: 0; }
+
+/* --------------------------------------------
+   Core Button states (solid + outline with soft hover fill)
+   -------------------------------------------- */
 
 /* Map each button to brand tokens */
 .wp-block-button > .wp-block-button__link {
@@ -95,7 +99,7 @@ figure {
 
 /* Solid Accent — ensure green base (JSON sets primary for default) */
 .wp-block-button.is-style-solid-accent > .wp-block-button__link {
-  background-color: var(--btn-bg); /* = accent via your mapping */
+  background-color: var(--btn-bg);
   border-color: var(--btn-bg);
   color: #fff;
 }
@@ -129,10 +133,24 @@ figure {
 }
 
 /* =====================================================
-   PATCH — Make hamburger/close + Woo account/cart react on hover/focus
-   - Stronger selectors + !important on color and underline cue
-   - Tint SVGs in the hover/focus state
+   Header interactivity — nav links, site title, mobile toggles, Woo icons
+   - Nav & submenu: brand navy on hover/focus + underline cue
+   - Site title: underline cue (color handled via theme.json)
+   - Mobile toggles (hamburger/close): brand navy + underline cue
+   - Woo account/cart: brand navy + underline cue; tint SVGs
    ===================================================== */
+
+/* Nav + submenu — color + underline */
+.wp-block-navigation .wp-block-navigation-item__content:is(:hover, :focus-visible),
+.wp-block-navigation .wp-block-navigation__submenu-container a:is(:hover, :focus-visible) {
+  color: var(--wp--preset--color--primary) !important;
+  box-shadow: inset 0 calc(var(--ibt-underline-thickness) * -1) currentColor;
+}
+
+/* Site title — underline cue only (color comes from theme.json) */
+.wp-block-site-title a:is(:hover, :focus-visible) {
+  box-shadow: inset 0 calc(var(--ibt-underline-thickness) * -1) currentColor;
+}
 
 /* Mobile menu toggles (hamburger/close) — color + underline */
 .wp-block-navigation.is-responsive
@@ -142,7 +160,7 @@ figure {
   color: var(--wp--preset--color--primary) !important;
   box-shadow: inset 0 calc(var(--ibt-underline-thickness) * -1) currentColor !important;
 }
-/* Ensure toggle SVGs follow currentColor while hovered/focused */
+/* Toggle SVGs follow currentColor while hovered/focused */
 .wp-block-navigation.is-responsive
   .wp-block-navigation__responsive-container-open:is(:hover, :focus-visible) svg,
 .wp-block-navigation.is-responsive
