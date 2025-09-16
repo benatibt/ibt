@@ -173,26 +173,22 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { padding-bottom: 0; }
   stroke: currentColor !important;
 }
 
-/* Account & Cart (Woo) — brand color + underline on hover/focus
-   Support both wrapper class names across Woo versions. */
+/* Account & Cart (Woo) — brand color on hover/focus
+   Underline only on the link/button, not the SVG icon */
 :where(.wp-block-woocommerce-customer-account, .wc-block-customer-account) a:is(:hover, :focus-visible),
-:where(.wp-block-woocommerce-mini-cart, .wc-block-mini-cart) :is(a, button, .wc-block-mini-cart__button):is(:hover, :focus-visible),
-:where(.wp-block-woocommerce-customer-account, .wc-block-customer-account) .wc-block-customer-account__account-icon:is(:hover, :focus-visible) {
+:where(.wp-block-woocommerce-mini-cart, .wc-block-mini-cart) :is(a, button, .wc-block-mini-cart__button):is(:hover, :focus-visible) {
   color: var(--wp--preset--color--primary) !important;
   box-shadow: inset 0 calc(var(--ibt-underline-thickness) * -1) currentColor !important;
 }
 
-/* Ensure SVGs inherit the color while hovered/focused */
+/* Ensure SVGs inherit the color while hovered/focused (link or mini-cart btn) */
 :where(.wp-block-woocommerce-customer-account, .wc-block-customer-account) a:is(:hover, :focus-visible) svg,
 :where(.wp-block-woocommerce-customer-account, .wc-block-customer-account) a:is(:hover, :focus-visible) svg *,
-:where(.wp-block-woocommerce-customer-account, .wc-block-customer-account) .wc-block-customer-account__account-icon:is(:hover, :focus-visible),
-:where(.wp-block-woocommerce-customer-account, .wc-block-customer-account) .wc-block-customer-account__account-icon:is(:hover, :focus-visible) *,
 :where(.wp-block-woocommerce-mini-cart, .wc-block-mini-cart) :is(a, button, .wc-block-mini-cart__button):is(:hover, :focus-visible) svg,
 :where(.wp-block-woocommerce-mini-cart, .wc-block-mini-cart) :is(a, button, .wc-block-mini-cart__button):is(:hover, :focus-visible) svg * {
   fill: currentColor !important;
   stroke: currentColor !important;
 }
-
 
 /* =====================================================
    WooCommerce – Mini-cart footer + checkout + single product
