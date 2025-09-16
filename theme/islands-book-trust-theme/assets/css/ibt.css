@@ -349,6 +349,35 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { padding-bottom: 0; }
     box-shadow: 0 0 0 2px var(--wp--preset--color--primary-hover);
 }
 
+/* Payment provider buttons — quarantine theme button styles
+   (lets provider / plugin CSS win; doesn’t affect normal Woo buttons) */
+:where(
+  /* Stripe / WooPayments (Apple/Google Pay) */
+  .stripe-payment-request-button,
+  .wcpay-payment-request-button,
+  .apple-pay-button,
+  .gpay-button,
+  .google-pay-button,
+  /* PayPal */
+  .paypal-buttons,
+  .paypal-button,
+  /* Klarna */
+  .klarna-payments__button,
+  /* WC Blocks express checkout containers/buttons */
+  .wc-block-components-express-checkout button,
+  .wc-block-components-express-checkout .wp-element-button
+) {
+  background-color: revert !important;
+  color: revert !important;
+  border: revert !important;
+  box-shadow: revert !important;
+  border-radius: revert !important;
+  font-family: revert !important;
+  font-weight: revert !important;
+  padding: revert !important;
+  transition: revert !important;
+}
+
 /* End of WooCommerce styling */
 
 
