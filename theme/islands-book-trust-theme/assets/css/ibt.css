@@ -283,6 +283,8 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { padding-bottom: 0; }
 .wc-block-cart__coupon .wc-block-components-button,
 .wc-block-cart__coupon .wp-element-button,
 .wc-block-cart__submit-coupon,
+/* Apply coupon (Checkout Totals) */
+.wc-block-components-totals-coupon__button,
 .woocommerce .woocommerce-message .button,
 .woocommerce .woocommerce-info .button,
 .woocommerce .woocommerce-error .button,
@@ -308,6 +310,9 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { padding-bottom: 0; }
 .wc-block-cart__coupon .wp-element-button:focus-visible,
 .wc-block-cart__submit-coupon:hover,
 .wc-block-cart__submit-coupon:focus-visible,
+/* Apply coupon (Checkout Totals) */
+.wc-block-components-totals-coupon__button:hover,
+.wc-block-components-totals-coupon__button:focus-visible,
 .woocommerce .woocommerce-message .button:hover,
 .woocommerce .woocommerce-message .button:focus-visible,
 .woocommerce .woocommerce-info .button:hover,
@@ -321,7 +326,6 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { padding-bottom: 0; }
     background-color: var(--ibt-outline-soft-fill); /* soft “sunlight” fill */
     box-shadow: 0 0 0 2px var(--wp--preset--color--primary-hover);
 }
-
 
 /* End of WooCommerce styling */
 
