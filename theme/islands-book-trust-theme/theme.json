@@ -151,7 +151,7 @@
             },
             "core/list":    { "spacing": { "margin": { "top": "0", "bottom": "0" } } },
             "core/paragraph": {
-                "spacing": { "margin": { "top": "0.2em", "bottom": "1.7em" } },
+                "spacing": { "margin": { "top": "0.3em", "bottom": "1.6em" } },
                 "elements": {
                     "link": {
                         "color": { "text": "#000000" },
