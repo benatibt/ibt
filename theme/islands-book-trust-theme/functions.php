@@ -50,21 +50,6 @@ add_action( 'enqueue_block_editor_assets', function () {
 }, 20 );
 
 /**
- * [IBT-PROBE3] TEMP: inject CSS directly into the editor iframe via settings
- * Visible cues: fuchsia outline (document), green H1 bg, dashed p outlines.
- * Remove this whole block after the test.
- */
-add_filter( 'block_editor_settings_all', function ( $settings ) {
-	$settings['styles'][] = array(
-		'css' =>
-			'html{outline:6px solid fuchsia !important;}' .
-			'.editor-styles-wrapper :where(h1){background:rgba(0,255,0,.2)!important;}' .
-			'.editor-styles-wrapper :where(p){outline:1px dashed lime !important;}'
-	);
-	return $settings;
-} );
-
-/**
  * [IBT-C] Front-end assets (ibt.css)
  * ******* REMOVE AFTER DEV *******
  * Cache-buster for ibt.css during development (filemtime() auto-bumps version).
