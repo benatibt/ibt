@@ -9,7 +9,7 @@ if ( ! defined( 'IBT_VERSION' ) ) {
 }
 
 /**
- * [IBT-A] Theme setup: core supports + editor stylesheet (TT5 approach)
+ * [IBT-A] Theme setup: core supports + TT5 editor stylesheet reference
  */
 add_action( 'after_setup_theme', function() {
 	// Core supports
@@ -20,7 +20,7 @@ add_action( 'after_setup_theme', function() {
 	// Allow wide & full alignment in the block editor
 	add_theme_support( 'align-wide' );
 
-	// Add support for comments (kept for parity with your previous file)
+	// Add support for comments
 	add_theme_support( 'comments' );
 
 	// WooCommerce compatibility
@@ -34,9 +34,7 @@ add_action( 'after_setup_theme', function() {
 } );
 
 /**
- * [IBT-B] Editor assets (safety net): explicitly enqueue editor.css in the block editor
- * This ensures the CSS is present in the Gutenberg iframe even if add_editor_style()
- * is skipped by the environment.
+ * [IBT-B] Editor assets: explicitly enqueue editor.css in the block editor
  */
 add_action( 'enqueue_block_editor_assets', function () {
 	$rel  = 'assets/css/editor.css';
@@ -50,6 +48,21 @@ add_action( 'enqueue_block_editor_assets', function () {
 		$ver
 	);
 }, 20 );
+
+/**
+ * [IBT-PROBE3] TEMP: inject CSS directly into the editor iframe via settings
+ * Visible cues: fuchsia outline (document), green H1 bg, dashed p outlines.
+ * Remove this whole block after the test.
+ */
+add_filter( 'block_editor_settings_all', function ( $settings ) {
+	$settings['styles'][] = array(
+		'css' =>
+			'html{outline:6px solid fuchsia !important;}' .
+			'.editor-styles-wrapper :where(h1){background:rgba(0,255,0,.2)!important;}' .
+			'.editor-styles-wrapper :where(p){outline:1px dashed lime !important;}'
+	);
+	return $settings;
+} );
 
 /**
  * [IBT-C] Front-end assets (ibt.css)
@@ -71,7 +84,6 @@ add_action( 'wp_enqueue_scripts', function() {
 
 /**
  * [IBT-D] Footer helper: replace fallback copyright year dynamically
- * Looks for <span class="bookshop-year">...</span> inside core/paragraph blocks.
  */
 add_filter( 'render_block', function( $block_content, $block ) {
 	if ( isset( $block['blockName'] )
@@ -89,7 +101,7 @@ add_filter( 'render_block', function( $block_content, $block ) {
 }, 10, 2 );
 
 /**
- * [IBT-E] Custom Button styles (show up in the Button block “Styles” panel)
+ * [IBT-E] Custom Button styles (Button block “Styles” panel)
  */
 add_action( 'init', function () {
 	register_block_style( 'core/button', array(
@@ -101,16 +113,3 @@ add_action( 'init', function () {
 		'label' => __( 'Outline Accent', 'ibt' ),
 	) );
 } );
-
-/**
- * -----------------------------------------------------------------------------
- * DEBUG NOTE (optional):
- * If you still need a visible probe in the editor, you can temporarily uncomment
- * the block below to draw a lime outline around the editor canvas, then remove.
- * -----------------------------------------------------------------------------
- */
-// add_action( 'enqueue_block_editor_assets', function () {
-// 	wp_register_style( 'ibt-editor-probe', false, array(), IBT_VERSION );
-// 	wp_enqueue_style( 'ibt-editor-probe' );
-// 	wp_add_inline_style( 'ibt-editor-probe', '.editor-styles-wrapper{outline:3px solid lime !important;}' );
-// }, 5 );
