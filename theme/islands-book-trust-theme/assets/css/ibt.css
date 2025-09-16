@@ -130,9 +130,10 @@ figure {
 
 /* =====================================================
    Header & navigation interactions
-   - Color change on nav links uses !important to beat core "color: inherit"
-   - Non-color cue (inset underline) for hover/focus-visible to avoid layout shift
-   - Mobile menu + Woo icons inherit currentColor and get the same underline cue
+   - Nav links: color change (needs !important) + underline cue
+   - Site title: underline cue
+   - Mobile toggles (hamburger/close): primary color + underline + SVG inherits
+   - Woo account/cart: primary color + underline + SVG inherits
    ===================================================== */
 
 /* Nav links — color on hover/focus-visible (top-level + submenu) */
@@ -144,18 +145,19 @@ figure {
 
 /* Non-color cue — underline on site title + all nav links */
 .wp-block-site-title a:is(:hover, :focus-visible),
-.wp-block-navigation :is(.wp-block-navigation-item__content, .wp-block-navigation__submenu-container a)
+.wp-block-navigation
+  :is(.wp-block-navigation-item__content, .wp-block-navigation__submenu-container a)
   :is(:hover, :focus-visible) {
   box-shadow: inset 0 calc(var(--ibt-underline-thickness) * -1) currentColor;
 }
 
-/* Mobile menu toggles — underline on hover/focus-visible */
+/* Mobile menu toggles — primary color + underline on hover/focus-visible */
 :is(.wp-block-navigation__responsive-container-open, .wp-block-navigation__responsive-container-close)
   :is(:hover, :focus-visible) {
+  color: var(--wp--preset--color--primary) !important;
   box-shadow: inset 0 calc(var(--ibt-underline-thickness) * -1) currentColor;
 }
-
-/* Mobile menu toggles — ensure SVGs follow currentColor */
+/* Mobile toggles — ensure SVGs follow currentColor */
 :is(.wp-block-navigation__responsive-container-open, .wp-block-navigation__responsive-container-close) svg,
 :is(.wp-block-navigation__responsive-container-open, .wp-block-navigation__responsive-container-close) svg * {
   fill: currentColor;
@@ -165,10 +167,9 @@ figure {
 /* Woo account & cart — primary color + underline on hover/focus-visible */
 .wc-block-customer-account :is(a, button, .wc-block-customer-account__account-icon):is(:hover, :focus-visible),
 .wc-block-mini-cart :is(a, button, .wc-block-mini-cart__button):is(:hover, :focus-visible) {
-  color: var(--wp--preset--color--primary);
+  color: var(--wp--preset--color--primary) !important;
   box-shadow: inset 0 calc(var(--ibt-underline-thickness) * -1) currentColor;
 }
-
 /* Woo account & cart — ensure SVGs follow currentColor */
 .wc-block-customer-account svg,
 .wc-block-customer-account svg *,
@@ -177,6 +178,7 @@ figure {
   fill: currentColor;
   stroke: currentColor;
 }
+
 
 /* =====================================================
    WooCommerce – Mini-cart footer + checkout + single product
