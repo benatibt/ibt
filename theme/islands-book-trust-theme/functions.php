@@ -27,7 +27,17 @@ add_action( 'after_setup_theme', function() {
 
     // ******* REMOVE AFTER DEV *******
     // Apply editor css WITH CACHE BUSTER - REMOVE ONCE STABLE
-    add_editor_style( 'assets/css/editor.css?v=' . time() );
+    add_theme_support('editor-styles');
+    add_action('enqueue_block_editor_assets', function () {
+    $rel = 'assets/css/editor.css';
+    wp_enqueue_style(
+        'ibt-editor',
+    get_stylesheet_directory_uri() . '/' . $rel,
+        [],
+    filemtime(get_stylesheet_directory() . '/' . $rel)
+    );
+});
+
 } );
 
 // ******* REMOVE AFTER DEV *******
