@@ -79,7 +79,7 @@ figure {
 }
 
 /* Tighten faux underline for header links to avoid text floating above line */
-/*h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { padding-bottom: 0; }
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { padding-bottom: 0; }
 
 /* Smooth transitions for textual links (exclude real buttons) */
 a:not(.wp-element-button):not(.wp-block-button__link):not(.button):not(.wc-block-components-button):not(.wc-block-mini-cart__button) {
