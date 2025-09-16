@@ -1,15 +1,62 @@
-/* TEMP PROOF — remove after checking */
-.editor-styles-wrapper h1 { box-shadow: 0 0 0 4px orange inset !important; }
-.editor-styles-wrapper { outline: 4px solid orange !important; }
+/* ==========================================================================
+   Islands Book Trust — Block Editor helpers (editor-only)
+   File: assets/css/editor.css
+   Goal: Make editor previews (post/page + Site Editor) feel like front end
+         without lots of custom rules.
+   Scope: .editor-styles-wrapper only (never affects front end).
+   ========================================================================== */
 
-
-/* Editor-only: constrain content and add side gutters in the iframe */
+/* 1) SHARED: root gutters so content doesn’t hug the canvas edge */
+.editor-styles-wrapper .is-root-container,
 .editor-styles-wrapper .block-editor-block-list__layout.is-root-container,
 .editor-styles-wrapper .is-layout-constrained {
-  padding-left:  var(--wp--preset--spacing--s, 1rem);
-  padding-right: var(--wp--preset--spacing--s, 1rem);
+  padding-left:  var(--wp--style--root--padding-left,  var(--wp--preset--spacing--s, 1rem));
+  padding-right: var(--wp--style--root--padding-right, var(--wp--preset--spacing--s, 1rem));
+  box-sizing: border-box;
 }
 
-/* Editor-only: floats for images when aligned left/right */
-.editor-styles-wrapper .wp-block-image.alignleft  { float: left;  margin: 0 1rem 1rem 0; }
-.editor-styles-wrapper .wp-block-image.alignright { float: right; margin: 0 0 1rem 1rem; }
+/* 2) SITE EDITOR (Appearance → Editor) specifics
+   - Templates usually render inside .wp-site-blocks
+   - Post content inside templates lives in .wp-block-post-content
+*/
+.editor-styles-wrapper .wp-site-blocks,
+.editor-styles-wrapper .wp-block-post-content {
+  padding-left:  var(--wp--style--root--padding-left,  var(--wp--preset--spacing--s, 1rem));
+  padding-right: var(--wp--style--root--padding-right, var(--wp--preset--spacing--s, 1rem));
+  box-sizing: border-box;
+}
+
+/* 3) Image aligns: keep left/right-aligned images off the edge and wrap text nicely */
+.editor-styles-wrapper :where(.wp-block-image.alignleft)  { float: left;  margin: 0 1rem 1rem 0; }
+.editor-styles-wrapper :where(.wp-block-image.alignright) { float: right; margin: 0 0 1rem 1rem; }
+
+/* Belt-and-braces: if align utilities try to collapse edge gaps, neutralize it */
+.editor-styles-wrapper :where(.alignleft)  { margin-left: 0; }
+.editor-styles-wrapper :where(.alignright) { margin-right: 0; }
+
+/* 4) (Nice-to-have) Mirror heading-link underline feel from front end */
+.editor-styles-wrapper :where(h1, h2, h3) a {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+.editor-styles-wrapper :where(h1, h2, h3) a:hover,
+.editor-styles-wrapper :where(h1, h2, h3) a:focus-visible {
+  text-decoration-thickness: 3px;
+}
+
+/* 5) Safety: sane image sizing inside the editor */
+.editor-styles-wrapper .wp-block-image img {
+  height: auto;
+  max-width: 100%;
+}
+
+/* 6) Optional (commented): if alignfull looks odd in editor previews, un-comment
+   This keeps full-width blocks from “overshooting” the padded canvas while editing.
+*/
+/*
+.editor-styles-wrapper .alignfull {
+  margin-left: 0;
+  margin-right: 0;
+}
+*/
