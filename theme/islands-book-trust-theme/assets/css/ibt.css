@@ -48,14 +48,6 @@ html {
   padding: 0 var(--wp--preset--spacing--m);
 }
 
-/* When stacked on mobile, move the buffer to the top */
-@media (max-width: 600px) {
-  .wp-block-media-text.is-stacked-on-mobile .wp-block-media-text__content {
-    padding: var(--wp--preset--spacing--xs) 0 0 0;
-  }
-}
-
-
 /* Prevent images or video from overflowing
    their container and keep aspect ratio */
 img,
@@ -470,6 +462,18 @@ a.wp-block-button__link.add_to_cart_button:focus-visible {
   *, *::before, *::after {
     transition-duration: 0s !important;
     animation-duration: 0s !important;
+  }
+}
+
+/* =========================================
+   Media queries
+   --bp-stack: 37.5rem  (≈600px)
+   --bp-tablet: 48rem   (≈768px)
+   ========================================= */
+@media (max-width: 37.5rem) { /* ~600px */
+  .wp-block-media-text.is-stacked-on-mobile .wp-block-media-text__content {
+    /* top, left/right, bottom — keep L/R padding when stacked */
+    padding: var(--wp--preset--spacing--xs) var(--wp--preset--spacing--m) 0;
   }
 }
 
