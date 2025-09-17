@@ -45,7 +45,7 @@ html {
 /* Media & Text: add modest inner padding on the text pane */
 .wp-block-media-text .wp-block-media-text__content {
   /* left & right padding so either orientation feels balanced */
-  padding: 0 var(--wp--preset--spacing--s);
+  padding: 0 var(--wp--preset--spacing--m);
 }
 
 /* When stacked on mobile, move the buffer to the top */
