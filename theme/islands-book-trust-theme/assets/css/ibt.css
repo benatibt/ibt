@@ -8,7 +8,7 @@
 
 /* Layout vars */
 :root{
-  --ibt-header-height: 96px; /* ~36 utility + ~58 nav (+ a little) */
+  --ibt-header-height: 86px; /* ~36 utility + ~58 nav (+ a little) */
   --ibt-adminbar: 0px;
 }
 body.admin-bar{ --ibt-adminbar: 32px; }
@@ -33,17 +33,27 @@ body{ padding-top: calc(var(--ibt-header-height) + var(--ibt-adminbar)); }
 
 /* Row heights + padding */
 .ibt-utility-row{
-  min-height: 32px;
+  min-height: 28px;
   display:flex; align-items:center; justify-content:space-between;
   padding: 0 .75rem;
 }
 .ibt-mainnav-row,
 .ibt-header-col > .wp-block-navigation{
-  min-height: 54px;
+  min-height: 50px;
   display:flex; align-items:center;
   width: 100%;
   padding: 0 .75rem;
 }
+
+/* ===== IBT Header – robust :target for search ===== */
+/* Works if the editor renamed the anchor (e.g., #ibt-search, #ibt-searchLink) */
+#ibt-search:target,
+#ibt-searchLink:target,
+[id^="ibt-search"]:target{
+  display: grid !important;
+  place-items: start center;
+}
+
 
 /* Hamburger on the RIGHT (small screens) */
 @media (max-width: 782px){

@@ -30,7 +30,7 @@
 
           <!-- Search trigger (icon opens overlay via :target) -->
           <!-- wp:html -->
-          <a class="ibt-icon ibt-search-trigger" href="#ibt-search" aria-label="Open search">
+          <a class="ibt-icon ibt-search-trigger" href="#ibt-searchLink" aria-label="Open search">
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" role="img" aria-hidden="true">
               <path d="M10 2a8 8 0 105.293 14.293l4.707 4.707 1.414-1.414-4.707-4.707A8 8 0 0010 2zm0 2a6 6 0 110 12 6 6 0 010-12z"/>
             </svg>
@@ -60,7 +60,6 @@
 
         <!-- wp:site-title {"level":2,"className":"ibt-site-title"} /-->
 
-        <!-- NOTE: if this doesn’t show your menu, select the Navigation block in the editor and pick your menu -->
         <!-- wp:navigation {"layout":{"type":"flex"}} /-->
 
       </div>
@@ -73,8 +72,8 @@
   <!-- /wp:columns -->
 
   <!-- ===== Pop-out Search Overlay (CSS :target; no JS required) ===== -->
-  <!-- wp:group {"anchor":"ibt-search","className":"ibt-search-modal","layout":{"type":"constrained"}} -->
-  <div id="ibt-search" class="wp-block-group ibt-search-modal" aria-hidden="true">
+  <!-- wp:group {"anchor":"ibt-searchLink","className":"ibt-search-modal","layout":{"type":"constrained"}} -->
+  <div id="ibt-searchLink" class="wp-block-group ibt-search-modal" aria-hidden="true">
     <!-- wp:html -->
     <a href="#" class="ibt-search-close" aria-label="Close search">✕</a>
     <!-- /wp:html -->
