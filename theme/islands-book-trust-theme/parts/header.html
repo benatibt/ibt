@@ -1,25 +1,45 @@
-<!-- wp:group {"tagName":"header","align":"full","style":{"spacing":{"padding":{"top":"1rem","bottom":"1rem"}}},"layout":{"inherit":false,"type":"constrained"}} -->
-<header class="wp-block-group alignfull" style="padding-top:1rem;padding-bottom:1rem">
+<!-- ===== Islands Book Trust – Two-row header ===== -->
+<!-- Parent group: sticky full width -->
+<!-- wp:group {"align":"full","className":"ibt-header-wrap","style":{"position":"sticky","top":"0"}} -->
+<header class="wp-block-group alignfull ibt-header-wrap">
 
-    <!-- wp:group {"align":"wide","className":"ibt-header-inner","style":{"spacing":{"padding":{"left":"1rem","right":"1rem"}}},"layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"space-between","verticalAlignment":"center"}} -->
-    <div class="wp-block-group alignwide ibt-header-inner" style="padding-left:1rem;padding-right:1rem">
+  <!-- wp:columns {"align":"wide","isStackedOnMobile":false,"className":"ibt-header-inner"} -->
+  <div class="wp-block-columns alignwide ibt-header-inner">
 
-        <!-- wp:site-title {"level":0,"textAlign":"left","style":{"typography":{"textTransform":"uppercase"}},"fontSize":"l"} /-->
+    <!-- wp:column {"width":"100px","className":"ibt-logo-col"} -->
+    <div class="wp-block-column ibt-logo-col" style="flex-basis:100px">
+      <!-- Site Logo -->
+      <!-- wp:site-logo {"width":80} /-->
+    </div>
+    <!-- /wp:column -->
 
-        <!-- wp:group {"className":"ibt-header-menu","layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"right","orientation":"horizontal"}} -->
-        <div class="wp-block-group ibt-header-menu">
+    <!-- wp:column {"className":"ibt-header-col"} -->
+    <div class="wp-block-column ibt-header-col">
 
-            <!-- wp:navigation {"ariaLabel":"Primary"} /-->
-
-            <!-- wp:woocommerce/customer-account {"displayStyle":"icon_only","iconClass":"wc-block-customer-account__account-icon","style":{"spacing":{"padding":{"top":"0","bottom":"0","left":"0","right":"0"}}}} /-->
-
-            <!-- wp:woocommerce/mini-cart {"style":{"spacing":{"padding":{"top":"0","bottom":"0","left":"0","right":"0"}}}} /-->
-
+      <!-- === Utility Row === -->
+      <!-- wp:group {"className":"ibt-utility-row","layout":{"type":"flex","justifyContent":"space-between"}} -->
+      <div class="wp-block-group ibt-utility-row">
+        <!-- Left: Trade link -->
+        <!-- wp:navigation-link {"label":"Trade","url":"/trade/"} /-->
+        <!-- Right: Search + Account + Cart -->
+        <!-- wp:group {"layout":{"type":"flex","justifyContent":"flex-end","flexWrap":"nowrap"},"className":"ibt-icons"} -->
+        <div class="wp-block-group ibt-icons">
+          <!-- wp:search {"label":"Search","buttonPosition":"button-only","showLabel":false} /-->
+          <!-- wp:woocommerce/my-account-link /-->
+          <!-- wp:woocommerce/mini-cart /-->
         </div>
         <!-- /wp:group -->
+      </div>
+      <!-- /wp:group -->
+
+      <!-- === Main Navigation Row === -->
+      <!-- wp:navigation {"layout":{"type":"flex","justifyContent":"space-between"}} /-->
 
     </div>
-    <!-- /wp:group -->
+    <!-- /wp:column -->
+
+  </div>
+  <!-- /wp:columns -->
 
 </header>
 <!-- /wp:group -->
