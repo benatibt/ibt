@@ -63,6 +63,14 @@ figure {
     margin: 0;
 }
 
+/* Quote: no left rule; keep it as an indented, italic paragraph */
+.wp-block-quote {
+  border: 0;
+  border-left: none;
+  box-shadow: none; /* belt & braces if a theme adds an inset rule */
+}
+
+
 /* --------------------------------------------
    Accessibility helpers
    -------------------------------------------- */

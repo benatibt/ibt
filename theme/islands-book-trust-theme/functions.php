@@ -23,8 +23,9 @@ add_action( 'after_setup_theme', function() {
 	// Add support for comments (kept from your file)
 	add_theme_support( 'comments' );
 
-	// Load editor.css in block editor
-	add_editor_style( 'assets/css/editor.css' );
+	// Load editor.css & ibt.css in block editor
+	add_editor_style( [ 'assets/css/editor.css', 'assets/css/ibt.css' ] );
+
 
 
 	// WooCommerce compatibility
