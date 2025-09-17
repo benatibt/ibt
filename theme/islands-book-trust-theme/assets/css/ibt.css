@@ -112,7 +112,24 @@ body{ padding-top: calc(var(--ibt-header-height) + var(--ibt-adminbar)); }
   font-size: 1.25rem;
 }
 
+/* ===== IBT Header – responsive nav override (force earlier toggle) ===== */
+@media (max-width: 782px){
+  /* Hide horizontal links earlier, show the toggle */
+  .ibt-mainnav-row .wp-block-navigation__container{ display: none !important; }
+  .ibt-mainnav-row .wp-block-navigation__responsive-container-open{
+    display: inline-flex !important;
+    margin-left: auto;           /* keep it on the right */
+    padding: .5rem;              /* larger tap target */
+  }
+  .ibt-mainnav-row .wp-block-navigation__responsive-container-open svg{
+    width: 28px; height: 28px;   /* clearer icon size */
+  }
 
+  /* Ensure the responsive container appears when menu is opened */
+  .ibt-mainnav-row .wp-block-navigation.is-menu-open .wp-block-navigation__responsive-container{
+    display: block !important;
+  }
+}
 
 
 
