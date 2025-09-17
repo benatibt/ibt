@@ -31,19 +31,19 @@ add_action( 'after_setup_theme', function() {
 } );
 
 /**
- * [IBT-B] Editor assets: load editor.css in the block editor (single source of truth)
- * Scheduled for deletion
+ * [IBT-B] Editor assets: load editor.css in the block editor (single source of truth) 
+ * */
 add_action( 'enqueue_block_editor_assets', function () {
-	$rel  = 'assets/css/editor.css';
-	$path = get_stylesheet_directory() . '/' . $rel;
-	$ver  = file_exists( $path ) ? filemtime( $path ) : IBT_VERSION;
+    $rel  = 'assets/css/editor.css';
+    $path = get_stylesheet_directory() . '/' . $rel;
+    $ver  = file_exists( $path ) ? filemtime( $path ) : IBT_VERSION;
 
-	wp_enqueue_style(
-		'ibt-editor',
-		get_stylesheet_directory_uri() . '/' . $rel,
-		array(),
-		$ver
-	);
+    wp_enqueue_style(
+        'ibt-editor', // single source of truth
+        get_stylesheet_directory_uri() . '/' . $rel,
+        array(),
+        $ver
+    );
 }, 20 );
 
 
