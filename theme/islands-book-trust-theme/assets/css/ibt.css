@@ -4,50 +4,77 @@
    Keep colours, typography and hover effects in theme.json.
    ================================================= */
 
-/* ===== Islands Book Trust – Header (v1.1) ===== */
-.ibt-header-wrap {
+/* ===== Islands Book Trust – Header (v1.3 debug) ===== */
+
+/* 1) Strong gradient (debug) so it's unmistakable */
+.ibt-header-wrap{
+  /* STICKY (primary) */
   position: sticky;
   top: 0;
   z-index: 1000;
-  /* Stronger, more visible header gradient */
-  background-image: linear-gradient(180deg, #F2F2FA 0%, #FFFFFF 100%);
+
+  /* DEBUG GRADIENT: 50% grey → white */
+  background-image: linear-gradient(180deg, #808080 0%, #FFFFFF 100%);
+  border-bottom: 1px solid #e5e5e5;
 }
 
-/* Layout/spacing polish */
-.ibt-header-inner { align-items: stretch; }
-.ibt-header-col { display: flex; flex-direction: column; gap: 0; }
-
-.ibt-utility-row {
-  min-height: 36px;
-  display: flex;            /* ensure vertical centering */
-  align-items: center;
-  justify-content: space-between;
+/* Some WP setups wrap the header; ensure the sticky applies on the direct child too */
+.wp-site-blocks > .wp-block-group.ibt-header-wrap{
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
-/* Main nav row height + vertical centering */
-.ibt-header-col > .wp-block-navigation {
+/* 2) Main nav row: ensure full width so the hamburger can push right */
+.ibt-header-col > .wp-block-navigation{
   min-height: 58px;
   display: flex;
   align-items: center;
+  width: 100%;
+  padding: 0 .75rem;
 }
 
-/* Button-style nav links (top level & submenus) */
-.wp-block-navigation .wp-block-navigation-item__content {
+/* 3) Move the hamburger (toggle) to the right on narrow screens */
+.wp-block-navigation__responsive-container-open{
+  margin-left: auto;
+}
+
+/* Utility row spacing/centering */
+.ibt-utility-row{
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 .75rem;
+}
+
+/* Button-style nav links (robust selectors) */
+.wp-block-navigation .wp-block-navigation__container > li > a,
+.wp-block-navigation .wp-block-navigation-item__content{
   background: var(--wp--preset--color--accent);
   color: var(--wp--preset--color--background);
   border-radius: .4rem;
   padding: .4rem .8rem;
   text-decoration: none;
+  line-height: 1.25;
 }
-
-/* Hover/focus (we’ll fine-tune later if needed) */
+.wp-block-navigation a:hover,
 .wp-block-navigation .wp-block-navigation-item__content:hover,
-.wp-block-navigation .wp-block-navigation-item__content:focus-visible {
+.wp-block-navigation a:focus-visible{
   background: var(--wp--preset--color--accent-hover);
 }
 
-/* Tighten horizontal gap between menu buttons */
-.wp-block-navigation .wp-block-navigation__container { gap: 0.5rem; }
+/* Tighten button gaps */
+.wp-block-navigation .wp-block-navigation__container{ gap: .5rem; }
+
+/* Logo column alignment */
+.ibt-logo-col{ display: flex; align-items: center; justify-content: center; }
+
+/* ---- TEMPORARY FALLBACK (use ONLY if sticky still fails) ---- */
+/*
+.ibt-header-wrap{ position: fixed !important; left: 0; right: 0; top: 0; }
+body{ padding-top: 110px; }  /* approx 36 + 58 + padding */
+*/
 
 
 
