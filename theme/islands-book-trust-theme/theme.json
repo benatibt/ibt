@@ -126,7 +126,7 @@
                 }
             },
             "core/columns": {  "spacing": { "blockGap": "var(--wp--preset--spacing--m)" }},
-            "core/gallery": { "spacing": { "margin": { "top": "0", "bottom": "0" } } },
+            "core/gallery": {},
             "core/group": {
                 "spacing": {"padding": {"top":"0", "bottom":"0","left":"0","right":"0"}}
             },

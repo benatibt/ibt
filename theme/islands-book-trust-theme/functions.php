@@ -32,6 +32,18 @@ add_action( 'after_setup_theme', function() {
 	add_theme_support( 'wc-product-gallery-zoom' );
 	add_theme_support( 'wc-product-gallery-lightbox' );
 	add_theme_support( 'wc-product-gallery-slider' );
+
+	// Add html5 markup to all site WP output
+	add_theme_support('html5', [
+		'comment-form',
+		'comment-list',
+		'search-form',
+		'gallery',
+		'caption',
+		'style',
+		'script'
+	]);
+
 } );
 
 // [IBT-B] - Removed
