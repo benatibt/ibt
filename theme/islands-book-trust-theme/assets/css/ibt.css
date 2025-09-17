@@ -31,6 +31,13 @@ html {
     box-sizing: inherit;
 }
 
+/* Safety net: apply root gutters from theme.json on the front-end */
+:where(.wp-site-blocks) {
+  padding-left:  var(--wp--style--root--padding-left, clamp(1rem, 4vw, 3rem));
+  padding-right: var(--wp--style--root--padding-right, clamp(1rem, 4vw, 3rem));
+  box-sizing: border-box;
+}
+
 /* --------------------------------------------
    Media defaults
    -------------------------------------------- */
