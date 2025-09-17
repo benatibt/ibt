@@ -4,24 +4,51 @@
    Keep colours, typography and hover effects in theme.json.
    ================================================= */
 
-/* ===== Islands Book Trust – Header (v1) ===== */
+/* ===== Islands Book Trust – Header (v1.1) ===== */
 .ibt-header-wrap {
   position: sticky;
   top: 0;
   z-index: 1000;
-  /* Soft header gradient (top→bottom) */
-  background-image: linear-gradient(180deg, #F2F2F2 0%, #FAFAFA 100%);
+  /* Stronger, more visible header gradient */
+  background-image: linear-gradient(180deg, #F2F2FA 0%, #FFFFFF 100%);
 }
 
-.ibt-logo-col {
+/* Layout/spacing polish */
+.ibt-header-inner { align-items: stretch; }
+.ibt-header-col { display: flex; flex-direction: column; gap: 0; }
+
+.ibt-utility-row {
+  min-height: 36px;
+  display: flex;            /* ensure vertical centering */
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Main nav row height + vertical centering */
+.ibt-header-col > .wp-block-navigation {
+  min-height: 58px;
   display: flex;
   align-items: center;
-  justify-content: center;
 }
 
-.ibt-utility-row { min-height: 36px; }
+/* Button-style nav links (top level & submenus) */
+.wp-block-navigation .wp-block-navigation-item__content {
+  background: var(--wp--preset--color--accent);
+  color: var(--wp--preset--color--background);
+  border-radius: .4rem;
+  padding: .4rem .8rem;
+  text-decoration: none;
+}
 
-.ibt-header-col > .wp-block-navigation { min-height: 58px; }
+/* Hover/focus (we’ll fine-tune later if needed) */
+.wp-block-navigation .wp-block-navigation-item__content:hover,
+.wp-block-navigation .wp-block-navigation-item__content:focus-visible {
+  background: var(--wp--preset--color--accent-hover);
+}
+
+/* Tighten horizontal gap between menu buttons */
+.wp-block-navigation .wp-block-navigation__container { gap: 0.5rem; }
+
 
 
 /* =================================================
