@@ -32,7 +32,7 @@ add_action( 'after_setup_theme', function() {
 
 /**
  * [IBT-B] Editor assets: load editor.css in the block editor (single source of truth)
- */
+ * Scheduled for deletion
 add_action( 'enqueue_block_editor_assets', function () {
 	$rel  = 'assets/css/editor.css';
 	$path = get_stylesheet_directory() . '/' . $rel;
@@ -45,6 +45,7 @@ add_action( 'enqueue_block_editor_assets', function () {
 		$ver
 	);
 }, 20 );
+
 
 /**
  * [IBT-C] Front-end assets (ibt.css)
