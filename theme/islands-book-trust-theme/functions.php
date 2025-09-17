@@ -59,6 +59,23 @@ add_action( 'wp_enqueue_scripts', function() {
 	$path = get_stylesheet_directory() . '/' . $rel;
 	$ver  = file_exists( $path ) ? filemtime( $path ) : IBT_VERSION;
 
+/**
+ * [IBT-H] Header helpers (search modal + dynamic padding)
+ */
+add_action( 'wp_enqueue_scripts', function () {
+    $rel  = 'assets/js/ibt-header.js';
+    $path = get_stylesheet_directory() . '/' . $rel;
+    $ver  = file_exists($path) ? filemtime($path) : null;
+
+    wp_enqueue_script(
+        'ibt-header',
+        get_stylesheet_directory_uri() . '/' . $rel,
+        array(), // no deps
+        $ver,
+        true     // in footer
+    );
+}, 21);
+
 	wp_enqueue_style(
 		'islands-book-trust',
 		get_stylesheet_directory_uri() . '/' . $rel,

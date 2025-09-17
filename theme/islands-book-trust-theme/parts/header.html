@@ -1,4 +1,4 @@
-<!-- ===== Islands Book Trust – Two-row Header (sticky via CSS) ===== -->
+<!-- ===== Islands Book Trust – Two-row Header (sticky via CSS/JS) ===== -->
 
 <!-- wp:group {"tagName":"header","align":"full","className":"ibt-header-wrap"} -->
 <header class="wp-block-group alignfull ibt-header-wrap">
@@ -28,9 +28,9 @@
         <!-- wp:group {"className":"ibt-icons","layout":{"type":"flex","justifyContent":"flex-end","flexWrap":"nowrap","verticalAlignment":"center"}} -->
         <div class="wp-block-group ibt-icons">
 
-          <!-- Search trigger (icon opens overlay via :target) -->
+          <!-- Search trigger (icon opens overlay via JS; :target CSS remains as fallback if needed) -->
           <!-- wp:html -->
-          <a class="ibt-icon ibt-search-trigger" href="#ibt-searchLink" aria-label="Open search">
+          <a class="ibt-icon ibt-search-trigger" href="#" data-target="#ibt-search" aria-label="Open search" role="button">
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" role="img" aria-hidden="true">
               <path d="M10 2a8 8 0 105.293 14.293l4.707 4.707 1.414-1.414-4.707-4.707A8 8 0 0010 2zm0 2a6 6 0 110 12 6 6 0 010-12z"/>
             </svg>
@@ -71,9 +71,9 @@
   </div>
   <!-- /wp:columns -->
 
-  <!-- ===== Pop-out Search Overlay (CSS :target; no JS required) ===== -->
-  <!-- wp:group {"anchor":"ibt-searchLink","className":"ibt-search-modal","layout":{"type":"constrained"}} -->
-  <div id="ibt-searchLink" class="wp-block-group ibt-search-modal" aria-hidden="true">
+  <!-- ===== Pop-out Search Overlay ===== -->
+  <!-- wp:group {"anchor":"ibt-search","className":"ibt-search-modal","layout":{"type":"constrained"}} -->
+  <div id="ibt-search" class="wp-block-group ibt-search-modal" aria-hidden="true">
     <!-- wp:html -->
     <a href="#" class="ibt-search-close" aria-label="Close search">✕</a>
     <!-- /wp:html -->
