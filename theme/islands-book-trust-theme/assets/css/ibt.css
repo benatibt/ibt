@@ -48,10 +48,10 @@ html {
   padding: 0 var(--wp--preset--spacing--m);
 }
 
-/* When stacked on mobile, move the buffer to the top 
+/* When stacked on mobile, move the buffer to the top */
 @media (max-width: 782px) {
   .wp-block-media-text.is-stacked-on-mobile .wp-block-media-text__content {
-    padding: var(--wp--preset--spacing--s) 0 0 0;
+    padding: var(--wp--preset--spacing--xs) 0 0 0;
   }
 }
 
