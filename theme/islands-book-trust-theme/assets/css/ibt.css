@@ -490,12 +490,28 @@ a.wp-block-button__link.add_to_cart_button:focus-visible {
    - Breakpoint: 62rem (~992px)
    - Only override the "mobile" side; let core handle desktop
    ========================================= */
+/* Below breakpoint: show the hamburger; hide inline list until opened */
 @media (max-width: 62rem) {
-  .wp-block-navigation.is-responsive .wp-block-navigation__container {
+  .wp-block-navigation.is-responsive .wp-block-navigation__responsive-container-open:not(.always-shown) {
+    display: inline-flex !important;
+  }
+  /* Hide the inline list when the menu isn't open */
+  .wp-block-navigation.is-responsive
+    .wp-block-navigation__responsive-container:not(.hidden-by-default):not(.is-menu-open)
+    .wp-block-navigation__container {
     display: none !important;
   }
-  .wp-block-navigation.is-responsive .wp-block-navigation__responsive-container-open {
-    display: inline-flex !important;
+}
+
+/* At/above breakpoint: hide hamburger; show inline list */
+@media (min-width: 62.001rem) {
+  .wp-block-navigation.is-responsive .wp-block-navigation__responsive-container-open,
+  .wp-block-navigation.is-responsive .wp-block-navigation__responsive-container-close {
+    display: none !important;
+  }
+  /* Ensure the inline list is visible in desktop mode */
+  .wp-block-navigation.is-responsive .wp-block-navigation__container {
+    display: flex !important;
   }
 }
 
