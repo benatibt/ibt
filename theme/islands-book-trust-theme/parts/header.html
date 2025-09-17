@@ -1,4 +1,4 @@
-<!-- ===== Islands Book Trust – Two-row Header (with pop-out search) ===== -->
+<!-- ===== Islands Book Trust – Two-row Header (sticky via CSS) ===== -->
 
 <!-- wp:group {"tagName":"header","align":"full","className":"ibt-header-wrap"} -->
 <header class="wp-block-group alignfull ibt-header-wrap">
@@ -28,7 +28,7 @@
         <!-- wp:group {"className":"ibt-icons","layout":{"type":"flex","justifyContent":"flex-end","flexWrap":"nowrap","verticalAlignment":"center"}} -->
         <div class="wp-block-group ibt-icons">
 
-          <!-- Search trigger (icon opens overlay) -->
+          <!-- Search trigger (icon opens overlay via :target) -->
           <!-- wp:html -->
           <a class="ibt-icon ibt-search-trigger" href="#ibt-search" aria-label="Open search">
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" role="img" aria-hidden="true">
@@ -57,8 +57,12 @@
       <!-- ===== Main Navigation Row ===== -->
       <!-- wp:group {"className":"ibt-mainnav-row","layout":{"type":"flex","justifyContent":"space-between","flexWrap":"nowrap","verticalAlignment":"center"}} -->
       <div class="wp-block-group ibt-mainnav-row">
+
         <!-- wp:site-title {"level":2,"className":"ibt-site-title"} /-->
-        <!-- wp:navigation {"ref":186,"layout":{"type":"flex"}} /-->
+
+        <!-- NOTE: if this doesn’t show your menu, select the Navigation block in the editor and pick your menu -->
+        <!-- wp:navigation {"layout":{"type":"flex"}} /-->
+
       </div>
       <!-- /wp:group -->
 
@@ -68,7 +72,7 @@
   </div>
   <!-- /wp:columns -->
 
-  <!-- ===== Pop-out Search Overlay (CSS :target, no JS) ===== -->
+  <!-- ===== Pop-out Search Overlay (CSS :target; no JS required) ===== -->
   <!-- wp:group {"anchor":"ibt-search","className":"ibt-search-modal","layout":{"type":"constrained"}} -->
   <div id="ibt-search" class="wp-block-group ibt-search-modal" aria-hidden="true">
     <!-- wp:html -->

@@ -8,7 +8,7 @@
 
 /* Layout vars */
 :root{
-  --ibt-header-height: 110px; /* ~36 utility + ~58 nav (+ a little) */
+  --ibt-header-height: 96px; /* ~36 utility + ~58 nav (+ a little) */
   --ibt-adminbar: 0px;
 }
 body.admin-bar{ --ibt-adminbar: 32px; }
@@ -33,13 +33,13 @@ body{ padding-top: calc(var(--ibt-header-height) + var(--ibt-adminbar)); }
 
 /* Row heights + padding */
 .ibt-utility-row{
-  min-height: 36px;
+  min-height: 32px;
   display:flex; align-items:center; justify-content:space-between;
   padding: 0 .75rem;
 }
 .ibt-mainnav-row,
 .ibt-header-col > .wp-block-navigation{
-  min-height: 58px;
+  min-height: 54px;
   display:flex; align-items:center;
   width: 100%;
   padding: 0 .75rem;
@@ -89,7 +89,7 @@ body{ padding-top: calc(var(--ibt-header-height) + var(--ibt-adminbar)); }
 .ibt-search-modal{
   position: fixed;
   inset: 0;
-  padding-top: calc(var(--ibt-adminbar));
+  padding-top: var(--ibt-adminbar);
   display: none;
   z-index: 9995;
   background: rgba(0,0,0,.55);
