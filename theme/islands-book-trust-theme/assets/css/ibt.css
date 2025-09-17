@@ -71,9 +71,9 @@
 .ibt-logo-col{ display: flex; align-items: center; justify-content: center; }
 
 /* ---- TEMPORARY FALLBACK (use ONLY if sticky still fails) ---- */
-/*
+
 .ibt-header-wrap{ position: fixed !important; left: 0; right: 0; top: 0; }
-body{ padding-top: 110px; }  /* approx 36 + 58 + padding */
+body{ padding-top: 110px; }  /* approx 36 + 58 + padding
 */
 
 
