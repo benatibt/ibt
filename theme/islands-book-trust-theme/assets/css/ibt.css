@@ -4,6 +4,24 @@
    Keep colours, typography and hover effects in theme.json.
    ================================================= */
 
+   /* ===== Islands Book Trust – Header tweaks ===== */
+.ibt-header-wrap {
+    position: sticky;
+    top: 0;
+    z-index: 99; /* keep above content */
+}
+.ibt-logo-col {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.ibt-utility-row {
+    height: 36px;
+}
+.ibt-header-inner > .ibt-header-col > .wp-block-navigation {
+    min-height: 58px;
+}
+
 /* =================================================
    Design tokens (custom)
    Edit once to change for this css file
