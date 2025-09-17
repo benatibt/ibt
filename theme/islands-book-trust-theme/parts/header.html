@@ -1,4 +1,4 @@
-<!-- ===== Islands Book Trust – Two-row Header ===== -->
+<!-- ===== Islands Book Trust – Two-row Header (with pop-out search) ===== -->
 
 <!-- wp:group {"tagName":"header","align":"full","className":"ibt-header-wrap"} -->
 <header class="wp-block-group alignfull ibt-header-wrap">
@@ -24,12 +24,20 @@
         <p class="wp-block-paragraph ibt-trade-link"><a href="/trade/">Trade</a></p>
         <!-- /wp:paragraph -->
 
-        <!-- Right: Search + Account (icon) + Mini-cart -->
+        <!-- Right: Search icon + Account icon + Mini-cart -->
         <!-- wp:group {"className":"ibt-icons","layout":{"type":"flex","justifyContent":"flex-end","flexWrap":"nowrap","verticalAlignment":"center"}} -->
         <div class="wp-block-group ibt-icons">
 
-          <!-- wp:search {"label":"Search","showLabel":false,"buttonUseIcon":true,"buttonText":"","buttonPosition":"button-inside","placeholder":"Search"} /-->
+          <!-- Search trigger (icon opens overlay) -->
+          <!-- wp:html -->
+          <a class="ibt-icon ibt-search-trigger" href="#ibt-search" aria-label="Open search">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" role="img" aria-hidden="true">
+              <path d="M10 2a8 8 0 105.293 14.293l4.707 4.707 1.414-1.414-4.707-4.707A8 8 0 0010 2zm0 2a6 6 0 110 12 6 6 0 010-12z"/>
+            </svg>
+          </a>
+          <!-- /wp:html -->
 
+          <!-- Account icon -->
           <!-- wp:html -->
           <a class="ibt-icon ibt-account" href="/my-account/" aria-label="My account">
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" role="img" aria-hidden="true">
@@ -38,6 +46,7 @@
           </a>
           <!-- /wp:html -->
 
+          <!-- Mini-cart (Woo) -->
           <!-- wp:woocommerce/mini-cart /-->
 
         </div>
@@ -48,11 +57,8 @@
       <!-- ===== Main Navigation Row ===== -->
       <!-- wp:group {"className":"ibt-mainnav-row","layout":{"type":"flex","justifyContent":"space-between","flexWrap":"nowrap","verticalAlignment":"center"}} -->
       <div class="wp-block-group ibt-mainnav-row">
-
         <!-- wp:site-title {"level":2,"className":"ibt-site-title"} /-->
-
         <!-- wp:navigation {"ref":186,"layout":{"type":"flex"}} /-->
-
       </div>
       <!-- /wp:group -->
 
@@ -61,6 +67,20 @@
 
   </div>
   <!-- /wp:columns -->
+
+  <!-- ===== Pop-out Search Overlay (CSS :target, no JS) ===== -->
+  <!-- wp:group {"anchor":"ibt-search","className":"ibt-search-modal","layout":{"type":"constrained"}} -->
+  <div id="ibt-search" class="wp-block-group ibt-search-modal">
+    <!-- wp:html -->
+    <a href="#" class="ibt-search-close" aria-label="Close search">✕</a>
+    <!-- /wp:html -->
+    <!-- wp:group {"className":"ibt-search-modal-inner","layout":{"type":"constrained"}} -->
+    <div class="wp-block-group ibt-search-modal-inner">
+      <!-- wp:search {"label":"Search","showLabel":false,"buttonText":"Search","buttonPosition":"button-inside","placeholder":"Search site"} /-->
+    </div>
+    <!-- /wp:group -->
+  </div>
+  <!-- /wp:group -->
 
 </header>
 <!-- /wp:group -->

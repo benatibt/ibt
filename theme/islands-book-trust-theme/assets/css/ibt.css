@@ -4,43 +4,112 @@
    Keep colours, typography and hover effects in theme.json.
    ================================================= */
 
-//* ===== IBT Header – tweaks for nav, icons, spacing (v2.2) ===== */
+/* ===== Islands Book Trust – Header (v2.3 consolidated) ===== */
 
-/* Put the hamburger on the RIGHT at the small-screen breakpoint */
+/* Layout vars */
+:root{
+  --ibt-header-height: 110px; /* ~36 utility + ~58 nav (+ a little) */
+  --ibt-adminbar: 0px;
+}
+body.admin-bar{ --ibt-adminbar: 32px; }
+@media (max-width: 782px){ body.admin-bar{ --ibt-adminbar: 46px; } }
+
+/* Fixed header with admin-bar offset + gradient */
+header.wp-block-group.ibt-header-wrap,
+.wp-block-group.ibt-header-wrap{
+  position: fixed;
+  left: 0; right: 0;
+  top: var(--ibt-adminbar);
+  z-index: 9990;
+  background-image: linear-gradient(180deg, #B3B3B3 0%, #F9F9F9 100%);
+}
+
+/* Push page content below fixed header */
+body{ padding-top: calc(var(--ibt-header-height) + var(--ibt-adminbar)); }
+
+/* Columns & stacking */
+.ibt-header-inner{ align-items: stretch; }
+.ibt-header-col{ display:flex; flex-direction:column; gap:0; }
+
+/* Row heights + padding */
+.ibt-utility-row{
+  min-height: 36px;
+  display:flex; align-items:center; justify-content:space-between;
+  padding: 0 .75rem;
+}
+.ibt-mainnav-row,
+.ibt-header-col > .wp-block-navigation{
+  min-height: 58px;
+  display:flex; align-items:center;
+  width: 100%;
+  padding: 0 .75rem;
+}
+
+/* Hamburger on the RIGHT (small screens) */
 @media (max-width: 782px){
-  .ibt-header-col > .wp-block-navigation{
-    justify-content: flex-end; /* push visible toggle to the right */
-  }
-  .wp-block-navigation__responsive-container-open{
-    margin-left: auto;
-  }
+  .ibt-mainnav-row .wp-block-navigation{ display:flex; width:100%; justify-content:flex-end; }
+  .ibt-mainnav-row .wp-block-navigation__container{ order:1; }
+  .ibt-mainnav-row .wp-block-navigation__responsive-container-open{ order:2; margin-left:auto; }
 }
 
-/* Tighter, fixed gap between menu buttons + smaller padding */
-.wp-block-navigation .wp-block-navigation__container{ gap: .25rem; }
-.wp-block-navigation .wp-block-navigation-item__content,
-.wp-block-navigation .wp-block-navigation__container > li > a{
-  padding: .35rem .6rem;   /* was .4rem .8rem */
+/* Button-style nav links (force consistency) */
+.ibt-mainnav-row .wp-block-navigation .wp-block-navigation-item__content,
+.ibt-mainnav-row .wp-block-navigation .wp-block-navigation__container > li > a{
+  background: var(--wp--preset--color--accent) !important;
+  color: var(--wp--preset--color--background) !important;
+  border-radius: .4rem;
+  padding: .35rem .6rem;
+  text-decoration: none;
+  line-height: 1.25;
+}
+.ibt-mainnav-row .wp-block-navigation a:hover,
+.ibt-mainnav-row .wp-block-navigation .wp-block-navigation-item__content:hover,
+.ibt-mainnav-row .wp-block-navigation a:focus-visible{
+  background: var(--wp--preset--color--accent-hover) !important;
 }
 
-/* Site title next to the menu */
+/* Fixed, tight gap between buttons */
+.ibt-mainnav-row .wp-block-navigation .wp-block-navigation__container{ gap: .25rem !important; }
+
+/* Site title */
 .ibt-mainnav-row{ gap: .75rem; }
 .ibt-site-title{ margin: 0; line-height: 1; }
 .ibt-site-title a{ text-decoration: none; color: var(--wp--preset--color--text); }
 
-/* Icon row: align and tidy */
-.ibt-icons{ gap: .5rem; align-items: center; }
-.ibt-icon svg{ display: block; }
+/* Icons (search/account/cart) */
+.ibt-icons{ gap: .5rem; align-items:center; }
+.ibt-icon svg{ display:block; }
 
-/* Mini-cart: ensure it's icon-first and compact */
+/* Compact mini-cart (hide price text in header) */
 .wc-block-mini-cart__amount,
-.wc-block-mini-cart__total { display: none; } /* hide price text for compact header */
-.wc-block-mini-cart__badge { transform: translate(2px,-2px); } /* subtle badge nudge */
+.wc-block-mini-cart__total{ display:none; }
+.wc-block-mini-cart__badge{ transform: translate(2px,-2px); }
 
-/* Ensure header text uses the heading font weight for presence */
-.ibt-utility-row, .ibt-mainnav-row{
-  font-family: var(--wp--preset--font-family--title-font);
-  font-weight: 700;
+/* Pop-out Search (CSS :target modal) */
+.ibt-search-modal{
+  position: fixed;
+  inset: 0;
+  padding-top: calc(var(--ibt-adminbar));
+  display: none;
+  z-index: 9995;
+  background: rgba(0,0,0,.55);
+}
+#ibt-search:target{ display: grid; place-items: start center; }
+.ibt-search-modal-inner{
+  background: #fff;
+  width: min(800px, 92vw);
+  margin-top: 2rem;
+  padding: 1rem;
+  border-radius: .5rem;
+  box-shadow: 0 8px 30px rgba(0,0,0,.25);
+}
+.ibt-search-close{
+  position: absolute;
+  top: calc(var(--ibt-adminbar) + 10px);
+  right: 12px;
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.25rem;
 }
 
 
