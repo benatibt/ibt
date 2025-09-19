@@ -12,6 +12,9 @@
   background: var(--wp--preset--color--ui-surface);
 }
 
+/* Sticky guard: allow sticky to escape its container if a parent set overflow */
+.wp-site-blocks { overflow: visible; }
+
 /* --- toggles to enable later (leave commented for now) --- */
 
 /* 1) Logo column width with clamp (if % column feels off) */
