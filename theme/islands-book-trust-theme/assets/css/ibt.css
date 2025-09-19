@@ -31,22 +31,25 @@ body.admin-bar .wp-site-blocks > header.wp-block-template-part { top: 32px; }
   margin-right: auto;
 }
 
-/* ------------ Side-bands v3: white reading column + grey margins ------------ */
-/* Fixed gutter for tuning — change this number and you WILL see it move */
+/* ------------ Side-bands v4: white reading column + grey margins ------------ */
+/* TUNE: fixed gutter for the white band; increase/decrease to taste */
 :root{
-  --ibt-sideband-gutter: 2.4rem; /* ← try 2rem–3rem; use 10rem to verify */
+  --ibt-sideband-gutter: 2.4rem; /* try 2rem–3rem; set 10rem to verify effect */
 }
 
-/* Default center = CONTENT size; scoped to .wp-site-blocks so overrides apply here */
+/* Base: compute on .wp-site-blocks so overrides re-compute correctly */
 .wp-site-blocks{
+  /* Default to CONTENT size */
   --ibt-sideband-center: var(--wp--style--global--content-size);
-  /* Compute the total white band width locally: center + left + right gutters */
+
+  /* Band = center + left + right gutters (add, don’t multiply) */
   --ibt-sideband-band: calc(
     var(--ibt-sideband-center)
     + var(--ibt-sideband-gutter)
     + var(--ibt-sideband-gutter)
   );
 
+  /* Paint page: grey → white center band → grey */
   background:
     linear-gradient(
       to right,
@@ -59,8 +62,12 @@ body.admin-bar .wp-site-blocks > header.wp-block-template-part { top: 32px; }
     );
 }
 
-/* WIDEN only if the PAGE BODY has a .alignwide block (ignores header/footer wide) */
-.wp-site-blocks:has(:where(main, .wp-block-post-content) .alignwide){
+/* Widen ONLY if the PAGE BODY (main/post-content) contains a real wide block
+   (exclude the typical alignwide WRAPPER that itself contains the post content). */
+.wp-site-blocks:has(
+  :where(main, .wp-block-post-content)
+  .alignwide:not(:has(.wp-block-post-content))
+){
   --ibt-sideband-center: var(--wp--style--global--wide-size);
   --ibt-sideband-band: calc(
     var(--ibt-sideband-center)
@@ -69,8 +76,21 @@ body.admin-bar .wp-site-blocks > header.wp-block-template-part { top: 32px; }
   );
 }
 
-/* Page background color (grey) — header/footer will paint over this as needed */
+/* Optional manual override:
+   Add class `has-wide-content` to the Template or Page (e.g., in the Site Editor → Advanced → Additional CSS class)
+   to force the wide band when you want it, regardless of detection. */
+.wp-site-blocks.has-wide-content{
+  --ibt-sideband-center: var(--wp--style--global--wide-size);
+  --ibt-sideband-band: calc(
+    var(--ibt-sideband-center)
+    + var(--ibt-sideband-gutter)
+    + var(--ibt-sideband-gutter)
+  );
+}
+
+/* Page background grey (header/footer paint over it as needed) */
 body{ background: var(--wp--preset--color--ui-surface); }
+
 
 
 /* ---------- Optional toggles (leave commented until needed) ---------- */
