@@ -35,7 +35,7 @@ body.admin-bar .wp-site-blocks > header.wp-block-template-part { top: 32px; }
 /* TUNE ME: fixed gutter so you can see spacing clearly. Try 2rem–3rem. */
 :root{
   --ibt-sideband-center: var(--wp--style--global--content-size);
-  --ibt-sideband-gutter: 2.4rem; /* ← adjust this value for the breathing room */
+  --ibt-sideband-gutter: 10rem; /* ← adjust this value for the breathing room */
 }
 
 /* Only widen the white band if the MAIN content contains any .alignwide.
