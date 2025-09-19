@@ -33,7 +33,7 @@ body.admin-bar .wp-site-blocks > header.wp-block-template-part { top: 32px; }
 /* .ibt-utility-row .wp-block-search { min-width: 16ch; max-width: 48ch; } */
 
 /* 3) Hide Site Title under 1024px (title remains in DOM; out of tab order) */
-/* @media (max-width: 1024px){ .ibt-site-title{ display:none; } } */
+@media (max-width: 970px){ .ibt-site-title{ display:none; } }
 
 
 /* =================================================
