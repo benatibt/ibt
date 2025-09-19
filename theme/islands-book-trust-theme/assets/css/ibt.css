@@ -31,23 +31,37 @@ body.admin-bar .wp-site-blocks > header.wp-block-template-part { top: 32px; }
   margin-right: auto;
 }
 
-/* ------------ Side-bands: white reading column + grey margins ------------ */
-/* Choose center width + include site gutters (same clamp as theme root padding) */
-:root {
-  --ibt-gutter: clamp(1rem, 4vw, 3rem);
-  /* Default center = content size; will auto-switch to wide when needed (see :has below) */
+/* ------------ Side-bands v2: white reading column + grey margins ------------ */
+/* TUNE ME: fixed gutter so you can see spacing clearly. Try 2rem–3rem. */
+:root{
   --ibt-sideband-center: var(--wp--style--global--content-size);
+  --ibt-sideband-gutter: 2.4rem; /* ← adjust this value for the breathing room */
 }
 
-/* If this page contains any .alignwide block, expand the white center to the wide size */
-.wp-site-blocks:has(.alignwide) {
+/* Only widen the white band if the MAIN content contains any .alignwide.
+   (Header/footer alignwide won't trigger this.) */
+.wp-site-blocks:has(:where(main, .wp-block-post-content) .alignwide){
   --ibt-sideband-center: var(--wp--style--global--wide-size);
 }
 
-/* Page background grey; draw a white center band equal to (center + 2×gutter) */
-body {
+/* Paint the page background: grey → white center (content + 2×gutter) → grey */
+body{
   background: var(--wp--preset--color--ui-surface);
 }
+
+.wp-site-blocks{
+  background:
+    linear-gradient(
+      to right,
+      var(--wp--preset--color--ui-surface)
+        calc((100% - (var(--ibt-sideband-center) + 2 * var(--ibt-sideband-gutter))) / 2),
+      #ffffff 0,
+      #ffffff
+        calc((100% + (var(--ibt-sideband-center) + 2 * var(--ibt-sideband-gutter))) / 2),
+      var(--wp--preset--color--ui-surface) 0
+    );
+}
+
 
 .wp-site-blocks {
   background:
