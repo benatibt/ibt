@@ -24,6 +24,35 @@ body.admin-bar .wp-site-blocks > header.wp-block-template-part { top: 32px; }
 /* Keep the light grey surface color on the inner group */
 .ibt-header-wrap { background: var(--wp--preset--color--ui-surface); }
 
+/* Limit header inner content width (background still full width) */
+.ibt-header-inner {
+  max-width: 90rem;       /* try 90rem; change freely */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Side-bands: white center column, grey margins across the page */
+:root {
+  /* Choose the band reference once: content or wide size */
+  --ibt-sideband-center: var(--wp--style--global--content-size); /* or: var(--wp--style--global--wide-size) */
+}
+
+body { 
+  background: var(--wp--preset--color--ui-surface);
+}
+
+.wp-site-blocks {
+  /* White center band = content area; grey on both sides */
+  background:
+    linear-gradient(
+      to right,
+      var(--wp--preset--color--ui-surface) calc((100% - var(--ibt-sideband-center)) / 2),
+      #ffffff 0,
+      #ffffff calc((100% + var(--ibt-sideband-center)) / 2),
+      var(--wp--preset--color--ui-surface) 0
+    );
+}
+
 /* ---------- Optional toggles (leave commented until needed) ---------- */
 
 /* 1) Logo column width with clamp (if % column feels off) */
