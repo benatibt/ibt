@@ -4,18 +4,27 @@
    Keep colours, typography and hover effects in theme.json.
    ================================================= */
 
-/* IBT — Sticky header with flat UI surface background */
-.ibt-header-wrap{
+/* ---- Sticky header (robust) ---- */
+/* Make the Template Part wrapper sticky (works across FSE wrappers) */
+.wp-site-blocks > header.wp-block-template-part {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: var(--wp--preset--color--ui-surface);
 }
 
-/* Sticky guard: allow sticky to escape its container if a parent set overflow */
+/* Admin bar offsets when logged in */
+body.admin-bar .wp-site-blocks > header.wp-block-template-part { top: 32px; }
+@media (max-width: 782px) {
+  body.admin-bar .wp-site-blocks > header.wp-block-template-part { top: 46px; }
+}
+
+/* Allow sticky to work even if a parent set overflow */
 .wp-site-blocks { overflow: visible; }
 
-/* --- toggles to enable later (leave commented for now) --- */
+/* Keep the light grey surface color on the inner group */
+.ibt-header-wrap { background: var(--wp--preset--color--ui-surface); }
+
+/* ---------- Optional toggles (leave commented until needed) ---------- */
 
 /* 1) Logo column width with clamp (if % column feels off) */
 /* .ibt-logo-col { flex-basis: clamp(64px, 12vw, 128px); } */
@@ -25,12 +34,6 @@
 
 /* 3) Hide Site Title under 1024px (title remains in DOM; out of tab order) */
 /* @media (max-width: 1024px){ .ibt-site-title{ display:none; } } */
-
-/* Avoid overlap with the WP admin bar when logged in */
-body.admin-bar .ibt-header-wrap { top: 32px; }
-@media (max-width: 782px) {
-  body.admin-bar .ibt-header-wrap { top: 46px; }
-}
 
 
 /* =================================================
