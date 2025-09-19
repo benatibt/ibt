@@ -1,75 +1,62 @@
 <?php
 /**
- * Islands Book Trust theme functions
- * Standalone block theme.
+ * Islands Book Trust — Theme functions
+ * Minimal, safe version
  */
 
+// Define a version for cache-busting.
 if ( ! defined( 'IBT_VERSION' ) ) {
-	define( 'IBT_VERSION', wp_get_theme()->get( 'Version' ) );
+	$theme = wp_get_theme( get_template() );
+	$ver   = $theme ? $theme->get( 'Version' ) : null;
+	define( 'IBT_VERSION', $ver ?: time() );
 }
 
-/**
- * [IBT-A] Theme setup: core supports
- */
-add_action( 'after_setup_theme', function() {
-	// Core supports
+// Core supports and editor styles.
+add_action( 'after_setup_theme', function () {
 	add_theme_support( 'wp-block-styles' );
 	add_theme_support( 'responsive-embeds' );
-	add_theme_support( 'editor-styles' ); // keep wrapper/class in editor
-
-	// Allow wide & full alignment in the block editor
-	add_theme_support( 'align-wide' );
-
-	// Add support for comments (kept from your file)
-	add_theme_support( 'comments' );
-
-	// Load editor.css & ibt.css in block editor
+	add_theme_support( 'editor-styles' );
 	add_editor_style( [ 'assets/css/editor.css', 'assets/css/ibt.css' ] );
 
+	add_theme_support( 'align-wide' );
+	add_theme_support( 'comments' );
 
-
-	// WooCommerce compatibility
+	// WooCommerce basics.
 	add_theme_support( 'woocommerce' );
 	add_theme_support( 'wc-product-gallery-zoom' );
 	add_theme_support( 'wc-product-gallery-lightbox' );
 	add_theme_support( 'wc-product-gallery-slider' );
 
-	// Add html5 markup to all site WP output
-	add_theme_support('html5', [
-		'comment-form',
-		'comment-list',
-		'search-form',
-		'gallery',
-		'caption',
-		'style',
-		'script'
-	]);
-
+	// Modern HTML5 markup.
+	add_theme_support( 'html5', [
+		'comment-form', 'comment-list', 'search-form', 'gallery', 'caption', 'style', 'script'
+	] );
 } );
 
-// [IBT-B] - Removed
-
-/**
- * [IBT-C] Front-end assets (ibt.css)
- * ******* REMOVE AFTER DEV *******
- * Cache-buster for ibt.css during development (filemtime() auto-bumps version).
- */
-add_action( 'wp_enqueue_scripts', function() {
+// Front-end stylesheet only (no JS).
+add_action( 'wp_enqueue_scripts', function () {
 	$rel  = 'assets/css/ibt.css';
 	$path = get_stylesheet_directory() . '/' . $rel;
 	$ver  = file_exists( $path ) ? filemtime( $path ) : IBT_VERSION;
 
-/**
- * [IBT-D] Footer helper: replace fallback copyright year dynamically
- */
-add_filter( 'render_block', function( $block_content, $block ) {
-	if ( isset( $block['blockName'] )
-		&& $block['blockName'] === 'core/paragraph'
-		&& strpos( $block_content, 'bookshop-year' ) !== false
+	wp_enqueue_style(
+		'islands-book-trust',
+		get_stylesheet_directory_uri() . '/' . $rel,
+		[],
+		$ver
+	);
+}, 20 );
+
+// Footer helper: replace a placeholder span with current year, if present.
+add_filter( 'render_block', function ( $block_content, $block ) {
+	if (
+		isset( $block['blockName'] ) &&
+		$block['blockName'] === 'core/paragraph' &&
+		strpos( $block_content, 'bookshop-year' ) !== false
 	) {
 		$year = date( 'Y' );
 		$block_content = preg_replace(
-			'/<span class="bookshop-year">.*?<\/span>/',
+			'/<span[^>]*class="[^"]*bookshop-year[^"]*"[^>]*>.*?<\/span>/',
 			'<span class="bookshop-year">' . esc_html( $year ) . '</span>',
 			$block_content
 		);
@@ -77,16 +64,14 @@ add_filter( 'render_block', function( $block_content, $block ) {
 	return $block_content;
 }, 10, 2 );
 
-/**
- * [IBT-E] Custom Button styles (Button block “Styles” panel)
- */
+// Optional extra Button styles (kept from your theme).
 add_action( 'init', function () {
-	register_block_style( 'core/button', array(
+	register_block_style( 'core/button', [
 		'name'  => 'solid-accent',
 		'label' => __( 'Solid Accent', 'ibt' ),
-	) );
-	register_block_style( 'core/button', array(
+	] );
+	register_block_style( 'core/button', [
 		'name'  => 'outline-accent',
 		'label' => __( 'Outline Accent', 'ibt' ),
-	) );
+	] );
 } );
