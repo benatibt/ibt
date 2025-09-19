@@ -31,63 +31,47 @@ body.admin-bar .wp-site-blocks > header.wp-block-template-part { top: 32px; }
   margin-right: auto;
 }
 
-/* ------------ Side-bands v2: white reading column + grey margins ------------ */
-/* TUNE ME: fixed gutter so you can see spacing clearly. Try 2rem–3rem. */
+/* ------------ Side-bands v3: white reading column + grey margins ------------ */
+/* Fixed gutter for tuning — change this number and you WILL see it move */
 :root{
-  --ibt-sideband-center: var(--wp--style--global--content-size);
-  --ibt-sideband-gutter: 10rem; /* ← adjust this value for the breathing room */
+  --ibt-sideband-gutter: 2.4rem; /* ← try 2rem–3rem; use 10rem to verify */
 }
 
-/* Only widen the white band if the MAIN content contains any .alignwide.
-   (Header/footer alignwide won't trigger this.) */
+/* Default center = CONTENT size; scoped to .wp-site-blocks so overrides apply here */
+.wp-site-blocks{
+  --ibt-sideband-center: var(--wp--style--global--content-size);
+  /* Compute the total white band width locally: center + left + right gutters */
+  --ibt-sideband-band: calc(
+    var(--ibt-sideband-center)
+    + var(--ibt-sideband-gutter)
+    + var(--ibt-sideband-gutter)
+  );
+
+  background:
+    linear-gradient(
+      to right,
+      var(--wp--preset--color--ui-surface)
+        calc((100% - var(--ibt-sideband-band)) / 2),
+      #ffffff 0,
+      #ffffff
+        calc((100% + var(--ibt-sideband-band)) / 2),
+      var(--wp--preset--color--ui-surface) 0
+    );
+}
+
+/* WIDEN only if the PAGE BODY has a .alignwide block (ignores header/footer wide) */
 .wp-site-blocks:has(:where(main, .wp-block-post-content) .alignwide){
   --ibt-sideband-center: var(--wp--style--global--wide-size);
+  --ibt-sideband-band: calc(
+    var(--ibt-sideband-center)
+    + var(--ibt-sideband-gutter)
+    + var(--ibt-sideband-gutter)
+  );
 }
 
-/* Paint the page background: grey → white center (content + 2×gutter) → grey */
-body{
-  background: var(--wp--preset--color--ui-surface);
-}
+/* Page background color (grey) — header/footer will paint over this as needed */
+body{ background: var(--wp--preset--color--ui-surface); }
 
-.wp-site-blocks{
-  background:
-    linear-gradient(
-      to right,
-      var(--wp--preset--color--ui-surface)
-        calc((100% - (var(--ibt-sideband-center) + 2 * var(--ibt-sideband-gutter))) / 2),
-      #ffffff 0,
-      #ffffff
-        calc((100% + (var(--ibt-sideband-center) + 2 * var(--ibt-sideband-gutter))) / 2),
-      var(--wp--preset--color--ui-surface) 0
-    );
-}
-
-
-.wp-site-blocks {
-  background:
-    linear-gradient(
-      to right,
-      var(--wp--preset--color--ui-surface)
-        calc((100% - (var(--ibt-sideband-center) + 2 * var(--ibt-gutter))) / 2),
-      #ffffff 0,
-      #ffffff
-        calc((100% + (var(--ibt-sideband-center) + 2 * var(--ibt-gutter))) / 2),
-      var(--wp--preset--color--ui-surface) 0
-    );
-}
-
-
-.wp-site-blocks {
-  /* White center band = content area; grey on both sides */
-  background:
-    linear-gradient(
-      to right,
-      var(--wp--preset--color--ui-surface) calc((100% - var(--ibt-sideband-center)) / 2),
-      #ffffff 0,
-      #ffffff calc((100% + var(--ibt-sideband-center)) / 2),
-      var(--wp--preset--color--ui-surface) 0
-    );
-}
 
 /* ---------- Optional toggles (leave commented until needed) ---------- */
 
