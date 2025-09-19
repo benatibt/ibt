@@ -1,41 +1,44 @@
-<!-- ===== Islands Book Trust — Header (two-row, non-stacking columns) ===== -->
+<!-- ===== Islands Book Trust – Two-row Header (no-JS search) ===== -->
 
-<!-- wp:group {"align":"full","className":"ibt-header-wrap"} -->
-<div class="wp-block-group alignfull ibt-header-wrap">
+<!-- wp:group {"tagName":"header","align":"full","className":"ibt-header-wrap"} -->
+<header class="wp-block-group alignfull ibt-header-wrap">
 
 	<!-- wp:columns {"align":"wide","className":"is-not-stacked-on-mobile ibt-header-inner"} -->
 	<div class="wp-block-columns alignwide is-not-stacked-on-mobile ibt-header-inner">
 
-		<!-- wp:column {"width":"14%","className":"ibt-logo-col"} -->
-		<div class="wp-block-column ibt-logo-col" style="flex-basis:14%">
-			<!-- wp:site-logo {"width":80,"shouldSyncIcon":true} /-->
+		<!-- wp:column {"width":"100px","className":"ibt-logo-col"} -->
+		<div class="wp-block-column ibt-logo-col" style="flex-basis:100px">
+			<!-- wp:site-logo {"width":80} /-->
 		</div>
 		<!-- /wp:column -->
 
 		<!-- wp:column {"className":"ibt-header-col"} -->
 		<div class="wp-block-column ibt-header-col">
 
-			<!-- Utility row: right-aligned cluster -->
-			<!-- wp:group {"className":"ibt-utility-row","layout":{"type":"flex","justifyContent":"flex-end","flexWrap":"nowrap"}} -->
-			<div class="wp-block-group ibt-utility-row">
-				<!-- Search: inline, icon button inside, flexible width -->
-				<!-- wp:search {"label":"Search","showLabel":false,"buttonUseIcon":true,"buttonPosition":"button-inside","width":45,"widthUnit":"%"} /-->
+			<!-- wp:group {"className":"ibt-icons","layout":{"type":"flex","justifyContent":"right","flexWrap":"nowrap","verticalAlignment":"center"}} -->
+			<div class="wp-block-group ibt-icons">
 
-				<!-- Account icon/link -->
-				<!-- wp:woocommerce/my-account-link {"className":"ibt-account"} /-->
+				<!-- Search (inline; icon button inside; flexible width) -->
+				<!-- wp:search {"label":"Search","showLabel":false,"buttonUseIcon":true,"buttonPosition":"button-inside","width":45,"widthUnit":"%","className":"ibt-search"} /-->
 
-				<!-- Cart icon with count -->
+				<!-- Account (icon only) -->
+				<!-- wp:woocommerce/customer-account {"displayStyle":"icon_only","iconClass":"wc-block-customer-account__account-icon","className":"ibt-account"} /-->
+
+				<!-- Cart (icon + count) -->
 				<!-- wp:woocommerce/mini-cart {"className":"ibt-cart"} /-->
+
 			</div>
 			<!-- /wp:group -->
 
-			<!-- Main row: title (kept in DOM) + right-aligned nav -->
-			<!-- wp:group {"className":"ibt-main-row","layout":{"type":"flex","justifyContent":"space-between","flexWrap":"nowrap"}} -->
-			<div class="wp-block-group ibt-main-row">
+			<!-- Main row: site title (kept in DOM) + nav on right -->
+			<!-- wp:group {"className":"ibt-mainnav-row","layout":{"type":"flex","justifyContent":"space-between","flexWrap":"nowrap","verticalAlignment":"center"}} -->
+			<div class="wp-block-group ibt-mainnav-row">
+
 				<!-- wp:site-title {"level":2,"className":"ibt-site-title"} /-->
 
-				<!-- Navigation: right; overlay on mobile; uses assigned menu -->
+				<!-- Navigation (right-justified; overlay on mobile). Uses assigned menu. -->
 				<!-- wp:navigation {"overlayMenu":"mobile","layout":{"type":"flex","justifyContent":"right"}} /-->
+
 			</div>
 			<!-- /wp:group -->
 
@@ -45,5 +48,5 @@
 	</div>
 	<!-- /wp:columns -->
 
-</div>
+</header>
 <!-- /wp:group -->
