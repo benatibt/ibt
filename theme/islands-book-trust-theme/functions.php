@@ -60,44 +60,6 @@ add_action( 'wp_enqueue_scripts', function() {
 	$ver  = file_exists( $path ) ? filemtime( $path ) : IBT_VERSION;
 
 /**
- * [IBT-H] Header helpers (search modal + dynamic padding)
- */
-add_action( 'wp_enqueue_scripts', function () {
-    $rel  = 'assets/js/ibt-header.js';
-    $path = get_stylesheet_directory() . '/' . $rel;
-    $ver  = file_exists($path) ? filemtime($path) : null;
-
-    wp_enqueue_script(
-        'ibt-header',
-        get_stylesheet_directory_uri() . '/' . $rel,
-        array(), // no deps
-        $ver,
-        true     // in footer
-    );
-}, 21);
-
-	wp_enqueue_style(
-		'islands-book-trust',
-		get_stylesheet_directory_uri() . '/' . $rel,
-		array(),
-		$ver
-	);
-}, 20 );
-
-/** 
- * [IBT-F] Front-end JS: header helpers (search modal)
- */
-add_action( 'wp_enqueue_scripts', function() {
-    $rel = 'assets/js/ibt-header.js';
-    $path = get_stylesheet_directory() . '/' . $rel;
-    $ver = file_exists( $path ) ? filemtime( $path ) : ( defined('IBT_VERSION') ? IBT_VERSION : null );
-
-    // Register and enqueue a tiny, dependency-free script (defer).
-    wp_register_script( 'ibt-header', get_stylesheet_directory_uri() . '/' . $rel, array(), $ver, true );
-    wp_enqueue_script( 'ibt-header' );
-}, 21 );
-
-/**
  * [IBT-D] Footer helper: replace fallback copyright year dynamically
  */
 add_filter( 'render_block', function( $block_content, $block ) {
